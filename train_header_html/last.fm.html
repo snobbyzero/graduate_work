@@ -1,0 +1,193 @@
+<div class="top-bar">
+
+
+    <section data-require="player/controls,player/status,player/tracking" data-player-status-ad-playing="Реклама"
+             data-player-status-inactive="&nbsp;" data-player-status-loading-spotify="Подключение к Spotify…"
+             data-player-status-spotify-auth-error="Ошибка проверки подлинности в Spotify."
+             data-player-error-cannot-play-item="Не удалось воспроизвести."
+             data-player-error-track-unavailable="Композиция недоступна." data-player-modal-title="Смотреть видео"
+             class="
+            player-bar
+            inactive
+        " aria-label="проигрыватель" aria-disabled="true">
+        <div class="player-bar-inner-wrap">
+            <a class="player-bar-artwork js-artwork">
+                <img class="" src="/static/images/defaults/player_default_album.430223706b14.png" alt="" loading="lazy">
+            </a>
+
+            <span class="
+                player-bar-source
+                player-bar-source--spotify
+            ">Слушать через Spotify</span>
+
+            <span class="
+                player-bar-source
+                player-bar-source--youtube
+            ">Слушать через YouTube</span>
+
+            <div class="source-info">
+                <button class="player-bar-playback-options-button" data-disclose-hover=""
+                        aria-controls="player-bar-playback-options">
+                    Параметры воспроизведения
+                </button>
+                <div id="player-bar-playback-options" class="
+                        player-bar-playback-options-wrap
+                        disclose-hide
+                    ">
+                    <ul class="
+                        dropdown-menu-dark
+                        player-bar-playback-options-spotify
+                    ">
+                        <li class="dropdown-menu-non-interactive-item-dark">
+                            <span class="player-bar-listening-on-heading">Воспроизведение на…</span>
+                            <span class="
+                                player-bar-listening-on
+                                js-player-bar-listening-on
+                            "></span>
+                        </li>
+                        <li>
+                            <button class="
+                            dropdown-menu-item-dark
+                            js-switch-device
+                            player-bar-playback-options-switch-device
+                        ">Переключиться на устройство Spotify
+                            </button>
+                        </li>
+                        <li><a class="
+                                js-source
+                                dropdown-menu-item-dark
+                                player-bar-playback-options-external-link
+                            " target="_blank">Открыть в веб-проигрывателе Spotify</a></li>
+
+                        <li class="menu-separator--dark">
+                            <a href="/ru/login?next=/ru/settings/website" class="
+                dropdown-menu-item-dark
+                player-bar-playback-options-settings
+            ">
+                                Изменить источник воспроизведения
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="
+                        dropdown-menu-dark
+                        player-bar-playback-options-youtube
+                    ">
+                        <li><a class="
+                                dropdown-menu-item-dark
+                                js-source
+                                player-bar-playback-options-external-link
+                            " target="_blank">Открыть на YouTube</a></li>
+
+                        <li class="menu-separator--dark">
+                            <a href="/ru/login?next=/ru/settings/website" class="
+                dropdown-menu-item-dark
+                player-bar-playback-options-settings
+            ">
+                                Изменить источник воспроизведения
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="player-bar-controls">
+
+                <ul aria-label="элементы управления" class="media-controls">
+                    <li>
+                        <button disabled="" class="
+                                js-previous
+                                player-bar-btn
+                                player-bar-btn--previous
+                            " data-analytics-action="PlaybarBackTrack">
+                            Назад
+                        </button>
+                    </li>
+                    <li>
+                        <button disabled="" class="
+                                js-play-pause
+                                player-bar-btn
+                                player-bar-btn--play
+                            " data-string-pause="Пауза" data-analytics-action="PlaybarResumeTrack"
+                                data-analytics-action-pause="PlaybarPauseTrack">
+                            Слушать
+                        </button>
+                    </li>
+                    <li>
+                        <button disabled="" class="
+                                js-next
+                                player-bar-btn
+                                player-bar-btn--next
+                            " data-analytics-action="PlaybarSkipTrack">
+                            Дальше
+                        </button>
+                    </li>
+
+                </ul>
+
+                <a class="
+                        player-bar-skiplink
+                        player-bar-skiplink--youtube
+                    " href="#youtube-video">Перейти на видео YouTube</a>
+
+            </div>
+
+            <div class="player-bar-now-playing">
+                <div class="player-bar-now-playing-inner-wrap">
+                    <p class="player-bar-track js-player-status" aria-label="воспроизводится сейчас" aria-live="polite"
+                       aria-atomic="true" title="&nbsp;">&nbsp;</p>
+
+                    <p class="player-bar-error js-player-error player-bar-status--hide">
+                        <span class="player-bar-error-message js-player-error-message"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="player-bar-progress-wrap">
+            <div class="player-bar-progress" aria-label="Исполнение" role="timer">
+                <div class="
+                        js-progress-slug
+                        player-bar-progress-slug
+                    ">
+                    <span class="
+                            js-progress-remaining
+                            player-bar-progress-remaining
+                        " aria-label="осталось"></span>
+                </div>
+            </div>
+        </div>
+
+        <div data-require="player/scrobble-client"></div>
+    </section>
+
+
+    <div class="
+            masthead-popup
+            masthead-popup--spotify-scrobbling
+            masthead-popup--hidden
+        "
+         data-require="components/spotify-scrobbling-prompt,components/alert-dismissable,components/spotify-scrobbling-banner"
+         data-spotify-scobbling-success-modal="/ru/socialmodal/spotify-scrobbling-success"
+         data-spotify-scobbling-fail-modal="/ru/socialmodal/spotify-scrobbling-fail">
+        <div class="masthead-popup-inner">
+            <h3>Скробблишь из Spotify?</h3>
+            <p>Подключи свой аккаунт Spotify к аккаунту Last.fm и регистрируй все, что ты слушаешь в приложениях Spotify
+                на всех устройствах и платформах.</p>
+            <p>
+                <a class="btn-primary js-setup-spotify-scrobbling" href="/ru/settings/applications">
+                    Подключиться к Spotify
+                </a>
+            </p>
+            <a href="/ru/nagbar/dismiss/spotify-scrobbling-prompt?period=permanent"
+               class="masthead-popup-close js-alert-dismissable-close" data-close-ajax="">
+                Отклонить
+            </a>
+        </div>
+    </div>
+
+
+</div>
