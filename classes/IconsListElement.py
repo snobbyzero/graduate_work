@@ -1,7 +1,7 @@
 from classes.BaseElement import BaseElement
 
 
-class ListElement(BaseElement):
+class IconsListElement(BaseElement):
     def __init__(
             self,
             x,
@@ -16,7 +16,7 @@ class ListElement(BaseElement):
             justify_left: bool = False,
             justify_right: bool = False,
             justify_center: bool = False,
-            center_horizontal: bool = False, # for children
+            center_horizontal: bool = False,  # for children
             center_vertical: bool = False,
             is_top: bool = False,
             is_bottom: bool = False,
@@ -27,12 +27,8 @@ class ListElement(BaseElement):
             table=None,
             width: int = None,
             height: int = None,
-            max_width: int = None,
-            max_height: int = None,
-            label: str = "l",
-            links_list=None
+            label: str = "i",
     ):
-        self.links_list = links_list
         BaseElement.__init__(
             self,
             x=x,
@@ -58,9 +54,16 @@ class ListElement(BaseElement):
             table=table,
             width=width,
             height=height,
-            min_width=self.links_list.min_width,
-            min_height=self.links_list.min_height,
-            max_width=max_width,
-            max_height=max_height,
+            min_width=None,
+            min_height=None,
+            max_width=None,
+            max_height=None,
             label=label
         )
+
+    def add_children(self, children):
+        self.children = children
+        self.min_width = sum([i.icon_width for i in children])
+        self.min_height = max([i.icon_height for i in children])
+        self.max_width = sum([i.icon_width for i in children])
+        self.max_height = max([i.icon_height for i in children])
