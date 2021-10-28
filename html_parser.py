@@ -488,6 +488,7 @@ def get_elem_rect(driver, window_width, page_height, element, table_el):
         el = driver.find_element_by_xpath(xpath)
 
     if el:
+        print(el.value_of_css_property("margin"))
         table_el['x'], table_el['y'] = el.location.values()
         table_el['height'], table_el['width'] = el.size.values()
         table_el['-x'] = table_el['x'] + table_el['width']
@@ -537,7 +538,14 @@ def get_rect(url, element, table_el):
 
     driver.close()
 
+class el:
+    def __init__(self):
+        self.name = "div"
+        self.attrs = {id: "feed-link"}
 
+elem = el()
+print(elem.attrs.keys())
+save_data("https://stackoverflow.com/questions/17255611/selenium-webdriver-getcssvalue-method/21306689")
 
 # html_file = 'train_header_html/div_header.html'
 # css_file = 'train_css/div_header.css'

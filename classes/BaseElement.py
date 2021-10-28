@@ -5,6 +5,10 @@ class BaseElement:
             y,  # for solver
             col_count,  # for solver
             row_count,  # for solver
+            margin_right,  # for solver
+            margin_left,  # for solver
+            margin_bottom,  # for solver
+            margin_top,  # for solver
             order: int,  # 0 = left, 2 = right, 1 = between 0 and 2
             is_fullwidth: bool = False,
             is_fullheight: bool = False,
@@ -28,6 +32,14 @@ class BaseElement:
             min_height: int = 0,
             max_width: int = None,
             max_height: int = None,
+            min_margin_right=10,
+            min_margin_left=10,
+            min_margin_top=10,
+            min_margin_bottom=10,
+            max_margin_right=30,
+            max_margin_left=30,
+            max_margin_top=30,
+            max_margin_bottom=30,
             label: str = "b"
     ):
         # coordinates inside parent
@@ -36,6 +48,11 @@ class BaseElement:
 
         self.col_count = col_count
         self.row_count = row_count
+
+        self.margin_right = margin_right
+        self.margin_left = margin_left
+        self.margin_bottom = margin_bottom
+        self.margin_top = margin_top
 
         self.order = order
 
@@ -101,6 +118,15 @@ class BaseElement:
                 self.max_height = max_height
             else:
                 self.max_height = parent.height
+
+        self.min_margin_right = min_margin_right
+        self.min_margin_left = min_margin_left
+        self.min_margin_top = min_margin_top
+        self.min_margin_bottom = min_margin_bottom
+        self.max_margin_right = max_margin_right
+        self.max_margin_left = max_margin_left
+        self.max_margin_top = max_margin_top
+        self.max_margin_bottom = max_margin_bottom
 
         self.label = label
 

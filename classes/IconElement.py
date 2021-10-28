@@ -8,6 +8,10 @@ class IconElement(BaseElement):
             y,
             col_count,
             row_count,
+            margin_right,  # for solver
+            margin_left,  # for solver
+            margin_bottom,  # for solver
+            margin_top,  # for solver
             order: int,
             parent=None,
             children: [] = None,
@@ -17,22 +21,30 @@ class IconElement(BaseElement):
             min_height: int = 0,
             max_width: int = None,
             max_height: int = None,
+            min_margin_right=10,
+            min_margin_left=10,
+            min_margin_top=10,
+            min_margin_bottom=10,
+            max_margin_right=20,
+            max_margin_left=20,
+            max_margin_top=20,
+            max_margin_bottom=20,
             label: str = "i",
             name: str = "icon",
             link: str = "",
-            icon_width: int = 50,
-            icon_height: int = 50,
     ):
         self.name = name
         self.link = link
-        self.icon_width = icon_width
-        self.icon_height = icon_height
         BaseElement.__init__(
             self,
             x=x,
             y=y,
             col_count=col_count,
             row_count=row_count,
+            margin_right=margin_right,
+            margin_left=margin_left,
+            margin_bottom=margin_bottom,
+            margin_top=margin_top,
             order=order,
             parent=parent,
             children=children,
@@ -42,5 +54,13 @@ class IconElement(BaseElement):
             min_height=min_height,
             max_width=max_width,
             max_height=max_height,
+            min_margin_right=min_margin_right,
+            min_margin_left=min_margin_left,
+            min_margin_top=min_margin_top,
+            min_margin_bottom=min_margin_bottom,
+            max_margin_right=max_margin_right,
+            max_margin_left=max_margin_left,
+            max_margin_top=max_margin_top,
+            max_margin_bottom=max_margin_bottom,
             label=label
         )

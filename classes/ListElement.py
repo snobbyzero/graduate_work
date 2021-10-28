@@ -8,6 +8,10 @@ class ListElement(BaseElement):
             y,
             col_count,
             row_count,
+            margin_right,  # for solver
+            margin_left,  # for solver
+            margin_bottom,  # for solver
+            margin_top,  # for solver
             order: int,
             is_fullwidth: bool = False,
             is_fullheight: bool = False,
@@ -29,6 +33,14 @@ class ListElement(BaseElement):
             height: int = None,
             max_width: int = None,
             max_height: int = None,
+            min_margin_right=1,
+            min_margin_left=1,
+            min_margin_top=1,
+            min_margin_bottom=1,
+            max_margin_right=3,
+            max_margin_left=3,
+            max_margin_top=3,
+            max_margin_bottom=3,
             label: str = "l",
             links_list=None
     ):
@@ -39,6 +51,10 @@ class ListElement(BaseElement):
             y=y,
             col_count=col_count,
             row_count=row_count,
+            margin_right=margin_right,
+            margin_left=margin_left,
+            margin_bottom=margin_bottom,
+            margin_top=margin_top,
             order=order,
             is_fullwidth=is_fullwidth,
             is_fullheight=is_fullheight,
@@ -62,5 +78,13 @@ class ListElement(BaseElement):
             min_height=self.links_list.min_height,
             max_width=max_width,
             max_height=max_height,
+            min_margin_right=min_margin_right,
+            min_margin_left=min_margin_left,
+            min_margin_top=min_margin_top,
+            min_margin_bottom=min_margin_bottom,
+            max_margin_right=max_margin_right,
+            max_margin_left=max_margin_left,
+            max_margin_top=max_margin_top,
+            max_margin_bottom=max_margin_bottom,
             label=label
         )

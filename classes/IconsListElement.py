@@ -8,6 +8,10 @@ class IconsListElement(BaseElement):
             y,
             col_count,
             row_count,
+            margin_right,  # for solver
+            margin_left,  # for solver
+            margin_bottom,  # for solver
+            margin_top,  # for solver
             order: int,
             is_fullwidth: bool = False,
             is_fullheight: bool = False,
@@ -25,8 +29,14 @@ class IconsListElement(BaseElement):
             parent=None,
             children: [] = None,
             table=None,
-            width: int = None,
-            height: int = None,
+            min_margin_right=10,
+            min_margin_left=10,
+            min_margin_top=10,
+            min_margin_bottom=10,
+            max_margin_right=30,
+            max_margin_left=30,
+            max_margin_top=30,
+            max_margin_bottom=30,
             label: str = "i",
     ):
         BaseElement.__init__(
@@ -35,6 +45,10 @@ class IconsListElement(BaseElement):
             y=y,
             col_count=col_count,
             row_count=row_count,
+            margin_right=margin_right,
+            margin_left=margin_left,
+            margin_bottom=margin_bottom,
+            margin_top=margin_top,
             order=order,
             is_fullwidth=is_fullwidth,
             is_fullheight=is_fullheight,
@@ -52,18 +66,24 @@ class IconsListElement(BaseElement):
             parent=parent,
             children=children,
             table=table,
-            width=width,
-            height=height,
             min_width=None,
             min_height=None,
             max_width=None,
             max_height=None,
+            min_margin_right=min_margin_right,
+            min_margin_left=min_margin_left,
+            min_margin_top=min_margin_top,
+            min_margin_bottom=min_margin_bottom,
+            max_margin_right=max_margin_right,
+            max_margin_left=max_margin_left,
+            max_margin_top=max_margin_top,
+            max_margin_bottom=max_margin_bottom,
             label=label
         )
 
     def add_children(self, children):
         self.children = children
-        self.min_width = sum([i.icon_width for i in children])
-        self.min_height = max([i.icon_height for i in children])
-        self.max_width = sum([i.icon_width for i in children])
-        self.max_height = max([i.icon_height for i in children])
+        self.min_width = sum([i.width + i.min_margin_left + i.min_margin_right for i in children])
+        self.min_height = max([i.height + i.min_margin_top + i.min_margin_bottom for i in children])
+        #self.max_width = sum([i.width for i in children])
+        #self.max_height = max([i.height for i in children])
