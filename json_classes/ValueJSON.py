@@ -5,4 +5,4 @@ class ValueJSON:
 
     def __init__(self, val, measure: Measure):
         self.val = val
-        self.unit = measure
+        self.measure = measure

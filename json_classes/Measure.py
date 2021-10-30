@@ -8,3 +8,4 @@ class Measure(Enum):
     PERCENT = "%"
     VW = "vw"
     VH = "vh"
+    WORD = ""

@@ -5,9 +5,9 @@ from json_classes.Measure import Measure
 from json_classes.ValueJSON import ValueJSON
 
 
-class IconButtonJSON(BaseElementJSON):
+class NavListJSON(BaseElementJSON):
     def __init__(self,
-                 icon_name,
+                 nav_list,
                  x,  # needs only for sorting
                  y,  # needs only for sorting
                  width,
@@ -17,13 +17,12 @@ class IconButtonJSON(BaseElementJSON):
                  margin_top,
                  margin_bottom,
                  label,
-                 parent=None,
-                 children=None,
-                 attrs: [] = None,
-                 text="",
                  text_align="center",
                  min_width=None,
                  min_height=None,
+                 parent=None,
+                 children=None,
+                 attrs: [] = None,
                  fullwidth=False,
                  fullheight=False,
                  flexgrow=0,
@@ -40,12 +39,10 @@ class IconButtonJSON(BaseElementJSON):
                  ):
         BaseElementJSON.__init__(
             self,
-            tag="i",
+            tag="nav",
             parent=parent,
             children=children,
             attrs=attrs,
-            text=text,
-            text_align=text_align,
             x=x,
             y=y,
             width=width,
@@ -71,17 +68,26 @@ class IconButtonJSON(BaseElementJSON):
             padding_top=padding_top,
             padding_bottom=padding_bottom
         )
-        self.icon_name = icon_name
-        self.set_icon(icon_name)
+        self.nav_list = nav_list
+        self.set_children()
 
-    def set_icon(self, icon_name):
-        if icon_name == 'profile':
-            self.attrs.append(('class', 'fa fa-user'))
-        elif icon_name == 'cart':
-            self.attrs.append(('class', 'fa fa-shopping-cart'))
-        elif icon_name == 'vk':
-            self.attrs.append(('class', 'fa fa-vk'))
-        elif icon_name == 'twitter':
-            self.attrs.append(('class', 'fa fa-twitter'))
-        elif icon_name == 'facebook':
-            self.attrs.append(('class', 'fa fa-facebook'))
+    def set_children(self):
+        for link in self.nav_list:
+            self.children.append(BaseElementJSON(
+                "a",
+                label="nav-a",
+                x=0,
+                y=0,
+                width=ValueJSON("auto", Measure.WORD),
+                height=ValueJSON("auto", Measure.WORD),
+                margin_right=ValueJSON(1, Measure.EM),
+                margin_left=ValueJSON(0, Measure.EM),
+                margin_top=ValueJSON(0, Measure.EM),
+                margin_bottom=ValueJSON(0, Measure.EM),
+                padding_right=ValueJSON(1, Measure.REM),
+                padding_left=ValueJSON(1, Measure.REM),
+                padding_top=ValueJSON(1, Measure.REM),
+                padding_bottom=ValueJSON(1, Measure.REM),
+                text=link,
+                text_align=self.text_align
+            ))

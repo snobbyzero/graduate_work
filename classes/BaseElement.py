@@ -10,6 +10,7 @@ class BaseElement:
             margin_bottom,  # for solver
             margin_top,  # for solver
             order: int,  # 0 = left, 2 = right, 1 = between 0 and 2
+            mutable_elements=None,  # for solver
             is_fullwidth: bool = False,
             is_fullheight: bool = False,
             is_flexwidth: bool = False,
@@ -32,14 +33,14 @@ class BaseElement:
             min_height: int = 0,
             max_width: int = None,
             max_height: int = None,
-            min_margin_right=10,
-            min_margin_left=10,
-            min_margin_top=10,
-            min_margin_bottom=10,
-            max_margin_right=30,
-            max_margin_left=30,
-            max_margin_top=30,
-            max_margin_bottom=30,
+            min_margin_right=0,
+            min_margin_left=0,
+            min_margin_top=0,
+            min_margin_bottom=0,
+            max_margin_right=0,
+            max_margin_left=0,
+            max_margin_top=0,
+            max_margin_bottom=0,
             label: str = "b"
     ):
         # coordinates inside parent
@@ -56,6 +57,8 @@ class BaseElement:
 
         self.order = order
 
+        self.models = []
+
         self.parent = parent
 
         if children is None:
@@ -66,8 +69,14 @@ class BaseElement:
         else:
             self.table = None
 
+        if mutable_elements is None:
+            self.mutable_elements = []
+        else:
+            self.mutable_elements = mutable_elements
+
         self.width = width
         self.height = height
+
 
         self.is_fullwidth = is_fullwidth
         self.is_fullheight = is_fullheight
@@ -96,6 +105,9 @@ class BaseElement:
             else:
                 self.min_width = 0
             self.max_width = parent.width
+        elif width is not None:
+                self.min_width = width
+                self.max_width = width
         else:
             self.min_width = min_width
             if max_width or parent is None:
@@ -112,6 +124,9 @@ class BaseElement:
             else:
                 self.min_height = 0
             self.max_height = parent.height
+        elif height is not None:
+                self.min_height = height
+                self.max_height = height
         else:
             self.min_height = min_height
             if max_height or parent is None:
@@ -132,6 +147,12 @@ class BaseElement:
 
     def add_children(self, children):
         self.children = children
+
+    def add_child(self, child):
+        self.children.append(child)
+
+    def add_model(self, model):
+        self.models.append(model)
 
     def get_width_with_parent(self, model):
         return self.parent.table.cell_width * model[self.col_count].as_long()

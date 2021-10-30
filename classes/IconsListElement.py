@@ -13,6 +13,7 @@ class IconsListElement(BaseElement):
             margin_bottom,  # for solver
             margin_top,  # for solver
             order: int,
+            mutable_elements=None,  # for solver
             is_fullwidth: bool = False,
             is_fullheight: bool = False,
             is_flexwidth: bool = False,
@@ -29,14 +30,14 @@ class IconsListElement(BaseElement):
             parent=None,
             children: [] = None,
             table=None,
-            min_margin_right=10,
-            min_margin_left=10,
-            min_margin_top=10,
-            min_margin_bottom=10,
-            max_margin_right=30,
-            max_margin_left=30,
-            max_margin_top=30,
-            max_margin_bottom=30,
+            min_margin_right=0,
+            min_margin_left=0,
+            min_margin_top=0,
+            min_margin_bottom=0,
+            max_margin_right=0,
+            max_margin_left=0,
+            max_margin_top=0,
+            max_margin_bottom=0,
             label: str = "i",
     ):
         BaseElement.__init__(
@@ -50,6 +51,7 @@ class IconsListElement(BaseElement):
             margin_bottom=margin_bottom,
             margin_top=margin_top,
             order=order,
+            mutable_elements=mutable_elements,
             is_fullwidth=is_fullwidth,
             is_fullheight=is_fullheight,
             is_flexwidth=is_flexwidth,
@@ -85,5 +87,5 @@ class IconsListElement(BaseElement):
         self.children = children
         self.min_width = sum([i.width + i.min_margin_left + i.min_margin_right for i in children])
         self.min_height = max([i.height + i.min_margin_top + i.min_margin_bottom for i in children])
-        #self.max_width = sum([i.width for i in children])
-        #self.max_height = max([i.height for i in children])
+        self.max_width = sum([i.width + i.max_margin_left + i.max_margin_right for i in children])
+        self.max_height = max([i.height + i.max_margin_top + i.max_margin_bottom for i in children])

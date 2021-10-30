@@ -146,11 +146,11 @@ f - facebook icon
 """
 
 
-def create_header(width=1900, height=300, center_horizontal=False, center_vertical=False, is_fullwidth=False,
+def create_header(width=1900, height=300, mutable_elements=None, center_horizontal=False, center_vertical=False, is_fullwidth=False,
                   justify_left=False, justify_right=False, justify_center=False, min_width=0, min_height=0,
-                  max_width=None, max_height=None):
+                  max_width=None, max_height=None, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
     header = BaseElement(header_x, header_y, header_col_count, header_row_count, header_margin_right,
-                         header_margin_left, header_margin_bottom, header_margin_top, order=0, width=width,
+                         header_margin_left, header_margin_bottom, header_margin_top, order=0, mutable_elements=mutable_elements, width=width,
                          height=height,
                          center_horizontal=center_horizontal, center_vertical=center_vertical, label="h",
                          is_fullwidth=is_fullwidth, justify_left=justify_left, justify_right=justify_right,
@@ -162,7 +162,7 @@ def create_header(width=1900, height=300, center_horizontal=False, center_vertic
     return header
 
 
-def find_solutions(el, children, mutable_elements):
+def find_solutions(el, children):
     arr = []
     for child in children:
         if child is not None:
@@ -174,97 +174,81 @@ def find_solutions(el, children, mutable_elements):
     print("COL:")
     print(el.table.col_count)
 
-    return solve(el, mutable_elements)
+    return solve(el)
 
 
 def create_logo(parent, is_left=False, is_right=False, is_top=False, is_bottom=False, width=50, height=50,
-                min_width=100, min_height=100, max_width=200, max_height=200, order=0):
+                min_width=0, min_height=0, max_width=200, max_height=200, order=0, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
     logo = BaseElement(logo_x, logo_y, logo_col_count, logo_row_count, logo_margin_right, logo_margin_left,
                        logo_margin_bottom, logo_margin_top, order=order, is_left=is_left, is_right=is_right,
                        is_top=is_top, is_bottom=is_bottom, height=height, width=width, min_width=min_width,
                        min_height=min_height, max_width=max_width, max_height=max_height,
-                       label="l", parent=parent)
+                       label="l", parent=parent, min_margin_right=min_margin_right, min_margin_left=min_margin_left, min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right, max_margin_left=max_margin_left, max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom)
 
     return logo
 
 
-def create_nav(parent, links_list, is_left=False, is_right=False, is_top=False, is_bottom=False, is_fullwidth=False,
-               is_fullheight=False, is_flexwidth=False, is_flexheight=False, order=1):
-    #    nav = ListElement(nav_x, nav_y, nav_col_count, nav_row_count, order=1, is_flexwidth=True,
-    #                      links_list=LinksLists(['Home', 'About Us', 'Contacts', 'Profile'], font_size_factor=1.5,
-    #                                            word_height=50), label="n", parent=parent)
+def create_nav(parent, links_list, mutable_elements=None, is_left=False, is_right=False, is_top=False, is_bottom=False, is_fullwidth=False,
+               is_fullheight=False, is_flexwidth=False, is_flexheight=False, order=1, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
     nav = ListElement(nav_x, nav_y, nav_col_count, nav_row_count, nav_margin_right, nav_margin_left, nav_margin_bottom,
-                      nav_margin_top, order=order, is_flexwidth=is_flexwidth,
+                      nav_margin_top, order=order, mutable_elements=mutable_elements, is_flexwidth=is_flexwidth,
                       is_flexheight=is_flexheight, is_left=is_left, is_right=is_right, is_top=is_top,
                       is_bottom=is_bottom, is_fullwidth=is_fullwidth, is_fullheight=is_fullheight,
-                      links_list=links_list, label="n", parent=parent)
+                      links_list=links_list, label="n", parent=parent, min_margin_right=min_margin_right, min_margin_left=min_margin_left, min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right, max_margin_left=max_margin_left, max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom)
 
     return nav
 
 
-def create_search(parent, is_left=False, is_right=False, is_top=False, is_bottom=False, is_fullwidth=False,
-                  is_flexwidth=False, is_flexheight=False, min_width=0, min_height=0, max_width=None, max_height=None,
-                  order=1):
+def create_search_div(parent, mutable_elements=None, is_left=False, is_right=False, is_top=False, is_bottom=False, is_fullwidth=False,
+                      is_flexwidth=False, is_flexheight=False, min_width=0, min_height=0, max_width=None,
+                      max_height=None, order=1, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
     search_div = BaseElement(search_div_x, search_div_y, search_div_col_count, search_div_row_count,
                              search_div_margin_right, search_margin_left, search_div_margin_bottom,
-                             search_div_margin_top, order=order,
+                             search_div_margin_top, order=order, mutable_elements=mutable_elements,
                              is_flexwidth=is_flexwidth,
                              is_flexheight=is_flexheight, is_left=is_left, is_right=is_right, is_top=is_top,
                              is_bottom=is_bottom, is_fullwidth=is_fullwidth,
                              min_height=min_height, min_width=min_width, max_width=max_width, max_height=max_height,
-                             label="s", parent=parent)
+                             label="s", parent=parent, min_margin_right=min_margin_right, min_margin_left=min_margin_left, min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right, max_margin_left=max_margin_left, max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom)
 
-    # search_div.add_children([BaseElement(search_x, search_y, search_col_count, search_row_count, )])
+    search_div.add_children([BaseElement(search_x, search_y, search_col_count, search_row_count, search_margin_right, search_margin_left, search_margin_bottom, search_margin_top, order=1, is_flexwidth=True, is_flexheight=True, label="search", parent=search_div)])
     return search_div
 
 
-def create_sn_icons_list(parent, icons, icon_width=50, icon_height=50, is_left=False, is_right=False, is_top=False,
-                         is_bottom=False, center_horizontal=False, center_vertical=False, order=2):
+def create_sn_icons_list(parent, mutable_elements=None, is_left=False, is_right=False, is_top=False,
+                         is_bottom=False, center_horizontal=False, center_vertical=False, order=2, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
     sn_icons = IconsListElement(sn_x, sn_y, sn_col_count, sn_row_count, sn_margin_right, sn_margin_left,
-                                sn_margin_bottom, sn_margin_top, is_left=is_left, is_right=is_right,
+                                sn_margin_bottom, sn_margin_top, mutable_elements=mutable_elements, is_left=is_left, is_right=is_right,
                                 is_top=is_top, is_bottom=is_bottom, order=order,
-                                center_horizontal=center_horizontal, center_vertical=center_vertical, parent=parent)
-    arr = []
-    for icon in icons:
-        if icon == 't':
-            arr.append(IconElement(twitter_x, twitter_y, twitter_col_count, twitter_row_count, twitter_margin_right,
-                                   twitter_margin_left, twitter_margin_bottom, twitter_margin_top, width=icon_width,
-                                   height=icon_height, order=1, label="t",
-                                   parent=sn_icons))
-        elif icon == 'v':
-            arr.append(
-                IconElement(vk_x, vk_y, vk_col_count, vk_row_count, vk_margin_right, vk_margin_left, vk_margin_bottom,
-                            vk_margin_top, width=icon_width, height=icon_height, order=1,
-                            label="v", parent=sn_icons))
-        elif icon == 'f':
-            arr.append(
-                IconElement(fb_x, fb_y, fb_col_count, fb_row_count, fb_margin_right, fb_margin_left, fb_margin_bottom,
-                            fb_margin_top, width=icon_width, height=icon_height, order=1,
-                            label="f", parent=sn_icons))
-    sn_icons.add_children(arr)
+                                center_horizontal=center_horizontal, center_vertical=center_vertical, parent=parent, min_margin_right=min_margin_right, min_margin_left=min_margin_left, min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right, max_margin_left=max_margin_left, max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom)
 
     return sn_icons
 
 
-def create_icls_icons_list(parent, icons, icon_width=50, icon_height=50, is_left=False, is_right=False, is_top=False,
-                           is_bottom=False, center_horizontal=False, center_vertical=False, order=2):
+def create_icon(parent, icon_label, icon_width=20, icon_height=20, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
+    ic_x = Int(icon_label + '_ic_x')
+    ic_y = Int(icon_label + '_ic_y')
+    ic_col_count = Int(icon_label + '_ic_col_count')
+    ic_row_count = Int(icon_label + '_ic_row_count')
+    ic_margin_left = Int(icon_label + '_margin_left')
+    ic_margin_right = Int(icon_label + '_margin_right')
+    ic_margin_top = Int(icon_label + '_margin_top')
+    ic_margin_bottom = Int(icon_label + '_margin_bottom')
+
+    icon = IconElement(ic_x, ic_y, ic_col_count, ic_row_count, ic_margin_right, ic_margin_left, ic_margin_bottom,
+                       ic_margin_top, width=icon_width, height=icon_height, order=1,
+                       label=icon_label, parent=parent, min_margin_right=min_margin_right, min_margin_left=min_margin_left, min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right, max_margin_left=max_margin_left, max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom)
+
+    return icon
+
+
+def create_icls_icons_list(parent, mutable_elements=None, is_left=False, is_right=False, is_top=False,
+                           is_bottom=False, center_horizontal=False, center_vertical=False, order=2, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
     icls_icons = IconsListElement(icls_x, icls_y, icls_col_count, icls_row_count, icls_margin_right, icls_margin_left,
-                                  icls_margin_bottom, icls_margin_top, is_left=is_left, is_right=is_right,
+                                  icls_margin_bottom, icls_margin_top, mutable_elements=mutable_elements, is_left=is_left, is_right=is_right,
                                   is_top=is_top, is_bottom=is_bottom, order=order,
                                   center_horizontal=center_horizontal, center_vertical=center_vertical, parent=parent,
-                                  label='I')
-    arr = []
-    for icon in icons:
-        if icon == 'p':
-            arr.append(IconElement(profile_x, profile_y, profile_col_count, profile_row_count, profile_margin_right,
-                                   profile_margin_left, profile_margin_bottom, profile_margin_top, width=icon_width,
-                                   height=icon_height, order=1, label="p",
-                                   parent=icls_icons))
-        elif icon == 'c':
-            arr.append(IconElement(cart_x, cart_y, cart_col_count, cart_row_count, cart_margin_right, cart_margin_left,
-                                   cart_margin_bottom, cart_margin_top, width=icon_width, height=icon_height,
-                                   order=1, label="c", parent=icls_icons))
-    icls_icons.add_children(arr)
+                                  label='j', min_margin_right=min_margin_right, min_margin_left=min_margin_left, min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right, max_margin_left=max_margin_left, max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom)
 
     return icls_icons
 
@@ -274,7 +258,7 @@ def create_icls_icons_list(parent, icons, icon_width=50, icon_height=50, is_left
 """
 
 
-def solve(parent, mutable_elements):
+def solve(parent):
     s = Optimize()
 
     for child in parent.children:
@@ -291,53 +275,38 @@ def solve(parent, mutable_elements):
         s.add(child.margin_bottom >= parent.table.get_row_count_from_height(child.min_margin_bottom))
 
         if child.max_margin_right:
-            s.add(child.margin_right <= child.max_margin_right)
+            s.add(child.margin_right <= parent.table.get_col_count_from_width(child.max_margin_right))
         if child.max_margin_left:
-            s.add(child.margin_left <= child.max_margin_left)
+            s.add(child.margin_left <= parent.table.get_col_count_from_width(child.max_margin_left))
         if child.max_margin_top:
-            s.add(child.margin_top <= child.max_margin_top)
+            s.add(child.margin_top <= parent.table.get_row_count_from_height(child.max_margin_top))
         if child.max_margin_bottom:
-            s.add(child.margin_bottom <= child.max_margin_bottom)
+            s.add(child.margin_bottom <= parent.table.get_row_count_from_height(child.max_margin_bottom))
 
         if child.width:
             s.add(child.col_count == parent.table.get_col_count_from_width(child.width))
         else:
-            s.add(And(
-                child.col_count >= parent.table.get_col_count_from_width(child.min_width),
-                child.col_count <= parent.table.get_col_count_from_width(child.max_width)
-            ))
+            s.add(child.col_count >= parent.table.get_col_count_from_width(child.min_width))
+            if child.max_width:
+                s.add(child.col_count <= parent.table.get_col_count_from_width(child.max_width))
+
         if child.height:
             s.add(child.row_count == parent.table.get_row_count_from_height(child.height))
         else:
-            s.add(And(
-                child.row_count >= parent.table.get_row_count_from_height(child.min_height),
-                child.row_count <= parent.table.get_row_count_from_height(child.max_height)
-            ))
+            s.add(child.row_count >= parent.table.get_row_count_from_height(child.min_height))
+            if child.max_height:
+                s.add(child.row_count <= parent.row_count)
 
-        if child.is_flexwidth:
-            s.maximize(child.col_count)
-        if child.is_flexheight:
-            s.maximize(child.row_count)
+        #s.minimize(child.y)
 
         for another_child in parent.children:
             if child != another_child and child.order == another_child.order:
                 s.add(Or(
                     And(another_child.x - another_child.margin_left >= child.x + child.col_count + another_child.margin_right,
-                        # another_child.y - another_child.margin_top == child.y - child.margin_top,
-                        # another_child.y + another_child.row_count + another_child.margin_bottom == child.y + child.row_count + child.margin_bottom
-                        another_child.row_count + another_child.margin_top + another_child.margin_bottom == child.row_count + child.margin_top + child.margin_bottom,
-                        If(child.row_count > another_child.row_count,
-                           another_child.y == (child.row_count - another_child.row_count) / 2 + child.y,
-                           child.y == (another_child.row_count - child.row_count) / 2 + another_child.y)
+                        Or(another_child.y == child.y, child.y == another_child.y)
                         ),
                     And(child.x - child.margin_left >= another_child.x + another_child.col_count + another_child.margin_right,
-                        # another_child.y - another_child.margin_top == child.y - child.margin_top,
-                        # another_child.y + another_child.row_count + another_child.margin_bottom == child.y + child.row_count + child.margin_bottom
-                        another_child.row_count + another_child.margin_top + another_child.margin_bottom == child.row_count + child.margin_top + child.margin_bottom,
-                        If(child.row_count > another_child.row_count,
-                           another_child.y == (child.row_count - another_child.row_count) / 2 + child.y,
-                           child.y == (another_child.row_count - child.row_count) / 2 + another_child.y)
-
+                        Or(another_child.y == child.y, child.y == another_child.y)
                         ),
                     another_child.y - another_child.margin_top >= child.y + child.row_count + child.margin_bottom,
                     child.y - child.margin_top >= another_child.y + another_child.row_count + another_child.margin_bottom
@@ -346,30 +315,19 @@ def solve(parent, mutable_elements):
                 if another_child.order == 1 or another_child.order == 2:
                     s.add(Or(And(
                         another_child.x - another_child.margin_left >= child.x + child.col_count + child.margin_right,
-                        # another_child.y - another_child.margin_top == child.y - child.margin_top,
-                        # another_child.y + another_child.row_count + another_child.margin_bottom == child.y + child.row_count + child.margin_bottom
-                        another_child.row_count + another_child.margin_top + another_child.margin_bottom == child.row_count + child.margin_top + child.margin_bottom,
-                        If(child.row_count > another_child.row_count,
-                           another_child.y == (child.row_count - another_child.row_count) / 2 + child.y,
-                           child.y == (another_child.row_count - child.row_count) / 2 + another_child.y)
-
+                        Or(another_child.y == child.y, child.y == another_child.y)
                     ),
-                        another_child.y - another_child.margin_top >= child.y + child.row_count + child.margin_bottom
+                    another_child.y - another_child.margin_top >= child.y + child.row_count + child.margin_bottom
                     ))
             elif child.order == 2:
                 if another_child.order == 1:
                     s.add(Or(And(
                         child.x - child.margin_left >= another_child.x + another_child.col_count + another_child.margin_right,
-                        # another_child.y - another_child.margin_top == child.y - child.margin_top,
-                        # another_child.y + another_child.row_count + another_child.margin_bottom == child.y + child.row_count + child.margin_bottom
-                        another_child.row_count + another_child.margin_top + another_child.margin_bottom == child.row_count + child.margin_top + child.margin_bottom,
-                        If(child.row_count > another_child.row_count,
-                           another_child.y == (child.row_count - another_child.row_count) / 2 + child.y,
-                           child.y == (another_child.row_count - child.row_count) / 2 + another_child.y)
-
+                        Or(another_child.y == child.y, child.y == another_child.y)
                     ),
-                        another_child.y >= child.y + child.row_count + child.margin_bottom
+                    another_child.y >= child.y + child.row_count + child.margin_bottom
                     ))
+
 
         if parent.center_vertical:
             pass
@@ -384,20 +342,24 @@ def solve(parent, mutable_elements):
                 elif child.is_right:
                     s.maximize(child.x)
 
-        if parent.center_horizontal:
-            pass
-        else:
-            if child.is_top:
-                s.minimize(child.y)
-            elif child.is_bottom:
-                s.maximize(child.y)
+        if child.is_flexwidth:
+            s.maximize(child.col_count)
+        if child.is_flexheight:
+            s.maximize(child.row_count)
 
-    res_arr = []
-    m_arr = []
+        #if parent.center_horizontal:
+        #    pass
+        #else:
+        #    if child.is_top:
+        #        s.minimize(child.y)
+        #    elif child.is_bottom:
+        #        s.maximize(child.y)
+
+    #res_arr = []
+    #m_arr = []
     res = s.check()
     while res == sat:
         m = s.model()
-        m_arr.append(m)
 
         arr = [['0' for i in range(parent.table.col_count)] for j in range(parent.table.row_count)]
 
@@ -413,22 +375,31 @@ def solve(parent, mutable_elements):
             place_elem(m[child.x].as_long(), m[child.y].as_long(), m[child.col_count].as_long(),
                        m[child.row_count].as_long(), child.label, arr)
 
-        res_arr.append(arr)
+            if len(child.children) > 0:
+                child.table = Table(10, 10, width=child.get_width_with_parent(m), height=child.get_height_with_parent(m))
+                solve(child)
+        for i in range(len(arr)):
+            print(arr[i])
+        print("----------------------------------------------------")
+        parent.add_model((m, arr))
         # for i in range(len(arr)):
         #    print(arr[i])
 
-        for t in mutable_elements:
-            s.add(t != m[t])
-        res = s.check()
+        if len(parent.mutable_elements) > 0:
+            for t in parent.mutable_elements:
+                s.add(t != m[t])
+            res = s.check()
+        else:
+            break
     else:
         print(res)
 
     # SORT RESULT BY 0 COUNT
+    """
     sorter = lambda x: sum(x[i] != 0 for i in range(len(x)))
     sorted_res_arr = sorted(res_arr, key=sorter)
     for arr in sorted_res_arr:
         for i in range(len(arr)):
             print(arr[i])
         print("----------------------------------------------------")
-
-    return m_arr, res_arr
+    """

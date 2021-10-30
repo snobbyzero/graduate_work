@@ -5,13 +5,20 @@ from json_classes.ValueJSON import ValueJSON
 
 class SearchBarJSON(BaseElementJSON):
     def __init__(self,
+                 x,  # needs only for sorting
+                 y,  # needs only for sorting
+                 width,
+                 height,
+                 margin_right,
+                 margin_left,
+                 margin_top,
+                 margin_bottom,
+                 label,
                  parent=None,
                  attrs: [] = None,
                  text="",
-                 x=ValueJSON(0, Measure.PERCENT),
-                 y=ValueJSON(0, Measure.PERCENT),
-                 width=ValueJSON(0, Measure.PERCENT),
-                 height=ValueJSON(0, Measure.PERCENT),
+                 min_width=None,
+                 min_height=None,
                  fullwidth=False,
                  fullheight=False,
                  flexgrow=0,
@@ -21,14 +28,10 @@ class SearchBarJSON(BaseElementJSON):
                  justify_left=False,
                  justify_right=False,
                  font_size: ValueJSON = ValueJSON(1, Measure.EM),
-                 margin_right=0,
-                 margin_left=0,
-                 margin_top=0,
-                 margin_bottom=0,
-                 padding_right=0,
-                 padding_left=0,
-                 padding_top=0,
-                 padding_bottom=0
+                 padding_right=ValueJSON(0, Measure.EM),
+                 padding_left=ValueJSON(0, Measure.EM),
+                 padding_top=ValueJSON(0, Measure.EM),
+                 padding_bottom=ValueJSON(0, Measure.EM)
                  ):
         if attrs is None:
             self.attrs = []
@@ -42,10 +45,14 @@ class SearchBarJSON(BaseElementJSON):
             parent=parent,
             attrs=self.attrs,
             text=text,
+            text_align="left",
             x=x,
             y=y,
             width=width,
             height=height,
+            min_width=min_width,
+            min_height=min_height,
+            label=label,
             fullwidth=fullwidth,
             fullheight=fullheight,
             flexgrow=flexgrow,

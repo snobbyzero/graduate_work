@@ -13,6 +13,7 @@ class ListElement(BaseElement):
             margin_bottom,  # for solver
             margin_top,  # for solver
             order: int,
+            mutable_elements=None,  # for solver
             is_fullwidth: bool = False,
             is_fullheight: bool = False,
             is_flexwidth: bool = False,
@@ -33,14 +34,14 @@ class ListElement(BaseElement):
             height: int = None,
             max_width: int = None,
             max_height: int = None,
-            min_margin_right=1,
-            min_margin_left=1,
-            min_margin_top=1,
-            min_margin_bottom=1,
-            max_margin_right=3,
-            max_margin_left=3,
-            max_margin_top=3,
-            max_margin_bottom=3,
+            min_margin_right=0,
+            min_margin_left=0,
+            min_margin_top=0,
+            min_margin_bottom=0,
+            max_margin_right=0,
+            max_margin_left=0,
+            max_margin_top=0,
+            max_margin_bottom=0,
             label: str = "l",
             links_list=None
     ):
@@ -56,6 +57,7 @@ class ListElement(BaseElement):
             margin_bottom=margin_bottom,
             margin_top=margin_top,
             order=order,
+            mutable_elements=mutable_elements,
             is_fullwidth=is_fullwidth,
             is_fullheight=is_fullheight,
             is_flexwidth=is_flexwidth,

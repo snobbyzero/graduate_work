@@ -8,14 +8,22 @@ class BaseElementJSON:
     def __init__(
             self,
             tag,
+            x,  # needs only for sorting
+            y,  # needs only for sorting
+            width,
+            height,
+            margin_right,
+            margin_left,
+            margin_top,
+            margin_bottom,
+            label,
             parent=None,
             children=None,
             attrs=None,
             text="",
-            x=ValueJSON(0, Measure.PERCENT),
-            y=ValueJSON(0, Measure.PERCENT),
-            width=ValueJSON(0, Measure.PERCENT),
-            height=ValueJSON(0, Measure.PERCENT),
+            text_align="center",
+            min_width=ValueJSON(0, Measure.PERCENT),
+            min_height=ValueJSON(0, Measure.PERCENT),
             fullwidth=False,
             fullheight=False,
             flexgrow=0,
@@ -25,14 +33,10 @@ class BaseElementJSON:
             justify_left=False,
             justify_right=False,
             font_size: ValueJSON = ValueJSON(1, Measure.EM),
-            margin_right=0,
-            margin_left=0,
-            margin_top=0,
-            margin_bottom=0,
-            padding_right=0,
-            padding_left=0,
-            padding_top=0,
-            padding_bottom=0
+            padding_right=ValueJSON(0, Measure.EM),
+            padding_left=ValueJSON(0, Measure.EM),
+            padding_top=ValueJSON(0, Measure.EM),
+            padding_bottom=ValueJSON(0, Measure.EM)
     ):
         if attrs is None:
             self.attrs = []
@@ -43,16 +47,24 @@ class BaseElementJSON:
         self.tag = tag
 
         self.text = text
+        self.text_align = text_align
+
+        self.label = label
 
         self.x = x
         self.y = y
         self.width = width
         self.height = height
 
+        self.min_width = min_width
+        self.min_height = min_height
+
         self.fullwidth = fullwidth
         self.fullheight = fullheight
 
         self.flexgrow = flexgrow
+        #if flexgrow == 1:
+        #    self.width = ValueJSON(0, Measure.PERCENT)
         self.flexflow = flexflow
 
         self.center_horizontal = center_horizontal
@@ -60,16 +72,6 @@ class BaseElementJSON:
         self.justify_left = justify_left
         self.justify_right = justify_right
 
-        if parent is not None:
-            self.left = self.x.val == 0
-            self.right = (self.x.val + self.width.val) == parent.width.val
-            self.top = self.y.val == 0
-            self.bottom = (self.y.val + self.height.val) == parent.height.val
-        else:
-            self.left = False
-            self.right = False
-            self.top = False
-            self.bottom = False
         self.font_size = font_size
 
         self.margin_right = margin_right
