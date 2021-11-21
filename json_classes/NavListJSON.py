@@ -27,6 +27,7 @@ class NavListJSON(BaseElementJSON):
                  fullheight=False,
                  flexgrow=0,
                  flexflow="row wrap",
+                 align_content="normal",
                  center_horizontal=False,
                  center_vertical=False,
                  justify_left=False,
@@ -54,6 +55,7 @@ class NavListJSON(BaseElementJSON):
             fullheight=fullheight,
             flexgrow=flexgrow,
             flexflow=flexflow,
+            align_content=align_content,
             center_horizontal=center_horizontal,
             center_vertical=center_vertical,
             justify_left=justify_left,
@@ -74,8 +76,8 @@ class NavListJSON(BaseElementJSON):
     def set_children(self):
         for link in self.nav_list:
             self.children.append(BaseElementJSON(
-                "a",
-                label="nav-a",
+                'a',
+                label=link.label,
                 x=0,
                 y=0,
                 width=ValueJSON("auto", Measure.WORD),
@@ -88,6 +90,6 @@ class NavListJSON(BaseElementJSON):
                 padding_left=ValueJSON(1, Measure.REM),
                 padding_top=ValueJSON(1, Measure.REM),
                 padding_bottom=ValueJSON(1, Measure.REM),
-                text=link,
+                text=link.text,
                 text_align=self.text_align
             ))

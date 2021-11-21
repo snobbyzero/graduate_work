@@ -28,6 +28,7 @@ class BaseElementJSON:
             fullheight=False,
             flexgrow=0,
             flexflow="row wrap",
+            align_content="normal",
             center_horizontal=False,
             center_vertical=False,
             justify_left=False,
@@ -62,7 +63,12 @@ class BaseElementJSON:
         self.fullwidth = fullwidth
         self.fullheight = fullheight
 
-        self.flexgrow = flexgrow
+        self.align_content = align_content
+
+        if flexgrow:
+            self.flexgrow = 1
+        else:
+            self.flexgrow = 0
         #if flexgrow == 1:
         #    self.width = ValueJSON(0, Measure.PERCENT)
         self.flexflow = flexflow

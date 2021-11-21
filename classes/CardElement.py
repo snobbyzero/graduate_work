@@ -1,29 +1,21 @@
 from classes.BaseElement import BaseElement
 
 
-class ListElement(BaseElement):
+class CardElement(BaseElement):
     def __init__(
             self,
             name,
+            size="sm",
             right_elements=None,  # this elements can be righter than this
             left_elements=None,
             top_elements=None,
             bottom_elements=None,
-            rules=None,  # for solver
-            is_fullwidth: bool = False,
-            is_fullheight: bool = False,
-            is_flexwidth: bool = False,
-            is_flexheight: bool = False,
-            justify_left: bool = False,
-            justify_right: bool = False,
-            justify_center: bool = False,
-            center_horizontal: bool = False,  # for children
-            center_vertical: bool = False,
             parent=None,
             children: [] = None,
-            table=None,
             width: int = None,
             height: int = None,
+            min_width: int = 0,
+            min_height: int = 0,
             max_width: int = None,
             max_height: int = None,
             min_margin_right=0,
@@ -34,10 +26,9 @@ class ListElement(BaseElement):
             max_margin_left=0,
             max_margin_top=0,
             max_margin_bottom=0,
-            label: str = "l",
-            text_list=None
+            label: str = "c",
     ):
-        self.text_list = text_list
+        self.size = size
         BaseElement.__init__(
             self,
             name,
@@ -45,23 +36,12 @@ class ListElement(BaseElement):
             left_elements=left_elements,
             top_elements=top_elements,
             bottom_elements=bottom_elements,
-            rules=rules,
-            is_fullwidth=is_fullwidth,
-            is_fullheight=is_fullheight,
-            is_flexwidth=is_flexwidth,
-            is_flexheight=is_flexheight,
-            justify_left=justify_left,
-            justify_right=justify_right,
-            justify_center=justify_center,
-            center_horizontal=center_horizontal,
-            center_vertical=center_vertical,
             parent=parent,
             children=children,
-            table=table,
             width=width,
             height=height,
-            min_width=self.text_list.min_width,
-            min_height=self.text_list.min_height,
+            min_width=min_width,
+            min_height=min_height,
             max_width=max_width,
             max_height=max_height,
             min_margin_right=min_margin_right,

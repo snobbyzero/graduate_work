@@ -4,15 +4,11 @@ from classes.BaseElement import BaseElement
 class IconElement(BaseElement):
     def __init__(
             self,
-            x,
-            y,
-            col_count,
-            row_count,
-            margin_right,  # for solver
-            margin_left,  # for solver
-            margin_bottom,  # for solver
-            margin_top,  # for solver
-            order: int,
+            name,
+            right_elements=None,  # this elements can be righter than this
+            left_elements=None,
+            top_elements=None,
+            bottom_elements=None,
             parent=None,
             children: [] = None,
             width: int = None,
@@ -30,22 +26,16 @@ class IconElement(BaseElement):
             max_margin_top=0,
             max_margin_bottom=0,
             label: str = "i",
-            name: str = "icon",
             link: str = "",
     ):
-        self.name = name
         self.link = link
         BaseElement.__init__(
             self,
-            x=x,
-            y=y,
-            col_count=col_count,
-            row_count=row_count,
-            margin_right=margin_right,
-            margin_left=margin_left,
-            margin_bottom=margin_bottom,
-            margin_top=margin_top,
-            order=order,
+            name,
+            right_elements=right_elements,
+            left_elements=left_elements,
+            top_elements=top_elements,
+            bottom_elements=bottom_elements,
             parent=parent,
             children=children,
             width=width,

@@ -28,6 +28,7 @@ class IconButtonJSON(BaseElementJSON):
                  fullheight=False,
                  flexgrow=0,
                  flexflow="row wrap",
+                 align_content="normal",
                  center_horizontal=False,
                  center_vertical=False,
                  justify_left=False,
@@ -57,6 +58,7 @@ class IconButtonJSON(BaseElementJSON):
             fullheight=fullheight,
             flexgrow=flexgrow,
             flexflow=flexflow,
+            align_content=align_content,
             center_horizontal=center_horizontal,
             center_vertical=center_vertical,
             justify_left=justify_left,
@@ -85,3 +87,9 @@ class IconButtonJSON(BaseElementJSON):
             self.attrs.append(('class', 'fa fa-twitter'))
         elif icon_name == 'facebook':
             self.attrs.append(('class', 'fa fa-facebook'))
+        elif icon_name == 'wishlist':
+            self.attrs.append(('class', 'fab fa-bookmark'))
+        elif icon_name == 'compare':
+            self.attrs.append(('class', 'far fa-chart-bar'))
+        else:
+            self.attrs.append(('class', f'fa fa-{icon_name}'))

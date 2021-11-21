@@ -4,16 +4,13 @@ from classes.BaseElement import BaseElement
 class IconsListElement(BaseElement):
     def __init__(
             self,
-            x,
-            y,
-            col_count,
-            row_count,
-            margin_right,  # for solver
-            margin_left,  # for solver
-            margin_bottom,  # for solver
-            margin_top,  # for solver
-            order: int,
-            mutable_elements=None,  # for solver
+            name,
+            right_elements=None,  # this elements can be righter than this
+            left_elements=None,
+            top_elements=None,
+            bottom_elements=None,
+            rules=None,  # for solver
+            is_vertical=False,
             is_fullwidth: bool = False,
             is_fullheight: bool = False,
             is_flexwidth: bool = False,
@@ -23,10 +20,6 @@ class IconsListElement(BaseElement):
             justify_center: bool = False,
             center_horizontal: bool = False,  # for children
             center_vertical: bool = False,
-            is_top: bool = False,
-            is_bottom: bool = False,
-            is_left: bool = False,
-            is_right: bool = False,
             parent=None,
             children: [] = None,
             table=None,
@@ -42,16 +35,12 @@ class IconsListElement(BaseElement):
     ):
         BaseElement.__init__(
             self,
-            x=x,
-            y=y,
-            col_count=col_count,
-            row_count=row_count,
-            margin_right=margin_right,
-            margin_left=margin_left,
-            margin_bottom=margin_bottom,
-            margin_top=margin_top,
-            order=order,
-            mutable_elements=mutable_elements,
+            name,
+            right_elements=right_elements,
+            left_elements=left_elements,
+            top_elements=top_elements,
+            bottom_elements=bottom_elements,
+            rules=rules,
             is_fullwidth=is_fullwidth,
             is_fullheight=is_fullheight,
             is_flexwidth=is_flexwidth,
@@ -61,10 +50,6 @@ class IconsListElement(BaseElement):
             justify_center=justify_center,
             center_horizontal=center_horizontal,
             center_vertical=center_vertical,
-            is_top=is_top,
-            is_bottom=is_bottom,
-            is_left=is_left,
-            is_right=is_right,
             parent=parent,
             children=children,
             table=table,
@@ -82,10 +67,17 @@ class IconsListElement(BaseElement):
             max_margin_bottom=max_margin_bottom,
             label=label
         )
+        self.is_vertical = is_vertical
 
     def add_children(self, children):
         self.children = children
-        self.min_width = sum([i.width + i.min_margin_left + i.min_margin_right for i in children])
-        self.min_height = max([i.height + i.min_margin_top + i.min_margin_bottom for i in children])
-        self.max_width = sum([i.width + i.max_margin_left + i.max_margin_right for i in children])
-        self.max_height = max([i.height + i.max_margin_top + i.max_margin_bottom for i in children])
+        if self.is_vertical:
+            self.min_width = max([i.width + i.min_margin_left + i.min_margin_right for i in children])
+            self.min_height = sum([i.height + i.min_margin_top + i.min_margin_bottom for i in children])
+            self.max_width = max([i.width + i.max_margin_left + i.max_margin_right for i in children])
+            self.max_height = sum([i.height + i.max_margin_top + i.max_margin_bottom for i in children])
+        else:
+            self.min_width = sum([i.width + i.min_margin_left + i.min_margin_right for i in children])
+            self.min_height = max([i.height + i.min_margin_top + i.min_margin_bottom for i in children])
+            self.max_width = sum([i.width + i.max_margin_left + i.max_margin_right for i in children])
+            self.max_height = max([i.height + i.max_margin_top + i.max_margin_bottom for i in children])

@@ -1,16 +1,15 @@
+from z3 import *
+
+
 class BaseElement:
     def __init__(
             self,
-            x,  # for solver
-            y,  # for solver
-            col_count,  # for solver
-            row_count,  # for solver
-            margin_right,  # for solver
-            margin_left,  # for solver
-            margin_bottom,  # for solver
-            margin_top,  # for solver
-            order: int,  # 0 = left, 2 = right, 1 = between 0 and 2
-            mutable_elements=None,  # for solver
+            name,
+            right_elements=None,  # this elements can be righter than this
+            left_elements=None,
+            top_elements=None,
+            bottom_elements=None,
+            rules=None,  # for solver
             is_fullwidth: bool = False,
             is_fullheight: bool = False,
             is_flexwidth: bool = False,
@@ -20,10 +19,6 @@ class BaseElement:
             justify_center: bool = False,
             center_horizontal: bool = False,  # for children
             center_vertical: bool = False,
-            is_top: bool = False,
-            is_bottom: bool = False,
-            is_left: bool = False,
-            is_right: bool = False,
             parent=None,
             children: [] = None,
             table=None,
@@ -44,18 +39,32 @@ class BaseElement:
             label: str = "b"
     ):
         # coordinates inside parent
-        self.x = x
-        self.y = y
+        if bottom_elements is None:
+            self.bottom_elements = []
+        else:
+            self.bottom_elements = []
+        if top_elements is None:
+            self.top_elements = []
+        else:
+            self.top_elements = top_elements
+        if left_elements is None:
+            self.left_elements = []
+        else:
+            self.left_elements = left_elements
+        if right_elements is None:
+            self.right_elements = []
+        else:
+            self.right_elements = right_elements
+        self.x = Int(name + "_x")
+        self.y = Int(name + "_y")
 
-        self.col_count = col_count
-        self.row_count = row_count
+        self.col_count = Int(name + "_col_count")
+        self.row_count = Int(name + "_row_count")
 
-        self.margin_right = margin_right
-        self.margin_left = margin_left
-        self.margin_bottom = margin_bottom
-        self.margin_top = margin_top
-
-        self.order = order
+        self.margin_right = Int(name + "_margin_right")
+        self.margin_left = Int(name + "_margin_left")
+        self.margin_bottom = Int(name + "_margin_bottom")
+        self.margin_top = Int(name + "_margin_top")
 
         self.models = []
 
@@ -69,25 +78,19 @@ class BaseElement:
         else:
             self.table = None
 
-        if mutable_elements is None:
-            self.mutable_elements = []
+        if rules is None:
+            self.rules = []
         else:
-            self.mutable_elements = mutable_elements
+            self.rules = rules
 
         self.width = width
         self.height = height
-
 
         self.is_fullwidth = is_fullwidth
         self.is_fullheight = is_fullheight
 
         self.is_flexwidth = is_flexwidth
         self.is_flexheight = is_flexheight
-
-        self.is_top = is_top
-        self.is_bottom = is_bottom
-        self.is_left = is_left
-        self.is_right = is_right
 
         self.justify_left = justify_left
         self.justify_right = justify_right
@@ -106,8 +109,8 @@ class BaseElement:
                 self.min_width = 0
             self.max_width = parent.width
         elif width is not None:
-                self.min_width = width
-                self.max_width = width
+            self.min_width = width
+            self.max_width = width
         else:
             self.min_width = min_width
             if max_width or parent is None:
@@ -125,8 +128,8 @@ class BaseElement:
                 self.min_height = 0
             self.max_height = parent.height
         elif height is not None:
-                self.min_height = height
-                self.max_height = height
+            self.min_height = height
+            self.max_height = height
         else:
             self.min_height = min_height
             if max_height or parent is None:
@@ -154,8 +157,26 @@ class BaseElement:
     def add_model(self, model):
         self.models.append(model)
 
+    def set_neighbours(self, right_elements=None, left_elements=None, top_elements=None, bottom_elements=None):
+        if bottom_elements is not None:
+            self.bottom_elements = bottom_elements
+        if top_elements is not None:
+            self.top_elements = top_elements
+        if left_elements is not None:
+            self.left_elements = left_elements
+        if right_elements is not None:
+            self.right_elements = right_elements
+
     def get_width_with_parent(self, model):
         return self.parent.table.cell_width * model[self.col_count].as_long()
 
     def get_height_with_parent(self, model):
         return self.parent.table.cell_height * model[self.row_count].as_long()
+
+    def set_min_size_by_children(self):
+        self.min_width = max([child.min_width + child.min_margin_left + child.min_margin_right for child in self.children])
+        self.min_height = max([child.min_height + child.min_margin_bottom + child.min_margin_top for child in self.children])
+
+    def set_max_size_by_children(self):
+        self.max_width = sum([child.max_width + child.max_margin_left + child.max_margin_right for child in self.children])
+        self.max_height = sum([child.max_height + child.margin_bottom + child.max_margin_top for child in self.children])
