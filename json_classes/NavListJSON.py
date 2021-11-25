@@ -17,7 +17,6 @@ class NavListJSON(BaseElementJSON):
                  margin_top,
                  margin_bottom,
                  label,
-                 text_align="center",
                  min_width=None,
                  min_height=None,
                  parent=None,

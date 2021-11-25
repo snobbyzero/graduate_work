@@ -1,12 +1,10 @@
 from classes.BaseElement import BaseElement
 
-
+# TODO static size
 class TextElement(BaseElement):
     def __init__(
             self,
             text,
-            symbol_width=10,
-            symbol_height=10,
             right_elements=None,  # this elements can be righter than this
             left_elements=None,
             top_elements=None,
@@ -15,6 +13,8 @@ class TextElement(BaseElement):
             children: [] = None,
             width: int = None,
             height: int = None,
+            min_width: int = 0,
+            min_height: int = 0,
             max_width: int = None,
             max_height: int = None,
             min_margin_right=0,
@@ -25,11 +25,11 @@ class TextElement(BaseElement):
             max_margin_left=0,
             max_margin_top=0,
             max_margin_bottom=0,
+            is_fullwidth=False,
+            is_flexwidth=False,
             label: str = "t",
     ):
         self.text = text
-        self.min_width = len(self.text) * symbol_width
-        self.min_height = symbol_height
         BaseElement.__init__(
             self,
             text+label,
@@ -41,8 +41,8 @@ class TextElement(BaseElement):
             children=children,
             width=width,
             height=height,
-            min_width=self.min_width,
-            min_height=self.min_height,
+            min_width=min_width,
+            min_height=min_height,
             max_width=max_width,
             max_height=max_height,
             min_margin_right=min_margin_right,
@@ -53,5 +53,7 @@ class TextElement(BaseElement):
             max_margin_left=max_margin_left,
             max_margin_top=max_margin_top,
             max_margin_bottom=max_margin_bottom,
+            is_flexwidth=is_flexwidth,
+            is_fullwidth=is_fullwidth,
             label=label
         )

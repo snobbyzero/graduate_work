@@ -36,7 +36,8 @@ def create_body(width=1900, height=1000):
 
 def create_content(parent, is_fullwidth=False, justify_left=False, justify_right=False, min_width=0, min_height=0,
                    max_width=None, max_height=None, min_margin_right=0, min_margin_left=0, min_margin_top=0,
-                   min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
+                   min_margin_bottom=0, max_margin_right=10, max_margin_left=10, max_margin_top=10,
+                   max_margin_bottom=10):
     content = BaseElement("content", parent=parent, is_fullwidth=is_fullwidth, justify_left=justify_left,
                           justify_right=justify_right, min_width=min_width, label="content",
                           min_height=min_height, max_width=max_width, max_height=max_height,
@@ -50,18 +51,24 @@ def create_content(parent, is_fullwidth=False, justify_left=False, justify_right
     return content
 
 
-def create_card(parent, number, size):
-    card = CardElement(f"card_{number}", size, parent=parent, min_margin_left=10, min_margin_right=10,
-                       min_margin_bottom=10, min_margin_top=10, max_margin_left=30, max_margin_right=30,
-                       max_margin_bottom=30, max_margin_top=30)
+def create_card(parent, number, size, min_margin_right=0, min_margin_left=0,
+                min_margin_top=0, min_margin_bottom=0, max_margin_right=10, max_margin_left=10, max_margin_top=10,
+                max_margin_bottom=10):
+    card = CardElement(f"card_{number}", size, parent=parent, min_margin_right=min_margin_right,
+                       min_margin_left=min_margin_left,
+                       min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom,
+                       max_margin_right=max_margin_right, max_margin_left=max_margin_left,
+                       max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom)
 
     return card
 
 
-def create_text(text, parent, label, symbol_width=10, symbol_height=10, min_margin_right=0, min_margin_left=0,
-                min_margin_top=0, min_margin_bottom=0, max_margin_right=None, max_margin_left=None, max_margin_top=None,
-                max_margin_bottom=None):
-    text = TextElement(text, symbol_width=symbol_width, symbol_height=symbol_height, parent=parent,
+def create_text(text, parent, label, min_width=0, min_height=0, max_width=None, max_height=None, min_margin_right=0,
+                min_margin_left=0, is_fullwidth=False, is_flexwidth=False,
+                min_margin_top=0, min_margin_bottom=0, max_margin_right=10, max_margin_left=10, max_margin_top=10,
+                max_margin_bottom=10):
+    text = TextElement(text, min_width=min_width, min_height=min_height, max_width=max_width, max_height=max_height,
+                       parent=parent, is_fullwidth=is_fullwidth, is_flexwidth=is_flexwidth,
                        min_margin_right=min_margin_right, min_margin_left=min_margin_left,
                        min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom,
                        max_margin_right=max_margin_right, max_margin_left=max_margin_left,
@@ -82,6 +89,16 @@ def create_icons_list(parent, name, label, rules=None, center_horizontal=False, 
                                   is_vertical=is_vertical)
 
     return icons_list
+
+
+def create_div(parent, name, label, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0,
+               max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
+    div = BaseElement(name, label=label, min_margin_right=min_margin_right, min_margin_left=min_margin_left,
+                      min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom,
+                      max_margin_right=max_margin_right, max_margin_left=max_margin_left,
+                      max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom, parent=parent)
+
+    return div
 
 
 def create_header(parent, width=None, height=None, rules=None, is_fullwidth=False,
@@ -115,8 +132,8 @@ def create_child(parent, name, label, width=50, height=50, min_width=0, min_heig
 def create_text_list(parent, name, label, text_list, is_fullwidth=False,
                      is_fullheight=False, is_flexwidth=False, is_flexheight=False, min_margin_right=0,
                      min_margin_left=0,
-                     min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0,
-                     max_margin_bottom=0):
+                     min_margin_top=0, min_margin_bottom=0, max_margin_right=10, max_margin_left=10, max_margin_top=10,
+                     max_margin_bottom=10):
     text_list = ListElement(name, is_flexwidth=is_flexwidth,
                             is_flexheight=is_flexheight, is_fullwidth=is_fullwidth, is_fullheight=is_fullheight,
                             text_list=text_list, label=label, parent=parent, min_margin_right=min_margin_right,
@@ -131,7 +148,7 @@ def create_text_list(parent, name, label, text_list, is_fullwidth=False,
 def create_search_div(parent, is_fullwidth=False, is_flexwidth=False, is_flexheight=False,
                       min_width=0, min_height=0, max_width=None, max_height=None,
                       min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0,
-                      max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
+                      max_margin_right=10, max_margin_left=10, max_margin_top=10, max_margin_bottom=10):
     search = BaseElement("search", min_width=200, min_height=30, min_margin_left=10, min_margin_right=10,
                          min_margin_bottom=10, min_margin_top=10, label="search")
     search_div = BaseElement("search", is_flexwidth=is_flexwidth, is_flexheight=is_flexheight,
@@ -149,15 +166,15 @@ def create_search_div(parent, is_fullwidth=False, is_flexwidth=False, is_flexhei
     return search_div
 
 
-def create_icon(parent, name, icon_label, icon_width=20, icon_height=20, min_margin_right=0, min_margin_left=0,
-                min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0,
-                max_margin_bottom=0):
+def create_icon(parent, name, icon_label, icon_width=20, icon_height=20,  min_margin_right=0, min_margin_left=0,
+                min_margin_top=0, min_margin_bottom=0, max_margin_right=10, max_margin_left=10, max_margin_top=10,
+                max_margin_bottom=10, link=""):
     icon = IconElement(name, width=icon_width, height=icon_height,
                        label=icon_label, parent=parent, min_margin_right=min_margin_right,
                        min_margin_left=min_margin_left, min_margin_top=min_margin_top,
                        min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right,
                        max_margin_left=max_margin_left, max_margin_top=max_margin_top,
-                       max_margin_bottom=max_margin_bottom)
+                       max_margin_bottom=max_margin_bottom, link=link)
 
     return icon
 

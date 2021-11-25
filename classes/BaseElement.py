@@ -38,6 +38,7 @@ class BaseElement:
             max_margin_bottom=0,
             label: str = "b"
     ):
+        self.name = name
         # coordinates inside parent
         if bottom_elements is None:
             self.bottom_elements = []

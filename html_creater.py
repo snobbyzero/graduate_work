@@ -1,5 +1,7 @@
 from yattag import Doc
 
+from content_element import create_content_element
+from header_element import create_header_element
 from json_classes.BaseElementJSON import BaseElementJSON
 from json_classes.IconButtonJSON import IconButtonJSON
 from json_classes.Measure import Measure
@@ -8,17 +10,57 @@ from json_classes.SearchBarJSON import SearchBarJSON
 from json_classes.ValueJSON import ValueJSON
 from layout_solver import *
 
-body = create_body(1900, 1000)
+body = create_body(1900, 5000)
 
-content = create_content(body, min_width=1000, min_height=1000, is_fullwidth=True)
+content = create_content_element()
+content = create_content(body, min_width=1000, min_height=4000, is_fullwidth=True)
 cards = []
-for i in range(10):
-    card = create_card(content, i, 'sm')
+for i in range(5):
+    card = create_card(
+        content,
+        i,
+        'sm',
+        min_margin_left=10,
+        min_margin_right=10,
+        min_margin_top=10,
+        min_margin_bottom=10,
+    )
 
-    title = create_text('Title', card, label='title')
-    description = create_text('Blablabla blablal blsdadlas dsadsa', card, 'description')
+    title = create_text(
+        'Title',
+        card,
+        min_width=200,
+        label='title',
+        min_margin_left=10,
+        min_margin_right=10,
+        min_margin_top=10,
+        min_margin_bottom=10,
+    )
+    description = create_text(
+        'Blablabla blablal blsdadlas dsadsa',
+        card,
+        'description',
+        is_flexwidth=True,
+        min_margin_left=10,
+        min_margin_right=10,
+        min_margin_top=10,
+        min_margin_bottom=10,
+    )
 
-    icons = create_icons_list(card, 'card_icons', 'card_icons')
+    icons = create_icons_list(
+        card,
+        'card_icons',
+        'card_icons',
+        min_margin_left=10,
+        min_margin_right=10,
+        min_margin_top=10,
+        min_margin_bottom=10,
+        max_margin_left=20,
+        max_margin_right=20,
+        max_margin_bottom=20,
+        max_margin_top=20
+    )
+
     add_to_wishlist_icon = create_icon(
         icons,
         "wishlist_icon",
@@ -53,9 +95,33 @@ for i in range(10):
     add_to_wishlist_icon.set_neighbours(right_elements=[compare_icon], left_elements=[compare_icon])
     icons.add_children([add_to_wishlist_icon, compare_icon])
 
-    add_to_cart_button = create_text("Add to cart", card, 'ab')
+    add_to_cart_button = create_text(
+        "Add to cart",
+        card,
+        'ab',
+        min_width=100,
+        min_margin_left=10,
+        min_margin_right=10,
+        min_margin_top=10,
+        min_margin_bottom=10
+    )
 
-    additional_text = create_text_list(card, "additional_text", "at", TextList([TextElement("Price: 200$"), TextElement("In stock: yes")], is_vertical=True))
+    additional_text = create_text_list(
+        card,
+        "additional_text",
+        "at",
+        TextList(
+            [
+                TextElement("Price: 200$", min_width=100),
+                TextElement("In stock: yes", min_width=100)
+            ],
+            is_vertical=True
+        ),
+        min_margin_left=10,
+        min_margin_right=10,
+        min_margin_top=10,
+        min_margin_bottom=10,
+    )
 
     rating = create_icon(
         card,
@@ -63,16 +129,24 @@ for i in range(10):
         "r",
         icon_width=40,
         icon_height=40,
-        min_margin_left=0,
+        min_margin_left=10,
         min_margin_right=10,
-        min_margin_top=0,
-        min_margin_bottom=0,
-        max_margin_left=0,
+        min_margin_top=10,
+        min_margin_bottom=10,
+        max_margin_left=10,
         max_margin_right=10,
-        max_margin_bottom=0,
-        max_margin_top=0
+        max_margin_bottom=10,
+        max_margin_top=10
     )
-    rating_text = create_text("4.5", card, "rt")
+    rating_text = create_text(
+        "4.5",
+        card,
+        "rt",
+        min_margin_left=10,
+        min_margin_right=10,
+        min_margin_top=10,
+        min_margin_bottom=10,
+    )
 
     reviews = create_icon(
         card,
@@ -80,16 +154,28 @@ for i in range(10):
         "re",
         icon_width=40,
         icon_height=40,
-        min_margin_left=0,
+        min_margin_left=10,
         min_margin_right=10,
-        min_margin_top=0,
-        min_margin_bottom=0,
-        max_margin_left=0,
+        min_margin_top=10,
+        min_margin_bottom=10,
+        max_margin_left=10,
         max_margin_right=10,
-        max_margin_bottom=0,
-        max_margin_top=0
+        max_margin_bottom=10,
+        max_margin_top=10
     )
-    reviews_text = create_text("455 reviews", card, "rc")
+    reviews_text = create_text(
+        "455 reviews",
+        card,
+        "rc",
+        min_margin_left=10,
+        min_margin_right=10,
+        min_margin_top=10,
+        min_margin_bottom=10,
+        max_margin_left=10,
+        max_margin_right=10,
+        max_margin_bottom=10,
+        max_margin_top=10
+    )
 
     image = create_icon(
         card,
@@ -108,13 +194,37 @@ for i in range(10):
     )
 
     if card.size == 'sm':
-        image.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[title, description, icons, additional_text, add_to_cart_button, rating, rating_text, reviews, reviews_text])
-        title.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[description, icons, additional_text, add_to_cart_button, rating, rating_text, reviews, reviews_text])
-        description.set_neighbours(right_elements=[], left_elements=[], top_elements=[additional_text, rating, rating_text, reviews, reviews_text], bottom_elements=[icons, additional_text, add_to_cart_button, rating, rating_text, reviews, reviews_text])
-        icons.set_neighbours(right_elements=[add_to_cart_button], left_elements=[add_to_cart_button], top_elements=[add_to_cart_button], bottom_elements=[add_to_cart_button])
-        additional_text.set_neighbours(right_elements=[], left_elements=[], top_elements=[rating_text, rating, reviews_text, reviews], bottom_elements=[rating_text, rating, reviews_text, reviews])
-        rating.set_neighbours(right_elements=[rating_text, reviews, reviews_text], left_elements=[reviews, reviews_text], top_elements=[reviews, reviews_text], bottom_elements=[rating_text, reviews, reviews_text])
-        rating_text.set_neighbours(right_elements=[reviews, reviews_text], left_elements=[reviews, reviews_text], top_elements=[reviews, reviews_text], bottom_elements=[reviews, reviews_text])
+        image.set_neighbours(right_elements=[], left_elements=[], top_elements=[],
+                             bottom_elements=[title, description, icons, additional_text, add_to_cart_button, rating,
+                                              rating_text, reviews, reviews_text])
+        title.set_neighbours(bottom_elements=[description, icons, additional_text, add_to_cart_button, rating, rating_text, reviews, reviews_text])
+        description.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[icons, additional_text, add_to_cart_button, rating, rating_text, reviews, reviews_text])
+        icons.set_neighbours(right_elements=[add_to_cart_button], left_elements=[add_to_cart_button],
+                             top_elements=[add_to_cart_button], bottom_elements=[add_to_cart_button, rating, rating_text, reviews, reviews_text])
+        additional_text.set_neighbours(right_elements=[], left_elements=[],
+                                       top_elements=[rating_text, rating, reviews_text, reviews],
+                                       bottom_elements=[rating_text, rating, reviews_text, reviews])
+        rating.set_neighbours(right_elements=[rating_text, reviews, reviews_text],
+                              left_elements=[reviews, reviews_text], top_elements=[reviews, reviews_text],
+                              bottom_elements=[rating_text, reviews, reviews_text])
+        rating_text.set_neighbours(right_elements=[reviews, reviews_text], left_elements=[reviews, reviews_text],
+                                   top_elements=[reviews, reviews_text], bottom_elements=[reviews, reviews_text])
+
+        card.add_children([title, description, image, icons, additional_text, rating, rating_text, reviews, reviews_text])
+
+        sh = 0
+        for child in card.children:
+            print(child.label)
+            if child.height:
+                print(child.height)
+                sh += child.height
+            else:
+                print(child.min_height)
+                sh += child.min_height
+            sh += child.min_margin_top + child.min_margin_bottom
+        card.min_height = sh
+        print(f"card minheight {card.min_height}")
+        card.min_width = content.min_width // 3
     elif card.size == 'md':
         title.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
         description.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
@@ -136,212 +246,35 @@ for i in range(10):
         reviews.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
         reviews_text.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
 
-    card.add_children([title, description, icons, add_to_cart_button, additional_text, rating, rating_text, reviews, reviews_text, image])
-    card.set_min_size_by_children()
-    #card.set_max_size_by_children()
+    #card.set_min_size_by_children()
+    #card.max_height = 2000
+    #card.min_height = 400
+    # card.max_width = 2000
+    # card.set_max_size_by_children()
     cards.append(card)
 
-for i in range(len(cards)-1):
-    cards[i].set_neighbours(right_elements=[cards[i+1:]], bottom_elements=[cards[i+1:]])
+for i in range(len(cards) - 1):
+    cards[i].set_neighbours(right_elements=cards[i + 1:], bottom_elements=cards[i + 1:])
+
 content.add_children(cards)
 
-header = create_header(body, min_width=1000, min_height=150, is_fullwidth=True)
-logo = create_child(
-    header,
-    "logo",
-    "l",
-    width=60,
-    height=40,
-    min_margin_left=10,
-    min_margin_right=10,
-    min_margin_top=10,
-    min_margin_bottom=10,
-    max_margin_left=20,
-    max_margin_right=20,
-    max_margin_bottom=10,
-    max_margin_top=10
-)
-nav = create_text_list(
-    header,
-    "nav",
-    "n",
-    TextList([TextElement('Home', label='nav_a'), TextElement('About Us', label='nav_a'),
-              TextElement('Contacts', label='nav_a'), TextElement('Profile', label='nav_a')]),
-    is_flexwidth=True,
-    min_margin_left=10,
-    min_margin_right=10,
-    min_margin_top=10,
-    min_margin_bottom=10,
-    max_margin_left=20,
-    max_margin_right=20,
-    max_margin_bottom=10,
-    max_margin_top=10
-)
-search_div = create_search_div(
-    header,
-    min_width=200,
-    min_height=60,
-    is_flexwidth=True,
-    min_margin_left=10,
-    min_margin_right=10,
-    min_margin_top=10,
-    min_margin_bottom=10,
-    max_margin_left=20,
-    max_margin_right=20,
-    max_margin_bottom=10,
-    max_margin_top=10
-)
-
-icls_icons = create_icons_list(
-    header,
-    "icls_icons",
-    "icls",
-    min_margin_left=10,
-    min_margin_right=10,
-    min_margin_top=10,
-    min_margin_bottom=10,
-    max_margin_left=20,
-    max_margin_right=20,
-    max_margin_bottom=10,
-    max_margin_top=10
-)
-profile_icon = create_icon(
-    icls_icons,
-    "profile_icon",
-    icon_label='p',
-    icon_width=40,
-    icon_height=40,
-    min_margin_left=0,
-    min_margin_right=10,
-    min_margin_top=0,
-    min_margin_bottom=0,
-    max_margin_left=0,
-    max_margin_right=10,
-    max_margin_bottom=0,
-    max_margin_top=0
-)
-cart_icon = create_icon(
-    icls_icons,
-    "cart_icon",
-    icon_label='c',
-    icon_width=40,
-    icon_height=40,
-    min_margin_left=0,
-    min_margin_right=10,
-    min_margin_top=0,
-    min_margin_bottom=0,
-    max_margin_left=0,
-    max_margin_right=10,
-    max_margin_bottom=0,
-    max_margin_top=0
-)
-profile_icon.set_neighbours(right_elements=[cart_icon], left_elements=[cart_icon])
-icls_icons.add_children([profile_icon, cart_icon])
-
-sn_icons = create_icons_list(
-    header,
-    "sn_icons",
-    "sn_icons",
-    min_margin_left=10,
-    min_margin_right=10,
-    min_margin_top=10,
-    min_margin_bottom=10,
-    max_margin_left=20,
-    max_margin_right=20,
-    max_margin_bottom=10,
-    max_margin_top=10
-)
-twitter_icon = create_icon(
-    sn_icons,
-    "twitter_icon",
-    icon_label='t',
-    icon_width=40,
-    icon_height=40,
-    min_margin_left=0,
-    min_margin_right=10,
-    min_margin_top=0,
-    min_margin_bottom=0,
-    max_margin_left=0,
-    max_margin_right=10,
-    max_margin_bottom=0,
-    max_margin_top=0
-)
-vk_icon = create_icon(
-    sn_icons,
-    "vk_icon",
-    icon_label='v',
-    icon_width=40,
-    icon_height=40,
-    min_margin_left=0,
-    min_margin_right=10,
-    min_margin_top=0,
-    min_margin_bottom=0,
-    max_margin_left=0,
-    max_margin_right=10,
-    max_margin_bottom=0,
-    max_margin_top=0
-)
-fb_icon = create_icon(
-    sn_icons,
-    "fb_icon",
-    icon_label='f',
-    icon_width=40,
-    icon_height=40,
-    min_margin_left=0,
-    min_margin_right=10,
-    min_margin_top=0,
-    min_margin_bottom=0,
-    max_margin_left=0,
-    max_margin_right=10,
-    max_margin_bottom=0,
-    max_margin_top=0
-)
-twitter_icon.set_neighbours(right_elements=[vk_icon, fb_icon], left_elements=[vk_icon, fb_icon])
-vk_icon.set_neighbours(right_elements=[fb_icon], left_elements=[fb_icon])
-sn_icons.add_children([twitter_icon, vk_icon, fb_icon])
-
-logo.set_neighbours(
-    right_elements=[nav, search_div, icls_icons, sn_icons],
-    bottom_elements=[nav, search_div]
-)
-nav.set_neighbours(
-    left_elements=[logo, search_div],
-    top_elements=[search_div, icls_icons, sn_icons, logo],
-    bottom_elements=[search_div],
-    right_elements=[search_div, icls_icons, sn_icons])
-search_div.set_neighbours(
-    left_elements=[logo, nav],
-    top_elements=[nav, icls_icons, sn_icons, logo],
-    bottom_elements=[nav],
-    right_elements=[nav, icls_icons, sn_icons]
-)
-icls_icons.set_neighbours(
-    left_elements=[logo, sn_icons, search_div, nav],
-    top_elements=[search_div, nav],
-    bottom_elements=[search_div, nav],
-    right_elements=[sn_icons]
-)
-sn_icons.set_neighbours(
-    right_elements=[icls_icons],
-    left_elements=[logo, search_div, nav, icls_icons],
-    top_elements=[search_div, nav],
-    bottom_elements=[search_div, nav]
-)
-header.add_children([logo, nav, search_div, icls_icons, sn_icons])
-header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
-                And(nav.y == logo.y, search_div.y >= nav.y + nav.row_count),
-                And(search_div.y == logo.y, nav.y >= search_div.y + search_div.row_count)]
-
+header = create_header_element(body, min_width=1000, min_height=200, is_fullwidth=True, is_logo=True, nav_list=['Home', 'Profile', 'About Us', 'Contacts'], is_search=True, icls_icons_list=['profile', 'cart'], sn_icons_list=['vk', 'twitter', 'fb'])
+content = create_content()
+print("card")
 print(cards[0].min_width)
 print(cards[0].min_height)
+print(cards[0].max_width)
+print(cards[0].max_height)
+print(cards[0])
 cards[0].table = Table(10, 10, width=cards[0].min_width, height=cards[0].min_height)
 body.add_children([header, content])
-find_solutions(cards[0])  # TODO BODY
+find_solutions(body)  # TODO BODY
 print(header)
 
 
 def create_body(body_model):
-    header_json = create_header(body_model, header.models[1].m)
+    header_json = create_header_json(header, body_model, random_choose_model(header, body_model))
+    content_json = create_content_json(body_model, random_choose_model(content, body_model))
     body_json = BaseElementJSON(
         "body",
         x=0,
@@ -358,11 +291,12 @@ def create_body(body_model):
         center_vertical=True
     )
     body_json.children.append(header_json)
+    body_json.children.append(content_json)
 
     return body_json
 
 
-def create_content(body_model, content_model):
+def create_content_json(body_model, content_model):
     content_json = BaseElementJSON(
         "content",
         x=ValueJSON(body_model[content.x].as_long() * body.table.cell_width * 100 / body.width, Measure.PERCENT),
@@ -388,7 +322,7 @@ def create_content(body_model, content_model):
     return content_json
 
 
-def create_header(body_model, header_model):
+def create_header_json(header, body_model, header_model):
     header_json = BaseElementJSON(
         "header",
         x=ValueJSON(body_model[header.x].as_long() * body.table.cell_width * 100 / body.width, Measure.PERCENT),
@@ -411,7 +345,9 @@ def create_header(body_model, header_model):
         center_vertical=True
     )
 
-    if logo in header.children:
+    # TODO поправить говнокод
+    logo = header.logo
+    if logo:
         logo_json = IconButtonJSON(
             parent=header_json,
             icon_name="adjust",
@@ -434,7 +370,8 @@ def create_header(body_model, header_model):
         )
         header_json.children.append(logo_json)
 
-    if nav in header.children:
+    nav = header.nav
+    if nav:
         nav_json = NavListJSON(
             nav_list=nav.text_list.text_list,
             parent=header_json,
@@ -458,8 +395,8 @@ def create_header(body_model, header_model):
             margin_bottom=ValueJSON(header_model[nav.margin_bottom].as_long() * header.table.cell_height,
                                     Measure.PIXEL),
             label=nav.label,
-            fullwidth=search_div.is_fullwidth,
-            fullheight=search_div.is_fullheight,
+            fullwidth=nav.is_fullwidth,
+            fullheight=nav.is_fullheight,
             center_vertical=True,
             center_horizontal=True,
             flexgrow=nav.is_flexwidth,
@@ -467,7 +404,8 @@ def create_header(body_model, header_model):
         )
         header_json.children.append(nav_json)
 
-    if search_div in header.children:
+    search_div = header.search_div
+    if search_div:
         search_div_model = random_choose_model(search_div, header_model)
         search_justify = random.choice(["start", "end"])
         search_bar_div_json = BaseElementJSON(
@@ -542,7 +480,8 @@ def create_header(body_model, header_model):
         search_bar_div_json.children.append(search_bar_json)
         header_json.children.append(search_bar_div_json)
 
-    if icls_icons in header.children:
+    icls_icons = header.icls_icons
+    if icls_icons:
         icls_icons_model = random_choose_model(icls_icons, header_model)
         icls_icons_justify = random.choice(["center", "start", "end"])
         icls_icons_json = BaseElementJSON(
@@ -586,14 +525,9 @@ def create_header(body_model, header_model):
         )
 
         for i in range(len(icls_icons.children)):
-            icon_name = ""
-            if icls_icons.children[i].label == 'p':
-                icon_name = 'profile'
-            elif icls_icons.children[i].label == 'c':
-                icon_name = 'cart'
             icls_icons_json.children.append(
                 IconButtonJSON(
-                    icon_name=icon_name,
+                    icon_name=icls_icons.children[i].name,
                     x=ValueJSON(icls_icons_model[icls_icons.children[
                         i].x].as_long() * icls_icons.table.cell_width * 100 / icls_icons.get_width_with_parent(
                         header_model), Measure.PERCENT),
@@ -634,7 +568,8 @@ def create_header(body_model, header_model):
         sort_children(icls_icons_json)
         header_json.children.append(icls_icons_json)
 
-    if sn_icons in header.children:
+    sn_icons = header.sn_icons
+    if sn_icons:
         sn_icons_model = random_choose_model(sn_icons, header_model)
         sn_icons_justify = random.choice(["center", "start", "end"])
         sn_icons_json = BaseElementJSON(
@@ -674,17 +609,10 @@ def create_header(body_model, header_model):
         )
 
         for i in range(len(sn_icons.children)):
-            icon_name = ""
-            if sn_icons.children[i].label == 'f':
-                icon_name = 'facebook'
-            elif sn_icons.children[i].label == 'v':
-                icon_name = 'vk'
-            elif sn_icons.children[i].label == 't':
-                icon_name = 'twitter'
             sn_icons_json.children.append(
                 IconButtonJSON(
                     parent=sn_icons_json,
-                    icon_name=icon_name,
+                    icon_name=sn_icons.children[i].name,
                     x=ValueJSON(sn_icons_model[sn_icons.children[
                         i].x].as_long() * sn_icons.table.cell_width * 100 / sn_icons.get_width_with_parent(
                         header_model),

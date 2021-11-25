@@ -31,7 +31,7 @@ class IconElement(BaseElement):
         self.link = link
         BaseElement.__init__(
             self,
-            name,
+            name=name,
             right_elements=right_elements,
             left_elements=left_elements,
             top_elements=top_elements,
