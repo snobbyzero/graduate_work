@@ -1,7 +1,19 @@
-<html><head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><style>.body {
+<html><head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" /><style>html {
+        font: caption;
+        --main: #732673;
+        --black-text: #000000;
+        --white-text: #FFFFFF;
+        }
+        a {
+        text-decoration: none;
+        }
+        a:hover {
+        text-decoration: none;
+        }
+        .body {
         flex-grow: 0;
-        font-size: 1em;
-        flex-basis: 100%;       
+        flex-basis: 100%;
+        font-size: 1em;   
         min-width:0%;
         min-height:0%;
         margin-right: 0%;
@@ -12,7 +24,6 @@
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
-        background: #128350;
         text-align: center;
         align-items: center;
 justify-content: center;
@@ -21,29 +32,49 @@ align-content: start;
 flex-flow: row wrap;
 }.header {
         flex-grow: 0;
-        font-size: 1em;
-        flex-basis: 100.0%;       
-        min-width:1900px;
+        flex-basis: 100.0%;
+        font-size: 1em;   
+        min-width:1000px;
         min-height:150px;
-        margin-right: 0*10px;
-        margin-left: 0*10px;
-        margin-top: 0*10px;
-        margin-bottom: 0*10px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         padding-left: 0em;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
-        background: #478960;
+        text-align: center;
+        
+        border-bottom: 1px solid #dfdee2;
+    align-items: center;
+justify-content: center;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.div_header {
+        flex-grow: 0;
+        flex-basis: 66.66666666666667%;
+        font-size: 1em;   
+        min-width:1000px;
+        min-height:0%;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
         text-align: center;
         align-items: center;
-justify-content: center;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
 }.l {
         flex-grow: 0;
-        font-size: 60px;
-        flex-basis: 60px;       
+        flex-basis: 60px;
+        font-size: 60px;   
         min-width:60px;
         min-height:40px;
         margin-right: 10px;
@@ -54,15 +85,52 @@ flex-flow: row wrap;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
-        background: #258510;
         text-align: center;
         
 }
+.s {
+        flex-grow: 1;
+        flex-basis: 22.0%;
+        font-size: 1em;   
+        min-width:220px;
+        min-height:0%;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+justify-content: end;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.search {
+        flex-grow: 0;
+        flex-basis: 200px;
+        font-size: 1em;   
+        min-width:200px;
+        min-height:50px;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: left;
+        border: 0;
+    
+}
 .n {
         flex-grow: 1;
-        font-size: 1em;
-        flex-basis: 79.47368421052632%;       
-        min-width:27px;
+        flex-basis: 44.5%;
+        font-size: 1em;   
+        min-width:400px;
         min-height:10px;
         margin-right: 10px;
         margin-left: 10px;
@@ -72,7 +140,6 @@ flex-flow: row wrap;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
-        background: #527700;
         text-align: center;
         align-items: center;
 justify-content: center;
@@ -81,8 +148,8 @@ align-content: normal;
 flex-flow: row nowrap;
 }.nav_a {
         flex-grow: 0;
-        font-size: 1em;
-        flex-basis: auto;       
+        flex-basis: ;
+        font-size: 1em;   
         min-width:0%;
         min-height:0%;
         margin-right: 1em;
@@ -93,126 +160,15 @@ flex-flow: row nowrap;
         padding-right: 1rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
-        background: #932924;
-        text-align: center;
-        
-}
-.nav_a {
-        flex-grow: 0;
-        font-size: 1em;
-        flex-basis: auto;       
-        min-width:0%;
-        min-height:0%;
-        margin-right: 1em;
-        margin-left: 0em;
-        margin-top: 0em;
-        margin-bottom: 0em;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        background: #322627;
-        text-align: center;
-        
-}
-.nav_a {
-        flex-grow: 0;
-        font-size: 1em;
-        flex-basis: auto;       
-        min-width:0%;
-        min-height:0%;
-        margin-right: 1em;
-        margin-left: 0em;
-        margin-top: 0em;
-        margin-bottom: 0em;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        background: #603929;
-        text-align: center;
-        
-}
-.nav_a {
-        flex-grow: 0;
-        font-size: 1em;
-        flex-basis: auto;       
-        min-width:0%;
-        min-height:0%;
-        margin-right: 1em;
-        margin-left: 0em;
-        margin-top: 0em;
-        margin-bottom: 0em;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        background: #449361;
-        text-align: center;
-        
-}
-.icls_icons {
-        flex-grow: 0;
-        font-size: 1em;
-        flex-basis: 5.2631578947368425%;       
-        min-width:100px;
-        min-height:40px;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        background: #667769;
-        text-align: center;
-        justify-content: center;
-display: flex;
-align-content: normal;
-flex-flow: row nowrap;
-}.icon {
-        flex-grow: 0;
-        font-size: 40px;
-        flex-basis: 40px;       
-        min-width:40px;
-        min-height:40px;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        background: #383055;
-        text-align: center;
-        
-}
-.icon {
-        flex-grow: 0;
-        font-size: 40px;
-        flex-basis: 40px;       
-        min-width:40px;
-        min-height:40px;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        background: #276508;
         text-align: center;
         
 }
 .sn_icons {
         flex-grow: 0;
-        font-size: 1em;
-        flex-basis: 7.894736842105263%;       
-        min-width:150px;
-        min-height:40px;
+        flex-basis: 105px;
+        font-size: 1em;   
+        min-width:105px;
+        min-height:0%;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -221,92 +177,34 @@ flex-flow: row nowrap;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
-        background: #274647;
         text-align: center;
-        justify-content: start;
-display: flex;
-align-content: normal;
-flex-flow: row nowrap;
-}.icon {
-        flex-grow: 0;
-        font-size: 40px;
-        flex-basis: 40px;       
-        min-width:40px;
-        min-height:40px;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        background: #705205;
-        text-align: center;
-        
-}
-.icon {
-        flex-grow: 0;
-        font-size: 40px;
-        flex-basis: 40px;       
-        min-width:40px;
-        min-height:40px;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        background: #496924;
-        text-align: center;
-        
-}
-.icon {
-        flex-grow: 0;
-        font-size: 40px;
-        flex-basis: 40px;       
-        min-width:40px;
-        min-height:40px;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        background: #122860;
-        text-align: center;
-        
-}
-.s {
-        flex-grow: 1;
-        font-size: 1em;
-        flex-basis: 98.94736842105263%;       
-        min-width:220px;
-        min-height:50px;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        background: #794409;
-        text-align: center;
-        justify-content: end;
+        align-items: flex-start;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
-}.search {
+}.sn_icon {
         flex-grow: 0;
-        font-size: 1em;
-        flex-basis: 200px;       
-        min-width:200px;
-        min-height:30px;
+        flex-basis: 25px;
+        font-size: 25px;   
+        min-width:25px;
+        min-height:25px;
+        margin-right: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+}
+.icls_icons {
+        flex-grow: 0;
+        flex-basis: 70px;
+        font-size: 1em;   
+        min-width:70px;
+        min-height:0%;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -315,26 +213,188 @@ flex-flow: row wrap;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
-        background: #432724;
-        text-align: left;
-        border: 0
-}
-.content {
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.icls_icon {
         flex-grow: 0;
-        font-size: 1em;
-        flex-basis: 100.0%;       
-        min-width:1900px;
-        min-height:4000px;
-        margin-right: 0*10px;
-        margin-left: 0*10px;
-        margin-top: 0*10px;
-        margin-bottom: 0*10px;
+        flex-basis: 25px;
+        font-size: 25px;   
+        min-width:25px;
+        min-height:25px;
+        margin-right: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         padding-left: 0em;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
-        background: #790901;
         text-align: center;
         
 }
-</style></head><body><body class="body"><header class="header"><i class="fa fa-adjust l"></i><nav class="n"><a class="nav_a">Home</a><a class="nav_a">Profile</a><a class="nav_a">About Us</a><a class="nav_a">Contacts</a></nav><div class="icls_icons"><i class="fa fa-user icon"></i><i class="fa fa-shopping-cart icon"></i></div><div class="sn_icons"><i class="fa fa-vk icon"></i><i class="fa fa-twitter icon"></i><i class="fa fa-fb icon"></i></div><div class="s"><input type="text" placeholder="Search" class="search" /></div></header><content class="content"></content></body></body></html>
+.content {
+        flex-grow: 0;
+        flex-basis: 100.0%;
+        font-size: 1em;   
+        min-width:1000px;
+        min-height:4000px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: flex-start;
+flex-flow: row wrap;
+}.c {
+        flex-grow: 0;
+        flex-basis: 300px;
+        font-size: 1em;   
+        min-width:300px;
+        min-height:0%;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+justify-content: center;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.card_image {
+        flex-grow: 0;
+        flex-basis: 200px;
+        font-size: 1em;   
+        min-width:0%;
+        min-height:0%;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+}
+.card_title {
+        flex-grow: 0;
+        flex-basis: 280px;
+        font-size: 1em;   
+        min-width:0%;
+        min-height:0%;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        
+}
+.card_description {
+        flex-grow: 0;
+        flex-basis: 280px;
+        font-size: 1em;   
+        min-width:0%;
+        min-height:0%;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        
+}
+.buttons_div {
+        flex-grow: 0;
+        flex-basis: 150px;
+        font-size: 1em;   
+        min-width:150px;
+        min-height:0%;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.card_button {
+        flex-grow: 0;
+        flex-basis: 150px;
+        font-size: 1em;   
+        min-width:0%;
+        min-height:0%;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        text-align: center;
+        
+}
+.card_icons {
+        flex-grow: 0;
+        flex-basis: 80px;
+        font-size: 1em;   
+        min-width:80px;
+        min-height:0%;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.card_icon {
+        flex-grow: 0;
+        flex-basis: 30px;
+        font-size: 30px;   
+        min-width:None;
+        min-height:None;
+        margin-right: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+}
+</style></head><body><body class="body"><header class="header"><div class="div_header"><i class="fa fa-adjust l"></i><div class="s"><input type="text" placeholder="Search" class="search" /></div><nav class="n"><a href="#" class="nav_a">Home</a><a href="#" class="nav_a">Profile</a><a href="#" class="nav_a">About Us</a><a href="#" class="nav_a">Contacts</a></nav><div class="sn_icons"><i class="fa fa-vk sn_icon"></i><i class="fa fa-twitter sn_icon"></i><i class="fa fa-github sn_icon"></i></div><div class="icls_icons"><i class="fa fa-user icls_icon"></i><i class="fa fa-shopping-cart icls_icon"></i></div></div></header><content class="content"><div class="c"><img src="https://sun9-11.userapi.com/impg/Fv1NDtYjevwOdKwShhcP7O6G3_WF0m1-xgRDAg/cH0kHAGijko.jpg?size=640x640&amp;quality=96&amp;sign=af4b0fdf074265fbdf6bdcf9b96b502a&amp;type=album" alt="card_image" class="card_image" /><h5 class="card_title">Title</h5><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to Cart</button></div><div class="card_icons"><i class="fa fa-bookmark card_icon"></i><i class="fa fa-list card_icon"></i></div></div><div class="c"><img src="https://sun9-11.userapi.com/impg/Fv1NDtYjevwOdKwShhcP7O6G3_WF0m1-xgRDAg/cH0kHAGijko.jpg?size=640x640&amp;quality=96&amp;sign=af4b0fdf074265fbdf6bdcf9b96b502a&amp;type=album" alt="card_image" class="card_image" /><h5 class="card_title">Title</h5><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to Cart</button></div><div class="card_icons"><i class="fa fa-bookmark card_icon"></i><i class="fa fa-list card_icon"></i></div></div><div class="c"><img src="https://sun9-11.userapi.com/impg/Fv1NDtYjevwOdKwShhcP7O6G3_WF0m1-xgRDAg/cH0kHAGijko.jpg?size=640x640&amp;quality=96&amp;sign=af4b0fdf074265fbdf6bdcf9b96b502a&amp;type=album" alt="card_image" class="card_image" /><h5 class="card_title">Title</h5><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to Cart</button></div><div class="card_icons"><i class="fa fa-bookmark card_icon"></i><i class="fa fa-list card_icon"></i></div></div><div class="c"><img src="https://sun9-11.userapi.com/impg/Fv1NDtYjevwOdKwShhcP7O6G3_WF0m1-xgRDAg/cH0kHAGijko.jpg?size=640x640&amp;quality=96&amp;sign=af4b0fdf074265fbdf6bdcf9b96b502a&amp;type=album" alt="card_image" class="card_image" /><h5 class="card_title">Title</h5><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to Cart</button></div><div class="card_icons"><i class="fa fa-bookmark card_icon"></i><i class="fa fa-list card_icon"></i></div></div><div class="c"><img src="https://sun9-11.userapi.com/impg/Fv1NDtYjevwOdKwShhcP7O6G3_WF0m1-xgRDAg/cH0kHAGijko.jpg?size=640x640&amp;quality=96&amp;sign=af4b0fdf074265fbdf6bdcf9b96b502a&amp;type=album" alt="card_image" class="card_image" /><h5 class="card_title">Title</h5><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to Cart</button></div><div class="card_icons"><i class="fa fa-bookmark card_icon"></i><i class="fa fa-list card_icon"></i></div></div></content></body></body></html>

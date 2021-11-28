@@ -26,6 +26,8 @@ class CardElement(BaseElement):
             max_margin_left=0,
             max_margin_top=0,
             max_margin_bottom=0,
+            center_horizontal=False,
+            center_vertical=False,
             label: str = "c",
     ):
         self.size = size
@@ -52,5 +54,7 @@ class CardElement(BaseElement):
             max_margin_left=max_margin_left,
             max_margin_top=max_margin_top,
             max_margin_bottom=max_margin_bottom,
+            center_horizontal=center_horizontal,
+            center_vertical=center_vertical,
             label=label
         )

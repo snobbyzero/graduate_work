@@ -10,264 +10,41 @@ from json_classes.SearchBarJSON import SearchBarJSON
 from json_classes.ValueJSON import ValueJSON
 from layout_solver import *
 
-body = create_body(1900, 5000)
+body = create_body(1500, 5000)
 
-content = create_content_element()
-content = create_content(body, min_width=1000, min_height=4000, is_fullwidth=True)
-cards = []
-for i in range(5):
-    card = create_card(
-        content,
-        i,
-        'sm',
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-    )
+content = create_content_element(
+    body,
+    min_width=1000,
+    min_height=4000,
+    is_fullwidth=True,
+    card_size='sm',
+    card_title='Title',
+    card_description='Description blabla',
+    card_image='https://sun9-11.userapi.com/impg/Fv1NDtYjevwOdKwShhcP7O6G3_WF0m1-xgRDAg/cH0kHAGijko.jpg?size=640x640&quality=96&sign=af4b0fdf074265fbdf6bdcf9b96b502a&type=album',
+    card_icons_list=['compare', 'wishlist'],
+    card_icon_chips=[],
+    card_buttons=['Add to Cart'],
+    card_title_subtitle=[],
+    card_key_value=[],
+    card_carousel_images=[],
+    card_text_chips=[],
+    card_icons_texts=[]
+)
 
-    title = create_text(
-        'Title',
-        card,
-        min_width=200,
-        label='title',
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-    )
-    description = create_text(
-        'Blablabla blablal blsdadlas dsadsa',
-        card,
-        'description',
-        is_flexwidth=True,
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-    )
+header = create_header_element(
+    body,
+    min_width=1000,
+    min_height=150,
+    is_fullwidth=True,
+    is_logo=True,
+    nav_list=['Home', 'Profile', 'About Us', 'Contacts'],
+    is_search=True,
+    icls_icons_list=['profile', 'cart'],
+    sn_icons_list=['vk', 'twitter', 'github']
+)
 
-    icons = create_icons_list(
-        card,
-        'card_icons',
-        'card_icons',
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-        max_margin_left=20,
-        max_margin_right=20,
-        max_margin_bottom=20,
-        max_margin_top=20
-    )
-
-    add_to_wishlist_icon = create_icon(
-        icons,
-        "wishlist_icon",
-        icon_label='w',
-        icon_width=40,
-        icon_height=40,
-        min_margin_left=0,
-        min_margin_right=10,
-        min_margin_top=0,
-        min_margin_bottom=0,
-        max_margin_left=0,
-        max_margin_right=10,
-        max_margin_bottom=0,
-        max_margin_top=0
-    )
-
-    compare_icon = create_icon(
-        icons,
-        "compare_icon",
-        icon_label='c',
-        icon_width=40,
-        icon_height=40,
-        min_margin_left=0,
-        min_margin_right=10,
-        min_margin_top=0,
-        min_margin_bottom=0,
-        max_margin_left=0,
-        max_margin_right=10,
-        max_margin_bottom=0,
-        max_margin_top=0
-    )
-    add_to_wishlist_icon.set_neighbours(right_elements=[compare_icon], left_elements=[compare_icon])
-    icons.add_children([add_to_wishlist_icon, compare_icon])
-
-    add_to_cart_button = create_text(
-        "Add to cart",
-        card,
-        'ab',
-        min_width=100,
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10
-    )
-
-    additional_text = create_text_list(
-        card,
-        "additional_text",
-        "at",
-        TextList(
-            [
-                TextElement("Price: 200$", min_width=100),
-                TextElement("In stock: yes", min_width=100)
-            ],
-            is_vertical=True
-        ),
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-    )
-
-    rating = create_icon(
-        card,
-        "rating",
-        "r",
-        icon_width=40,
-        icon_height=40,
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-        max_margin_left=10,
-        max_margin_right=10,
-        max_margin_bottom=10,
-        max_margin_top=10
-    )
-    rating_text = create_text(
-        "4.5",
-        card,
-        "rt",
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-    )
-
-    reviews = create_icon(
-        card,
-        "reviews",
-        "re",
-        icon_width=40,
-        icon_height=40,
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-        max_margin_left=10,
-        max_margin_right=10,
-        max_margin_bottom=10,
-        max_margin_top=10
-    )
-    reviews_text = create_text(
-        "455 reviews",
-        card,
-        "rc",
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-        max_margin_left=10,
-        max_margin_right=10,
-        max_margin_bottom=10,
-        max_margin_top=10
-    )
-
-    image = create_icon(
-        card,
-        "image",
-        "im",
-        icon_width=200,
-        icon_height=300,
-        min_margin_left=10,
-        min_margin_right=10,
-        min_margin_top=10,
-        min_margin_bottom=10,
-        max_margin_left=20,
-        max_margin_right=20,
-        max_margin_bottom=20,
-        max_margin_top=20
-    )
-
-    if card.size == 'sm':
-        image.set_neighbours(right_elements=[], left_elements=[], top_elements=[],
-                             bottom_elements=[title, description, icons, additional_text, add_to_cart_button, rating,
-                                              rating_text, reviews, reviews_text])
-        title.set_neighbours(bottom_elements=[description, icons, additional_text, add_to_cart_button, rating, rating_text, reviews, reviews_text])
-        description.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[icons, additional_text, add_to_cart_button, rating, rating_text, reviews, reviews_text])
-        icons.set_neighbours(right_elements=[add_to_cart_button], left_elements=[add_to_cart_button],
-                             top_elements=[add_to_cart_button], bottom_elements=[add_to_cart_button, rating, rating_text, reviews, reviews_text])
-        additional_text.set_neighbours(right_elements=[], left_elements=[],
-                                       top_elements=[rating_text, rating, reviews_text, reviews],
-                                       bottom_elements=[rating_text, rating, reviews_text, reviews])
-        rating.set_neighbours(right_elements=[rating_text, reviews, reviews_text],
-                              left_elements=[reviews, reviews_text], top_elements=[reviews, reviews_text],
-                              bottom_elements=[rating_text, reviews, reviews_text])
-        rating_text.set_neighbours(right_elements=[reviews, reviews_text], left_elements=[reviews, reviews_text],
-                                   top_elements=[reviews, reviews_text], bottom_elements=[reviews, reviews_text])
-
-        card.add_children([title, description, image, icons, additional_text, rating, rating_text, reviews, reviews_text])
-
-        sh = 0
-        for child in card.children:
-            print(child.label)
-            if child.height:
-                print(child.height)
-                sh += child.height
-            else:
-                print(child.min_height)
-                sh += child.min_height
-            sh += child.min_margin_top + child.min_margin_bottom
-        card.min_height = sh
-        print(f"card minheight {card.min_height}")
-        card.min_width = content.min_width // 3
-    elif card.size == 'md':
-        title.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        description.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        icons.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        additional_text.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        add_to_cart_button.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        rating.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        rating_text.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        reviews.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        reviews_text.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-    else:
-        title.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        description.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        icons.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        additional_text.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        add_to_cart_button.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        rating.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        rating_text.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        reviews.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-        reviews_text.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])
-
-    #card.set_min_size_by_children()
-    #card.max_height = 2000
-    #card.min_height = 400
-    # card.max_width = 2000
-    # card.set_max_size_by_children()
-    cards.append(card)
-
-for i in range(len(cards) - 1):
-    cards[i].set_neighbours(right_elements=cards[i + 1:], bottom_elements=cards[i + 1:])
-
-content.add_children(cards)
-
-header = create_header_element(body, min_width=1000, min_height=200, is_fullwidth=True, is_logo=True, nav_list=['Home', 'Profile', 'About Us', 'Contacts'], is_search=True, icls_icons_list=['profile', 'cart'], sn_icons_list=['vk', 'twitter', 'fb'])
-content = create_content()
-print("card")
-print(cards[0].min_width)
-print(cards[0].min_height)
-print(cards[0].max_width)
-print(cards[0].max_height)
-print(cards[0])
-cards[0].table = Table(10, 10, width=cards[0].min_width, height=cards[0].min_height)
 body.add_children([header, content])
+header.set_neighbours(bottom_elements=[content])
 find_solutions(body)  # TODO BODY
 print(header)
 
@@ -307,18 +84,169 @@ def create_content_json(body_model, content_model):
                          Measure.PERCENT),
         min_width=ValueJSON(content.min_width, Measure.PIXEL),
         min_height=ValueJSON(content.min_height, Measure.PIXEL),
-        margin_left=ValueJSON(body_model[content.margin_left] * body.table.cell_width, Measure.PIXEL),
-        margin_right=ValueJSON(body_model[content.margin_right] * body.table.cell_width, Measure.PIXEL),
-        margin_top=ValueJSON(body_model[content.margin_top] * body.table.cell_height, Measure.PIXEL),
-        margin_bottom=ValueJSON(body_model[content.margin_bottom] * body.table.cell_height, Measure.PIXEL),
+        margin_left=ValueJSON(body_model[content.margin_left].as_long() * body.table.cell_width, Measure.PIXEL),
+        margin_right=ValueJSON(body_model[content.margin_right].as_long() * body.table.cell_width, Measure.PIXEL),
+        margin_top=ValueJSON(body_model[content.margin_top].as_long() * body.table.cell_height, Measure.PIXEL),
+        margin_bottom=ValueJSON(body_model[content.margin_bottom].as_long() * body.table.cell_height, Measure.PIXEL),
         label=content.label,
         fullwidth=content.is_fullwidth,
         justify_left=content.justify_left,
         justify_right=content.justify_right,
-        center_horizontal=True,
-        center_vertical=True
+        align_content="flex-start",
+        center_horizontal=False,
+        center_vertical=False
     )
 
+    card_model = random_choose_model(content.children[0], content_model)
+    icons = content.children[0].icons
+    if icons:
+        icons_model = random_choose_model(icons, card_model)
+    buttons = content.children[0].buttons
+    if icons:
+        buttons_model = random_choose_model(buttons, card_model)
+    for i in range(len(content.children)):
+        card = content.children[i]
+        card_json = create_div(card, content, content_model, body_model)
+
+        title = card.title
+        if title:
+            title_json = BaseElementJSON(
+                "h5",
+                x=ValueJSON(card_model[title.x].as_long() * card.table.cell_width * 100 / card.get_width_with_parent(
+                    content_model), Measure.PERCENT),
+                y=ValueJSON(card_model[title.y].as_long() * card.table.cell_height * 100 / card.get_height_with_parent(
+                    content_model), Measure.PERCENT),
+                width=ValueJSON(card_model[title.col_count].as_long() * card.table.cell_width, Measure.PIXEL),
+                height=ValueJSON(card_model[title.row_count].as_long() * card.table.cell_height, Measure.PIXEL),
+                margin_right=ValueJSON(card_model[title.margin_right].as_long() * card.table.cell_width, Measure.PIXEL),
+                margin_left=ValueJSON(card_model[title.margin_left].as_long() * card.table.cell_width, Measure.PIXEL),
+                margin_top=ValueJSON(card_model[title.margin_top].as_long() * card.table.cell_height, Measure.PIXEL),
+                margin_bottom=ValueJSON(card_model[title.margin_bottom].as_long() * card.table.cell_height,
+                                        Measure.PIXEL),
+                text=title.text,
+                text_align="start",
+                label=title.label
+            )
+            card_json.children.append(title_json)
+
+        description = card.description
+        if description:
+            description_json = BaseElementJSON(
+                "p",
+                x=ValueJSON(
+                    card_model[description.x].as_long() * card.table.cell_width * 100 / card.get_width_with_parent(
+                        content_model), Measure.PERCENT),
+                y=ValueJSON(
+                    card_model[description.y].as_long() * card.table.cell_height * 100 / card.get_height_with_parent(
+                        content_model), Measure.PERCENT),
+                width=ValueJSON(card_model[description.col_count].as_long() * card.table.cell_width, Measure.PIXEL),
+                height=ValueJSON(card_model[description.row_count].as_long() * card.table.cell_height, Measure.PIXEL),
+                margin_right=ValueJSON(card_model[description.margin_right].as_long() * card.table.cell_width,
+                                       Measure.PIXEL),
+                margin_left=ValueJSON(card_model[description.margin_left].as_long() * card.table.cell_width,
+                                      Measure.PIXEL),
+                margin_top=ValueJSON(card_model[description.margin_top].as_long() * card.table.cell_height,
+                                     Measure.PIXEL),
+                margin_bottom=ValueJSON(card_model[description.margin_bottom].as_long() * card.table.cell_height,
+                                        Measure.PIXEL),
+                text=description.text,
+                text_align="start",
+                label=description.label
+            )
+            card_json.children.append(description_json)
+
+        image = card.image
+        if image:
+            image_json = BaseElementJSON(
+                "img",
+                x=ValueJSON(
+                    card_model[image.x].as_long() * card.table.cell_width * 100 / card.get_width_with_parent(
+                        content_model), Measure.PERCENT),
+                y=ValueJSON(
+                    card_model[image.y].as_long() * card.table.cell_height * 100 / card.get_height_with_parent(
+                        content_model), Measure.PERCENT),
+                width=ValueJSON(card_model[image.col_count].as_long() * card.table.cell_width, Measure.PIXEL),
+                height=ValueJSON(card_model[image.row_count].as_long() * card.table.cell_height, Measure.PIXEL),
+                margin_right=ValueJSON(card_model[image.margin_right].as_long() * card.table.cell_width, Measure.PIXEL),
+                margin_left=ValueJSON(card_model[image.margin_left].as_long() * card.table.cell_width, Measure.PIXEL),
+                margin_top=ValueJSON(card_model[image.margin_top].as_long() * card.table.cell_height, Measure.PIXEL),
+                margin_bottom=ValueJSON(card_model[image.margin_bottom].as_long() * card.table.cell_height,
+                                        Measure.PIXEL),
+                text=image.link,
+                label=image.label
+            )
+            card_json.children.append(image_json)
+
+        if icons:
+            icons_json = create_div(icons, card, card_model, content_model)
+            for icon in icons.children:
+                icon_json = IconButtonJSON(
+                    icon.name,
+                    x=ValueJSON(
+                        icons_model[icon.x].as_long() * icons.table.cell_width * 100 / icons.get_width_with_parent(
+                            card_model), Measure.PERCENT),
+                    y=ValueJSON(
+                        icons_model[icon.y].as_long() * icons.table.cell_height * 100 / icons.get_height_with_parent(
+                            card_model), Measure.PERCENT),
+                    width=ValueJSON(icons_model[icon.col_count].as_long() * icons.table.cell_width, Measure.PIXEL),
+                    height=ValueJSON(icons_model[icon.row_count].as_long() * icons.table.cell_height, Measure.PIXEL),
+                    margin_right=ValueJSON(icons_model[icon.margin_right].as_long() * icons.table.cell_width,
+                                           Measure.PIXEL),
+                    margin_left=ValueJSON(icons_model[icon.margin_left].as_long() * icons.table.cell_width,
+                                          Measure.PIXEL),
+                    margin_top=ValueJSON(icons_model[icon.margin_top].as_long() * icons.table.cell_height,
+                                         Measure.PIXEL),
+                    margin_bottom=ValueJSON(icons_model[icon.margin_bottom].as_long() * icons.table.cell_height,
+                                            Measure.PIXEL),
+                    font_size=ValueJSON(icons_model[icon.col_count].as_long() * icons.table.cell_width,
+                                        Measure.PIXEL),
+                    label=icon.label
+                )
+                icons_json.children.append(icon_json)
+            sort_children(icons_json)
+            card_json.children.append(icons_json)
+
+        if buttons:
+            buttons_div_json = create_div(buttons, card, card_model, content_model)
+            for button in buttons.children:
+                button_json = BaseElementJSON(
+                    "button",
+                    x=ValueJSON(
+                        buttons_model[
+                            button.x].as_long() * buttons.table.cell_width * 100 / buttons.get_width_with_parent(
+                            card_model), Measure.PERCENT),
+                    y=ValueJSON(
+                        buttons_model[
+                            button.y].as_long() * buttons.table.cell_height * 100 / buttons.get_height_with_parent(
+                            card_model), Measure.PERCENT),
+                    width=ValueJSON(buttons_model[button.col_count].as_long() * buttons.table.cell_width,
+                                    Measure.PIXEL),
+                    height=ValueJSON(buttons_model[button.row_count].as_long() * buttons.table.cell_height,
+                                     Measure.PIXEL),
+                    margin_right=ValueJSON(buttons_model[button.margin_right].as_long() * buttons.table.cell_width,
+                                           Measure.PIXEL),
+                    margin_left=ValueJSON(buttons_model[button.margin_left].as_long() * buttons.table.cell_width,
+                                          Measure.PIXEL),
+                    margin_top=ValueJSON(buttons_model[button.margin_top].as_long() * buttons.table.cell_height,
+                                         Measure.PIXEL),
+                    margin_bottom=ValueJSON(buttons_model[button.margin_bottom].as_long() * buttons.table.cell_height,
+                                            Measure.PIXEL),
+                    padding_right=ValueJSON(1, Measure.EM),
+                    padding_left=ValueJSON(1, Measure.EM),
+                    padding_top=ValueJSON(0.5, Measure.EM),
+                    padding_bottom=ValueJSON(0.5, Measure.EM),
+                    label=button.label,
+                    text=button.text,
+                    text_align="center",
+                )
+                buttons_div_json.children.append(button_json)
+            sort_children(buttons_div_json)
+            card_json.children.append(buttons_div_json)
+
+        sort_children(card_json)
+        sort_children1(card, card_model, card_json)
+
+        content_json.children.append(card_json)
     return content_json
 
 
@@ -333,10 +261,10 @@ def create_header_json(header, body_model, header_model):
                          Measure.PERCENT),
         min_width=ValueJSON(header.min_width, Measure.PIXEL),
         min_height=ValueJSON(header.min_height, Measure.PIXEL),
-        margin_left=ValueJSON(body_model[header.margin_left] * body.table.cell_width, Measure.PIXEL),
-        margin_right=ValueJSON(body_model[header.margin_right] * body.table.cell_width, Measure.PIXEL),
-        margin_top=ValueJSON(body_model[header.margin_top] * body.table.cell_height, Measure.PIXEL),
-        margin_bottom=ValueJSON(body_model[header.margin_bottom] * body.table.cell_height, Measure.PIXEL),
+        margin_left=ValueJSON(body_model[header.margin_left].as_long() * body.table.cell_width, Measure.PIXEL),
+        margin_right=ValueJSON(body_model[header.margin_right].as_long() * body.table.cell_width, Measure.PIXEL),
+        margin_top=ValueJSON(body_model[header.margin_top].as_long() * body.table.cell_height, Measure.PIXEL),
+        margin_bottom=ValueJSON(body_model[header.margin_bottom].as_long() * body.table.cell_height, Measure.PIXEL),
         label=header.label,
         fullwidth=header.is_fullwidth,
         justify_left=header.justify_left,
@@ -344,55 +272,72 @@ def create_header_json(header, body_model, header_model):
         center_horizontal=True,
         center_vertical=True
     )
+    div_header = header.div_header
+    div_header_model = random_choose_model(div_header, header_model)
+
+    div_header_json = create_div(div_header, header, header_model, body_model, Measure.PERCENT)
 
     # TODO поправить говнокод
-    logo = header.logo
+    logo = div_header.logo
     if logo:
         logo_json = IconButtonJSON(
-            parent=header_json,
+            parent=div_header_json,
             icon_name="adjust",
-            x=ValueJSON(header_model[logo.x].as_long() * header.table.cell_width * 100 / header.get_width_with_parent(
-                body_model), Measure.PERCENT),
-            y=ValueJSON(header_model[logo.y].as_long() * header.table.cell_height * 100 / header.get_height_with_parent(
-                body_model),
+            x=ValueJSON(div_header_model[
+                            logo.x].as_long() * div_header.table.cell_width * 100 / div_header.get_width_with_parent(
+                header_model), Measure.PERCENT),
+            y=ValueJSON(div_header_model[
+                            logo.y].as_long() * div_header.table.cell_height * 100 / div_header.get_height_with_parent(
+                header_model),
                         Measure.PERCENT),
-            width=ValueJSON(header_model[logo.col_count].as_long() * header.table.cell_width, Measure.PIXEL),
-            height=ValueJSON(header_model[logo.row_count].as_long() * header.table.cell_height, Measure.PIXEL),
+            width=ValueJSON(div_header_model[logo.col_count].as_long() * div_header.table.cell_width, Measure.PIXEL),
+            height=ValueJSON(div_header_model[logo.row_count].as_long() * div_header.table.cell_height, Measure.PIXEL),
             min_width=ValueJSON(logo.min_width, Measure.PIXEL),
             min_height=ValueJSON(logo.min_height, Measure.PIXEL),
-            margin_left=ValueJSON(header_model[logo.margin_left].as_long() * header.table.cell_width, Measure.PIXEL),
-            margin_right=ValueJSON(header_model[logo.margin_right].as_long() * header.table.cell_width, Measure.PIXEL),
-            margin_top=ValueJSON(header_model[logo.margin_top].as_long() * header.table.cell_height, Measure.PIXEL),
-            margin_bottom=ValueJSON(header_model[logo.margin_bottom].as_long() * header.table.cell_height,
+            margin_left=ValueJSON(div_header_model[logo.margin_left].as_long() * div_header.table.cell_width,
+                                  Measure.PIXEL),
+            margin_right=ValueJSON(div_header_model[logo.margin_right].as_long() * div_header.table.cell_width,
+                                   Measure.PIXEL),
+            margin_top=ValueJSON(div_header_model[logo.margin_top].as_long() * div_header.table.cell_height,
+                                 Measure.PIXEL),
+            margin_bottom=ValueJSON(div_header_model[logo.margin_bottom].as_long() * div_header.table.cell_height,
                                     Measure.PIXEL),
             label=logo.label,
-            font_size=ValueJSON(header_model[logo.col_count].as_long() * header.table.cell_width, Measure.PIXEL),
+            font_size=ValueJSON(div_header_model[logo.col_count].as_long() * div_header.table.cell_width,
+                                Measure.PIXEL),
         )
-        header_json.children.append(logo_json)
+        div_header_json.children.append(logo_json)
 
-    nav = header.nav
+    nav = div_header.nav
     if nav:
         nav_json = NavListJSON(
             nav_list=nav.text_list.text_list,
-            parent=header_json,
-            x=ValueJSON(header_model[nav.x].as_long() * header.table.cell_width * 100 / header.get_width_with_parent(
-                body_model), Measure.PERCENT),
-            y=ValueJSON(header_model[nav.y].as_long() * header.table.cell_height * 100 / header.get_height_with_parent(
-                body_model), Measure.PERCENT),
+            parent=div_header_json,
+            x=ValueJSON(div_header_model[
+                            nav.x].as_long() * div_header.table.cell_width * 100 / div_header.get_width_with_parent(
+                header_model), Measure.PERCENT),
+            y=ValueJSON(div_header_model[
+                            nav.y].as_long() * div_header.table.cell_height * 100 / div_header.get_height_with_parent(
+                header_model), Measure.PERCENT),
             width=ValueJSON(
-                header_model[nav.col_count].as_long() * header.table.cell_width * 100 / header.get_width_with_parent(
-                    body_model),
+                div_header_model[
+                    nav.col_count].as_long() * div_header.table.cell_width * 100 / div_header.get_width_with_parent(
+                    header_model),
                 Measure.PERCENT),
             height=ValueJSON(
-                header_model[nav.row_count].as_long() * header.table.cell_height * 100 / header.get_height_with_parent(
-                    body_model),
+                div_header_model[
+                    nav.row_count].as_long() * div_header.table.cell_height * 100 / div_header.get_height_with_parent(
+                    header_model),
                 Measure.PERCENT),
             min_width=ValueJSON(nav.min_width, Measure.PIXEL),
             min_height=ValueJSON(nav.min_height, Measure.PIXEL),
-            margin_left=ValueJSON(header_model[nav.margin_left].as_long() * header.table.cell_width, Measure.PIXEL),
-            margin_right=ValueJSON(header_model[nav.margin_right].as_long() * header.table.cell_width, Measure.PIXEL),
-            margin_top=ValueJSON(header_model[nav.margin_top].as_long() * header.table.cell_height, Measure.PIXEL),
-            margin_bottom=ValueJSON(header_model[nav.margin_bottom].as_long() * header.table.cell_height,
+            margin_left=ValueJSON(div_header_model[nav.margin_left].as_long() * div_header.table.cell_width,
+                                  Measure.PIXEL),
+            margin_right=ValueJSON(div_header_model[nav.margin_right].as_long() * div_header.table.cell_width,
+                                   Measure.PIXEL),
+            margin_top=ValueJSON(div_header_model[nav.margin_top].as_long() * div_header.table.cell_height,
+                                 Measure.PIXEL),
+            margin_bottom=ValueJSON(div_header_model[nav.margin_bottom].as_long() * div_header.table.cell_height,
                                     Measure.PIXEL),
             label=nav.label,
             fullwidth=nav.is_fullwidth,
@@ -402,56 +347,24 @@ def create_header_json(header, body_model, header_model):
             flexgrow=nav.is_flexwidth,
             flexflow="row nowrap"
         )
-        header_json.children.append(nav_json)
+        div_header_json.children.append(nav_json)
 
-    search_div = header.search_div
+    search_div = div_header.search_div
     if search_div:
-        search_div_model = random_choose_model(search_div, header_model)
-        search_justify = random.choice(["start", "end"])
-        search_bar_div_json = BaseElementJSON(
-            parent=header_json,
-            tag="div",
-            x=ValueJSON(
-                header_model[search_div.x].as_long() * header.table.cell_width * 100 / header.get_width_with_parent(
-                    body_model),
-                Measure.PERCENT),
-            y=ValueJSON(
-                header_model[search_div.y].as_long() * header.table.cell_height * 100 / header.get_height_with_parent(
-                    body_model),
-                Measure.PERCENT),
-            width=ValueJSON(header_model[
-                                search_div.col_count].as_long() * header.table.cell_width * 100 / header.get_width_with_parent(
-                body_model),
-                            Measure.PERCENT),
-            height=ValueJSON(header_model[
-                                 search_div.row_count].as_long() * header.table.cell_height * 100 / header.get_height_with_parent(
-                body_model), Measure.PERCENT),
-            min_width=ValueJSON(search_div.min_width, Measure.PIXEL),
-            min_height=ValueJSON(search_div.min_height, Measure.PIXEL),
-            margin_left=ValueJSON(header_model[search_div.margin_left].as_long() * header.table.cell_width,
-                                  Measure.PIXEL),
-            margin_right=ValueJSON(header_model[search_div.margin_right].as_long() * header.table.cell_width,
-                                   Measure.PIXEL),
-            margin_top=ValueJSON(header_model[search_div.margin_top].as_long() * header.table.cell_height,
-                                 Measure.PIXEL),
-            margin_bottom=ValueJSON(header_model[search_div.margin_bottom].as_long() * header.table.cell_height,
-                                    Measure.PIXEL),
-            label=search_div.label,
-            fullwidth=search_div.is_fullwidth,
-            fullheight=search_div.is_fullheight,
-            flexgrow=search_div.is_flexwidth,
-            justify_left=search_justify == "start",
-            justify_right=search_justify == "end"
-        )
+        search_div_model = random_choose_model(search_div, div_header_model)
+        search_div.justify_right = random.choice([True, False])
+        search_bar_div_json = create_div(search_div, div_header, div_header_model, header_model, Measure.PERCENT)
 
         search_bar_json = BaseElementJSON(
             parent=search_bar_div_json,
             tag="input",
             x=ValueJSON(search_div_model[search_div.children[
-                0].x].as_long() * search_div.table.cell_width * 100 / search_div.get_width_with_parent(header_model),
+                0].x].as_long() * search_div.table.cell_width * 100 / search_div.get_width_with_parent(
+                div_header_model),
                         Measure.PERCENT),
             y=ValueJSON(search_div_model[search_div.children[
-                0].y].as_long() * search_div.table.cell_height * 100 / search_div.get_height_with_parent(header_model),
+                0].y].as_long() * search_div.table.cell_height * 100 / search_div.get_height_with_parent(
+                div_header_model),
                         Measure.PERCENT),
             width=ValueJSON(search_div_model[search_div.children[0].col_count].as_long() * search_div.table.cell_width,
                             Measure.PIXEL),
@@ -478,51 +391,13 @@ def create_header_json(header, body_model, header_model):
             fullheight=search_div.children[0].is_fullheight,
         )
         search_bar_div_json.children.append(search_bar_json)
-        header_json.children.append(search_bar_div_json)
+        div_header_json.children.append(search_bar_div_json)
 
-    icls_icons = header.icls_icons
+    icls_icons = div_header.icls_icons
     if icls_icons:
-        icls_icons_model = random_choose_model(icls_icons, header_model)
-        icls_icons_justify = random.choice(["center", "start", "end"])
-        icls_icons_json = BaseElementJSON(
-            "div",
-            x=ValueJSON(
-                header_model[icls_icons.x].as_long() * header.table.cell_width * 100 / header.get_width_with_parent(
-                    body_model),
-                Measure.PERCENT),
-            y=ValueJSON(
-                header_model[icls_icons.y].as_long() * header.table.cell_height * 100 / header.get_height_with_parent(
-                    body_model),
-                Measure.PERCENT),
-            width=ValueJSON(header_model[
-                                icls_icons.col_count].as_long() * header.table.cell_width * 100 / header.get_width_with_parent(
-                body_model),
-                            Measure.PERCENT),
-            height=ValueJSON(
-                header_model[
-                    icls_icons.row_count].as_long() * header.table.cell_height * 100 / header.get_height_with_parent(
-                    body_model),
-                Measure.PERCENT),
-            min_width=ValueJSON(icls_icons.min_width, Measure.PIXEL),
-            min_height=ValueJSON(icls_icons.min_height, Measure.PIXEL),
-            margin_left=ValueJSON(
-                header_model[icls_icons.margin_left].as_long() * header.table.cell_width, Measure.PIXEL),
-            margin_right=ValueJSON(
-                header_model[icls_icons.margin_right].as_long() * header.table.cell_width, Measure.PIXEL),
-            margin_top=ValueJSON(
-                header_model[icls_icons.margin_top].as_long() * header.table.cell_height, Measure.PIXEL),
-            margin_bottom=ValueJSON(
-                header_model[icls_icons.margin_bottom].as_long() * header.table.cell_height, Measure.PIXEL),
-            label=icls_icons.label,
-            parent=header_json,
-            fullwidth=icls_icons.is_fullwidth,
-            fullheight=icls_icons.is_fullheight,
-            center_horizontal=icls_icons_justify == "center",
-            center_vertical=False,
-            justify_left=icls_icons_justify == "start",
-            justify_right=icls_icons_justify == "end",
-            flexflow="row nowrap"
-        )
+        icls_icons_model = random_choose_model(icls_icons, div_header_model)
+        icls_icons.justify_right = random.choice([True, False])
+        icls_icons_json = create_div(icls_icons, div_header, div_header_model, header_model)
 
         for i in range(len(icls_icons.children)):
             icls_icons_json.children.append(
@@ -530,10 +405,10 @@ def create_header_json(header, body_model, header_model):
                     icon_name=icls_icons.children[i].name,
                     x=ValueJSON(icls_icons_model[icls_icons.children[
                         i].x].as_long() * icls_icons.table.cell_width * 100 / icls_icons.get_width_with_parent(
-                        header_model), Measure.PERCENT),
+                        div_header_model), Measure.PERCENT),
                     y=ValueJSON(icls_icons_model[icls_icons.children[
                         i].y].as_long() * header.table.cell_height * 100 / icls_icons.get_height_with_parent(
-                        header_model), Measure.PERCENT),
+                        div_header_model), Measure.PERCENT),
                     width=ValueJSON(
                         icls_icons_model[icls_icons.children[i].col_count].as_long() * icls_icons.table.cell_width,
                         Measure.PIXEL),
@@ -566,47 +441,13 @@ def create_header_json(header, body_model, header_model):
                 )
             )
         sort_children(icls_icons_json)
-        header_json.children.append(icls_icons_json)
+        div_header_json.children.append(icls_icons_json)
 
-    sn_icons = header.sn_icons
+    sn_icons = div_header.sn_icons
     if sn_icons:
-        sn_icons_model = random_choose_model(sn_icons, header_model)
-        sn_icons_justify = random.choice(["center", "start", "end"])
-        sn_icons_json = BaseElementJSON(
-            "div",
-            parent=header_json,
-            x=ValueJSON(
-                header_model[sn_icons.x].as_long() * header.table.cell_width * 100 / header.get_width_with_parent(
-                    body_model),
-                Measure.PERCENT),
-            y=ValueJSON(
-                header_model[sn_icons.y].as_long() * header.table.cell_height * 100 / header.get_height_with_parent(
-                    body_model),
-                Measure.PERCENT),
-            width=ValueJSON(header_model[
-                                sn_icons.col_count].as_long() * header.table.cell_width * 100 / header.get_width_with_parent(
-                body_model), Measure.PERCENT),
-            height=ValueJSON(header_model[
-                                 sn_icons.row_count].as_long() * header.table.cell_height * 100 / header.get_height_with_parent(
-                body_model), Measure.PERCENT),
-            min_width=ValueJSON(sn_icons.min_width, Measure.PIXEL),
-            min_height=ValueJSON(sn_icons.min_height, Measure.PIXEL),
-            margin_left=ValueJSON(header_model[sn_icons.margin_left].as_long() * header.table.cell_width,
-                                  Measure.PIXEL),
-            margin_right=ValueJSON(header_model[sn_icons.margin_right].as_long() * header.table.cell_width,
-                                   Measure.PIXEL),
-            margin_top=ValueJSON(header_model[sn_icons.margin_top].as_long() * header.table.cell_height, Measure.PIXEL),
-            margin_bottom=ValueJSON(header_model[sn_icons.margin_bottom].as_long() * header.table.cell_height,
-                                    Measure.PIXEL),
-            label=sn_icons.label,
-            fullwidth=sn_icons.is_fullwidth,
-            fullheight=sn_icons.is_fullheight,
-            center_horizontal=sn_icons_justify == "center",
-            center_vertical=False,
-            justify_left=sn_icons_justify == "start",
-            justify_right=sn_icons_justify == "end",
-            flexflow="row nowrap"
-        )
+        sn_icons_model = random_choose_model(sn_icons, div_header_model)
+        sn_icons.justify_right = random.choice([True, False])
+        sn_icons_json = create_div(sn_icons, div_header, div_header_model, header_model)
 
         for i in range(len(sn_icons.children)):
             sn_icons_json.children.append(
@@ -615,11 +456,11 @@ def create_header_json(header, body_model, header_model):
                     icon_name=sn_icons.children[i].name,
                     x=ValueJSON(sn_icons_model[sn_icons.children[
                         i].x].as_long() * sn_icons.table.cell_width * 100 / sn_icons.get_width_with_parent(
-                        header_model),
+                        div_header_model),
                                 Measure.PERCENT),
                     y=ValueJSON(sn_icons_model[sn_icons.children[
                         i].y].as_long() * sn_icons.table.cell_height * 100 / sn_icons.get_height_with_parent(
-                        header_model),
+                        div_header_model),
                                 Measure.PERCENT),
                     width=ValueJSON(sn_icons_model[sn_icons.children[
                         i].col_count].as_long() * sn_icons.table.cell_width, Measure.PIXEL),
@@ -643,28 +484,136 @@ def create_header_json(header, body_model, header_model):
                 )
             )
         sort_children(sn_icons_json)
-        header_json.children.append(sn_icons_json)
+        div_header_json.children.append(sn_icons_json)
 
-    sort_children(header_json)
+    sort_children(div_header_json)
+    header_json.children.append(div_header_json)
     return header_json
 
 
+# TODO SORT BY SMT VALUES
+# ИЛИ ПО-ДРУГОМУ СМОТРЕТЬ ПЕРЕСЕЧЕНИЯ
 def sort_children(parent):
     arr = sorted(parent.children, key=lambda child: child.x.val)
     for i in range(len(arr)):
-        if i - 1 >= 0 and arr[i].y.val > arr[i - 1].y.val and arr[i].x.val <= arr[i - 1].x.val + arr[i - 1].width.val:
-            arr.append(arr.pop(i))
-            i -= 1
-        elif i + 1 < len(arr) and arr[i].y.val > arr[i + 1].y.val and arr[i].x.val + arr[i].width.val >= arr[
-            i + 1].x.val:
-            arr.append(arr.pop(i))
+        for j in range(0, len(arr)):
+            if arr[j].y.val > arr[i].y.val:
+                arr[i], arr[j] = arr[j], arr[i]
+
     parent.children = arr
+
+
+def sort_children1(parent, parent_model, parent_json):
+    for child in parent.children:
+        child.right = []
+        child.left = []
+        child.top = []
+        child.bottom = []
+        for another_child in parent.children:
+            if child.label != another_child.label:
+                child_x = parent_model[child.x].as_long()
+                child_y = parent_model[child.y].as_long()
+                child_width = parent_model[child.col_count].as_long()
+                child_height = parent_model[child.row_count].as_long()
+                child_margin_left = parent_model[child.margin_left].as_long()
+                child_margin_right = parent_model[child.margin_right].as_long()
+                child_margin_bottom = parent_model[child.margin_bottom].as_long()
+                child_margin_top = parent_model[child.margin_top].as_long()
+                another_child_x = parent_model[another_child.x].as_long()
+                another_child_y = parent_model[another_child.y].as_long()
+                another_child_width = parent_model[another_child.col_count].as_long()
+                another_child_height = parent_model[another_child.row_count].as_long()
+                another_child_margin_left = parent_model[another_child.margin_left].as_long()
+                another_child_margin_right = parent_model[another_child.margin_right].as_long()
+                another_child_margin_bottom = parent_model[another_child.margin_bottom].as_long()
+                another_child_margin_top = parent_model[another_child.margin_top].as_long()
+
+                if ((child_x + child_width + child_margin_right <= another_child_x - another_child_margin_left) and
+                    (another_child_y - another_child_margin_top <= child_y - child_margin_top <= another_child_y + another_child_height + another_child_margin_bottom or
+                    child_y - child_margin_top <= another_child_y - another_child_margin_top <= child_y + child_height + child_margin_bottom)
+                ):
+                    child.right.append(another_child)
+                elif ((another_child_x + another_child_width + another_child_margin_right <= child_x - child_margin_left) and
+                    (another_child_y - another_child_margin_top <= child_y - child_margin_top <= another_child_y + another_child_height + another_child_margin_bottom or
+                    child_y - child_margin_top <= another_child_y - another_child_margin_top <= child_y + child_height + child_margin_bottom)
+                ):
+                    child.left.append(another_child)
+                elif ((child_y + child_height + child_margin_bottom <= another_child_y - another_child_margin_top) and
+                      (another_child_x - another_child_margin_left <= child_x - child_margin_left <= another_child_x + another_child_width + another_child_margin_right or
+                      child_x - child_margin_left <= another_child_x - another_child_margin_left <= child_x + child_width + child_margin_right)
+                ):
+                    child.bottom.append(another_child)
+                elif ((another_child_y + another_child_height + another_child_margin_bottom <= child_y - child_margin_top) and
+                      (another_child_x - another_child_margin_left <= child_x - child_margin_left <= another_child_x + another_child_width + another_child_margin_right or
+                      child_x - child_margin_left <= another_child_x - another_child_margin_left <= child_x + child_width + child_margin_right)
+                ):
+                    child.top.append(another_child)
+        if len(child.right) > 0:
+            arr = []
+            min_d = 100000
+            for another_child in child.right:
+                s = parent_model[another_child.x].as_long() - parent_model[another_child.margin_left].as_long() - parent_model[child.x].as_long() - parent_model[child.margin_right].as_long() - parent_model[child.col_count].as_long()
+                if s < min_d:
+                    min_d = s
+                    arr = [another_child]
+                elif s == min_d:
+                    arr.append(another_child)
+            child.right = arr
+        if len(child.left) > 0:
+            arr = []
+            min_d = 100000
+            for another_child in child.left:
+                s = parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() - parent_model[another_child.x].as_long() - parent_model[another_child.margin_right].as_long() - parent_model[another_child.col_count].as_long()
+                if s < min_d:
+                    min_d = s
+                    arr = [another_child]
+                elif s == min_d:
+                    arr.append(another_child)
+            child.left = arr
+        if len(child.bottom) > 0:
+            arr = []
+            min_d = 100000
+            for another_child in child.bottom:
+                s = parent_model[another_child.y].as_long() - parent_model[another_child.margin_top].as_long() - parent_model[child.y].as_long() - parent_model[child.margin_bottom].as_long() - parent_model[child.row_count].as_long()
+                if s < min_d:
+                    min_d = s
+                    arr = [another_child]
+                elif s == min_d:
+                    arr.append(another_child)
+            child.bottom = arr
+        if len(child.top) > 0:
+            arr = []
+            min_d = 100000
+            for another_child in child.top:
+                s = parent_model[child.y].as_long() - parent_model[child.margin_top].as_long() - parent_model[another_child.y].as_long() - parent_model[another_child.margin_bottom].as_long() - parent_model[another_child.row_count].as_long()
+                if s < min_d:
+                    min_d = s
+                    arr = [another_child]
+                elif s == min_d:
+                    arr.append(another_child)
+            child.top = arr
+        print("\n\nneighbours")
+        print(child.name)
+        print("Right:" + ",".join(ch.name for ch in child.right))
+        print("Left:" + ",".join(ch.name for ch in child.left))
+        print("Bottom:" + ",".join(ch.name for ch in child.bottom))
+        print("Top:" + ",".join(ch.name for ch in child.top))
+        # TODO чекать в цикле топ-бот
+
+    #for i in range(len(arr)):
+    #    for j in range(0, len(arr)):
+    #        x_i = parent_model[arr[i].x].as_long()
+    #        y_i = parent_model[arr[i].y].as_long()
+    #        x_j = parent_model[arr[j].x].as_long()
+    #        y_j = parent_model[arr[j].y].as_long()
+    #        width_i = parent_model[arr[i].col_count].as_long()
+    #        margin_right_i = parent_model[arr[i].margin_right].as_long()
+    #        margin_left_j = parent_model[arr[j].margin_left].as_long()
+            # if y_j > y_i and (x_i + width_i + margin_right_i)
 
 
 def random_choose_model(child, parent_model):
     models = []
-    print(child.label)
-    print(child.models)
     for model in child.models:
         if model.parent.m == parent_model:
             models.append(model)
@@ -674,11 +623,14 @@ def random_choose_model(child, parent_model):
 def generate_html(parent):
     doc, tag, text = Doc().tagtext()
     styles = []
+    generate_html_style(styles)
     generate_style(parent, styles)
     with tag('html'):
         with tag('head'):
             doc.stag("link", rel="stylesheet",
                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+            doc.stag("link", rel="stylesheet",
+                     href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css")
             with tag('style'):
                 doc.text("".join(styles))
         with tag('body'):
@@ -690,6 +642,8 @@ def generate_html(parent):
 def generate_element_html(element, doc, tag):
     if element.tag == 'input':
         doc.stag(element.tag, ('type', 'text'), ('placeholder', 'Search'), ('class', element.label))
+    elif element.tag == 'img':
+        doc.stag(element.tag, ('src', element.text), ('alt', element.label), ('class', element.label))
     else:
         class_exists = False
         with tag(element.tag):
@@ -708,41 +662,109 @@ def generate_element_html(element, doc, tag):
                     generate_element_html(child, doc, tag)
 
 
+def generate_html_style(styles):
+    styles.append(
+        f"""html {{
+        font: caption;
+        --main: #732673;
+        --black-text: #000000;
+        --white-text: #FFFFFF;
+        }}
+        a {{
+        text-decoration: none;
+        }}
+        a:hover {{
+        text-decoration: none;
+        }}
+        """
+    )
+
+
 def generate_style(parent, styles):
     styles.append(
         f""".{parent.label} {{
         flex-grow: {parent.flexgrow};
-        font-size: {parent.font_size.val}{parent.font_size.measure.value};
-        flex-basis: {parent.width.val}{parent.width.measure.value};       
-        min-width:{parent.min_width.val}{parent.min_width.measure.value};
-        min-height:{parent.min_height.val}{parent.min_height.measure.value};
-        margin-right: {parent.margin_right.val}{parent.margin_right.measure.value};
-        margin-left: {parent.margin_left.val}{parent.margin_left.measure.value};
-        margin-top: {parent.margin_top.val}{parent.margin_top.measure.value};
-        margin-bottom: {parent.margin_bottom.val}{parent.margin_bottom.measure.value};
-        padding-left: {parent.padding_left.val}{parent.padding_left.measure.value};
-        padding-right: {parent.padding_right.val}{parent.padding_right.measure.value};
-        padding-top: {parent.padding_top.val}{parent.padding_top.measure.value};
-        padding-bottom: {parent.padding_bottom.val}{parent.padding_bottom.measure.value};
-        background: #{random.randint(100000, 999999)};
+        flex-basis: {parent.width};
+        font-size: {parent.font_size};   
+        min-width:{parent.min_width};
+        min-height:{parent.min_height};
+        margin-right: {parent.margin_right};
+        margin-left: {parent.margin_left};
+        margin-top: {parent.margin_top};
+        margin-bottom: {parent.margin_bottom};
+        padding-left: {parent.padding_left};
+        padding-right: {parent.padding_right};
+        padding-top: {parent.padding_top};
+        padding-bottom: {parent.padding_bottom};
         text-align: {parent.text_align};
         """)
+
     if parent.tag == 'input':
-        styles += "border: 0"
+        styles += style_input()
+    if parent.tag == 'header':
+        styles += style_header()
     if len(parent.children) > 0:
         if parent.center_vertical:
             styles += "align-items: center;\n"
+        else:
+            styles += "align-items: flex-start;\n"
         if parent.center_horizontal:
             styles += "justify-content: center;\n"
         elif parent.justify_left:
             styles += "justify-content: start;\n"
         elif parent.justify_right:
             styles += "justify-content: end;\n"
-        styles.append(f"display: flex;\nalign-content: {parent.align_content};\nflex-flow: {parent.flexflow};\n}}")
+        styles += f"display: flex;\nalign-content: {parent.align_content};\nflex-flow: {parent.flexflow};\n}}"
+
+        children = []
         for child in parent.children:
+            if child.label not in [ch.label for ch in children]:
+                children.append(child)
+        for child in children:
             generate_style(child, styles)
     else:
         styles.append("\n}\n")
+
+
+def style_input():
+    return """border: 0;
+    """
+
+
+def style_header():
+    return """
+        border-bottom: 1px solid #dfdee2;
+    """
+
+
+def create_div(child, parent, parent_model, parent_parent_model, measure=Measure.PIXEL):
+    if measure == Measure.PIXEL:
+        width = ValueJSON(parent_model[child.col_count].as_long() * parent.table.cell_width, measure)
+        height = ValueJSON(parent_model[child.row_count].as_long() * parent.table.cell_height, measure)
+    else:
+        width = ValueJSON(parent_model[child.col_count].as_long() * parent.table.cell_width * 100 / parent.get_width_with_parent(parent_parent_model), measure)
+        height = ValueJSON(parent_model[child.row_count].as_long() * parent.table.cell_height * 100 / parent.get_height_with_parent(parent_parent_model), measure)
+    return BaseElementJSON(
+        "div",
+        x=ValueJSON(parent_model[child.x].as_long() * parent.table.cell_width * 100 / parent.get_width_with_parent(
+            parent_parent_model), Measure.PERCENT),
+        y=ValueJSON(parent_model[child.y].as_long() * parent.table.cell_height * 100 / parent.get_height_with_parent(
+            parent_parent_model), Measure.PERCENT),
+        width=width,
+        height=height,
+        margin_left=ValueJSON(parent_model[child.margin_left].as_long() * parent.table.cell_width, Measure.PIXEL),
+        margin_right=ValueJSON(parent_model[child.margin_right].as_long() * parent.table.cell_width, Measure.PIXEL),
+        margin_top=ValueJSON(parent_model[child.margin_top].as_long() * parent.table.cell_height, Measure.PIXEL),
+        margin_bottom=ValueJSON(parent_model[child.margin_bottom].as_long() * parent.table.cell_height, Measure.PIXEL),
+        min_width=ValueJSON(child.min_width, Measure.PIXEL),
+        label=child.label,
+        center_horizontal=child.center_horizontal,
+        center_vertical=child.center_vertical,
+        fullwidth=child.is_fullwidth,
+        justify_left=child.justify_left,
+        justify_right=child.justify_right,
+        flexgrow=child.is_flexwidth,
+    )
 
 
 for i in range(len(header.models)):

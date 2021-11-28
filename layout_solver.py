@@ -28,17 +28,17 @@ def place_elem(x, y, col_count, row_count, label, arr):
 
 
 def create_body(width=1900, height=1000):
-    body = BaseElement("body", width=width, height=height, label='body')
+    body = BaseElement("body", width=width, height=height, min_width=width, min_height=height, label='body')
     body.table = Table(10, 10, width=width, height=height)
 
     return body
 
 
-def create_content(parent, is_fullwidth=False, justify_left=False, justify_right=False, min_width=0, min_height=0,
+def create_content(parent, is_fullwidth=False, is_flexwidth=False, justify_left=False, justify_right=False, min_width=0, min_height=0,
                    max_width=None, max_height=None, min_margin_right=0, min_margin_left=0, min_margin_top=0,
                    min_margin_bottom=0, max_margin_right=10, max_margin_left=10, max_margin_top=10,
                    max_margin_bottom=10):
-    content = BaseElement("content", parent=parent, is_fullwidth=is_fullwidth, justify_left=justify_left,
+    content = BaseElement("content", parent=parent, is_fullwidth=is_fullwidth, is_flexwidth=is_flexwidth, justify_left=justify_left,
                           justify_right=justify_right, min_width=min_width, label="content",
                           min_height=min_height, max_width=max_width, max_height=max_height,
                           min_margin_right=min_margin_right,
@@ -51,22 +51,22 @@ def create_content(parent, is_fullwidth=False, justify_left=False, justify_right
     return content
 
 
-def create_card(parent, number, size, min_margin_right=0, min_margin_left=0,
+def create_card(parent, number, size, min_margin_right=0, min_margin_left=0, center_horizontal=False, center_vertical=False,
                 min_margin_top=0, min_margin_bottom=0, max_margin_right=10, max_margin_left=10, max_margin_top=10,
                 max_margin_bottom=10):
-    card = CardElement(f"card_{number}", size, parent=parent, min_margin_right=min_margin_right,
-                       min_margin_left=min_margin_left,
+    card = CardElement(f"card{number}", size, parent=parent, min_margin_right=min_margin_right,
+                       min_margin_left=min_margin_left, center_horizontal=center_horizontal,
                        min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom,
                        max_margin_right=max_margin_right, max_margin_left=max_margin_left,
-                       max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom)
+                       max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom, center_vertical=center_vertical)
 
     return card
 
 
 def create_text(text, parent, label, min_width=0, min_height=0, max_width=None, max_height=None, min_margin_right=0,
                 min_margin_left=0, is_fullwidth=False, is_flexwidth=False,
-                min_margin_top=0, min_margin_bottom=0, max_margin_right=10, max_margin_left=10, max_margin_top=10,
-                max_margin_bottom=10):
+                min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0,
+                max_margin_bottom=0):
     text = TextElement(text, min_width=min_width, min_height=min_height, max_width=max_width, max_height=max_height,
                        parent=parent, is_fullwidth=is_fullwidth, is_flexwidth=is_flexwidth,
                        min_margin_right=min_margin_right, min_margin_left=min_margin_left,
@@ -77,10 +77,10 @@ def create_text(text, parent, label, min_width=0, min_height=0, max_width=None, 
 
 
 def create_icons_list(parent, name, label, rules=None, center_horizontal=False, center_vertical=False,
-                      min_margin_right=0,
+                      min_margin_right=0, is_fullwidth=False,
                       min_margin_left=0, min_margin_top=0, min_margin_bottom=0, max_margin_right=0,
                       max_margin_left=0, max_margin_top=0, max_margin_bottom=0, is_vertical=False):
-    icons_list = IconsListElement(name, rules=rules, label=label,
+    icons_list = IconsListElement(name, rules=rules, label=label, is_fullwidth=is_fullwidth,
                                   center_horizontal=center_horizontal, center_vertical=center_vertical, parent=parent,
                                   min_margin_right=min_margin_right, min_margin_left=min_margin_left,
                                   min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom,
@@ -91,12 +91,14 @@ def create_icons_list(parent, name, label, rules=None, center_horizontal=False, 
     return icons_list
 
 
-def create_div(parent, name, label, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0,
-               max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
-    div = BaseElement(name, label=label, min_margin_right=min_margin_right, min_margin_left=min_margin_left,
-                      min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom,
-                      max_margin_right=max_margin_right, max_margin_left=max_margin_left,
-                      max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom, parent=parent)
+def create_div(parent, name, label, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0, is_flexheight=False, is_flexwidth=False,
+               max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0, min_width=0, min_height=0, is_fullwidth=False,
+               width=None, height=None, center_horizontal=False, center_vertical=False,):
+    div = BaseElement(name, min_width=min_width, min_height=min_height, label=label, min_margin_right=min_margin_right, min_margin_left=min_margin_left,
+                      min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom, is_fullwidth=is_fullwidth, is_flexwidth=is_flexwidth,
+                      max_margin_right=max_margin_right, max_margin_left=max_margin_left, is_flexheight=is_flexheight,
+                      max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom, parent=parent, width=width, height=height,
+                      center_vertical=center_vertical, center_horizontal=center_horizontal)
 
     return div
 
@@ -146,11 +148,11 @@ def create_text_list(parent, name, label, text_list, is_fullwidth=False,
 
 
 def create_search_div(parent, is_fullwidth=False, is_flexwidth=False, is_flexheight=False,
-                      min_width=0, min_height=0, max_width=None, max_height=None,
+                      search_min_width=0, search_min_height=0, max_width=None, max_height=None,
                       min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0,
                       max_margin_right=10, max_margin_left=10, max_margin_top=10, max_margin_bottom=10):
-    search = BaseElement("search", min_width=200, min_height=30, min_margin_left=10, min_margin_right=10,
-                         min_margin_bottom=10, min_margin_top=10, label="search")
+    search = BaseElement("search", min_width=search_min_width, min_height=search_min_height, min_margin_left=10, min_margin_right=10,
+                         min_margin_bottom=0, min_margin_top=0, label="search")
     search_div = BaseElement("search", is_flexwidth=is_flexwidth, is_flexheight=is_flexheight,
                              is_fullwidth=is_fullwidth,
                              min_height=search.min_height + search.min_margin_bottom + search.min_margin_top,
@@ -188,8 +190,12 @@ def solve(parent, rule=None, parent_model=None):
     s = Optimize()
     if rule is not None:
         s.add(rule)
+
+    if parent.width:
+        s.add(parent.col_count == parent.table.get_col_count_from_width(parent.width))
+    if parent.height:
+        s.add(parent.row_count == parent.table.get_row_count_from_height(parent.height))
     for child in parent.children:
-        print(child.label)
         s.add(And(
             child.x - child.margin_left >= 0,
             child.x + child.col_count + child.margin_right <= parent.table.col_count,
@@ -223,7 +229,7 @@ def solve(parent, rule=None, parent_model=None):
         else:
             s.add(child.row_count >= parent.table.get_row_count_from_height(child.min_height))
             if child.max_height:
-                s.add(child.row_count <= parent.row_count)
+                s.add(child.row_count <= parent.table.get_row_count_from_height(child.max_height))
 
         for another_child in parent.children:
             if child != another_child:
@@ -249,7 +255,11 @@ def solve(parent, rule=None, parent_model=None):
                 s.minimize(child.x)
             elif parent.justify_right:
                 s.maximize(child.x)
-
+        if child.is_fullwidth:
+            print("fullwidth:")
+            print(child.name)
+            print(parent.name)
+            s.add(child.col_count + child.margin_left + child.margin_right == parent.table.col_count)
         if child.is_flexwidth:
             s.maximize(child.col_count)
         if child.is_flexheight:
@@ -267,6 +277,7 @@ def solve(parent, rule=None, parent_model=None):
         parent.add_model(model)
 
         for child in parent.children:
+            print(m[parent.col_count])
             print(f"{child.x} : {m[child.x]}")
             print(f"{child.y} : {m[child.y]}")
             print(f"{child.col_count} : {m[child.col_count]}")
@@ -279,11 +290,12 @@ def solve(parent, rule=None, parent_model=None):
                        m[child.row_count].as_long(), child.label, arr)
 
             if len(child.children) > 0:
-                child.table = Table(10, 10, width=child.get_width_with_parent(m),
+                child.table = Table(5, 5, width=child.get_width_with_parent(m),
                                     height=child.get_height_with_parent(m))
                 find_solutions(child, model)
-        for i in range(len(arr)):
-            print(arr[i])
+        if parent.name != 'body' and parent.name != 'content':
+            for i in range(len(arr)):
+                print(arr[i])
         print("----------------------------------------------------")
 
     else:

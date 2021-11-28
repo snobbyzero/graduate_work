@@ -88,8 +88,12 @@ class IconButtonJSON(BaseElementJSON):
         elif icon_name == 'facebook':
             self.attrs.append(('class', 'fa fa-facebook'))
         elif icon_name == 'wishlist':
-            self.attrs.append(('class', 'fab fa-bookmark'))
+            self.attrs.append(('class', 'fa fa-bookmark'))
         elif icon_name == 'compare':
-            self.attrs.append(('class', 'far fa-chart-bar'))
+            self.attrs.append(('class', 'fa fa-list'))
+        elif icon_name == 'rating':
+            self.attrs.append(('class', 'fa fa-star'))
+        elif icon_name == 'comment':
+            self.attrs.append(('class', 'fa fa-comment'))
         else:
             self.attrs.append(('class', f'fa fa-{icon_name}'))

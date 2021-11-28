@@ -21,5 +21,5 @@ class TextList:
                 height = text_list[i].min_height
                 if height > highest_word.min_height:
                     highest_word = text_list[i]
-            self.min_width = sum([len(text_list[i].text) for i in range(len(text_list))])
+            self.min_width = sum([text_list[i].min_width + text_list[i].min_margin_right + text_list[i].min_margin_left for i in range(len(text_list))])
             self.min_height = highest_word.min_height

@@ -41,6 +41,8 @@ class BaseElementJSON:
     ):
         if attrs is None:
             self.attrs = []
+        else:
+            self.attrs = attrs
         if children is None:
             self.children = []
         self.parent = parent

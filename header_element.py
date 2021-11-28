@@ -9,9 +9,19 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
     icls_icons = None
     sn_icons = None
 
+    div_header = None
+    fullwidth = random.choice([True, False])
+    if fullwidth:
+        div_header = create_div(header, "div_header", "div_header", min_width=header.min_width, min_height=header.min_height, center_vertical=True)
+    else:
+        div_header = create_div(header, "div_header", "div_header", min_width=1000, min_height=header.min_height, center_vertical=True)
+
+    header.add_child(div_header)
+    header.div_header = div_header
+
     if is_logo:
         logo = create_child(
-            header,
+            div_header,
             "logo",
             "l",
             width=60,
@@ -25,13 +35,13 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
             max_margin_bottom=10,
             max_margin_top=10
         )
-        header.add_child(logo)
-        header.logo = logo
+        div_header.add_child(logo)
+        div_header.logo = logo
 
     if len(nav_list) > 0:
         links = [TextElement(nav_list[i], label='nav_a', min_width=100, min_height=10) for i in range(len(nav_list))]
         nav = create_text_list(
-            header,
+            div_header,
             "nav",
             "n",
             TextList(links),
@@ -45,15 +55,14 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
             max_margin_bottom=10,
             max_margin_top=10
         )
-        header.add_child(nav)
-        header.nav = nav
+        div_header.add_child(nav)
+        div_header.nav = nav
 
     if is_search:
         search_div = create_search_div(
-            header,
-            min_width=200,
-            min_height=60,
-            is_flexwidth=True,
+            div_header,
+            search_min_width=200,
+            search_min_height=50,
             min_margin_left=10,
             min_margin_right=10,
             min_margin_top=10,
@@ -61,14 +70,15 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
             max_margin_left=20,
             max_margin_right=20,
             max_margin_bottom=10,
-            max_margin_top=10
+            max_margin_top=10,
+            is_flexwidth=True
         )
-        header.add_child(search_div)
-        header.search_div = search_div
+        div_header.add_child(search_div)
+        div_header.search_div = search_div
 
     if len(icls_icons_list) > 0:
         icls_icons = create_icons_list(
-            header,
+            div_header,
             "icls_icons",
             "icls_icons",
             min_margin_left=10,
@@ -86,8 +96,8 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
                 icls_icons,
                 icon,
                 icon_label='icls_icon',
-                icon_width=40,
-                icon_height=40,
+                icon_width=25,
+                icon_height=25,
                 min_margin_left=0,
                 min_margin_right=10,
                 min_margin_top=0,
@@ -101,12 +111,12 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
         [icons[i].set_neighbours(right_elements=icons[i:], left_elements=icons[i:]) for i in range(len(icons))]
         icls_icons.add_children(icons)
 
-        header.add_child(icls_icons)
-        header.icls_icons = icls_icons
+        div_header.add_child(icls_icons)
+        div_header.icls_icons = icls_icons
 
     if len(sn_icons_list) > 0:
         sn_icons = create_icons_list(
-            header,
+            div_header,
             "sn_icons",
             "sn_icons",
             min_margin_left=10,
@@ -124,8 +134,8 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
                 sn_icons,
                 icon,
                 icon_label='sn_icon',
-                icon_width=40,
-                icon_height=40,
+                icon_width=25,
+                icon_height=25,
                 min_margin_left=0,
                 min_margin_right=10,
                 min_margin_top=0,
@@ -139,8 +149,8 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
         [icons[i].set_neighbours(right_elements=icons[i:], left_elements=icons[i:]) for i in range(len(icons))]
         sn_icons.add_children(icons)
 
-        header.add_child(sn_icons)
-        header.sn_icons = sn_icons
+        div_header.add_child(sn_icons)
+        div_header.sn_icons = sn_icons
 
     logo.set_neighbours(
         right_elements=[nav, search_div, icls_icons, sn_icons],
@@ -169,8 +179,7 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
         top_elements=[search_div, nav],
         bottom_elements=[search_div, nav]
     )
-    header.add_children([logo, nav, search_div, icls_icons, sn_icons])
-    header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
+    div_header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
                     And(nav.y == logo.y, search_div.y >= nav.y + nav.row_count),
                     And(search_div.y == logo.y, nav.y >= search_div.y + search_div.row_count)]
 

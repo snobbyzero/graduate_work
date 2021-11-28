@@ -100,16 +100,16 @@ class BaseElement:
         self.center_horizontal = center_horizontal
         self.center_vertical = center_vertical
 
-        if is_fullwidth:
-            self.min_width = parent.width
-            self.max_width = parent.width
-        elif is_flexwidth:
-            if min_width:
-                self.min_width = min_width
-            else:
-                self.min_width = 0
-            self.max_width = parent.width
-        elif width is not None:
+        #if is_fullwidth:
+        #    self.min_width = parent.width
+        #    self.max_width = parent.width
+        #elif is_flexwidth:
+        #    if min_width:
+        #        self.min_width = min_width
+        #    else:
+        #        self.min_width = 0
+        #    self.max_width = parent.width
+        if width is not None:
             self.min_width = width
             self.max_width = width
         else:
@@ -119,16 +119,16 @@ class BaseElement:
             else:
                 self.max_width = parent.width
 
-        if is_fullheight:
-            self.min_height = parent.height
-            self.max_height = parent.height
-        elif is_flexheight:
-            if min_height:
-                self.min_height = min_height
-            else:
-                self.min_height = 0
-            self.max_height = parent.height
-        elif height is not None:
+        #if is_fullheight:
+        #    self.min_height = parent.height
+        #    self.max_height = parent.height
+        #elif is_flexheight:
+        #    if min_height:
+        #        self.min_height = min_height
+        #    else:
+        #        self.min_height = 0
+        #    self.max_height = parent.height
+        if height is not None:
             self.min_height = height
             self.max_height = height
         else:

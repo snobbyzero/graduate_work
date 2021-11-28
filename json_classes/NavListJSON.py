@@ -90,5 +90,6 @@ class NavListJSON(BaseElementJSON):
                 padding_top=ValueJSON(1, Measure.REM),
                 padding_bottom=ValueJSON(1, Measure.REM),
                 text=link.text,
-                text_align=self.text_align
+                text_align=self.text_align,
+                attrs=[("href", "#")]
             ))
