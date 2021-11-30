@@ -20,7 +20,7 @@ content = create_content_element(
     card_size='sm',
     card_title='Title',
     card_description='Description blabla',
-    card_image='https://sun9-11.userapi.com/impg/Fv1NDtYjevwOdKwShhcP7O6G3_WF0m1-xgRDAg/cH0kHAGijko.jpg?size=640x640&quality=96&sign=af4b0fdf074265fbdf6bdcf9b96b502a&type=album',
+    card_image='https://sun9-43.userapi.com/impg/Ha_wpq_AueJtwdspfxmpeG_wi4g7TLMaARg3Xg/tpMV0yQDJxI.jpg?size=528x482&quality=96&sign=54957fbf71c1e9944a8670baf6ecddc0&type=album',
     card_icons_list=['compare', 'wishlist'],
     card_icon_chips=[],
     card_buttons=['Add to Cart'],
@@ -45,7 +45,7 @@ header = create_header_element(
 
 body.add_children([header, content])
 header.set_neighbours(bottom_elements=[content])
-find_solutions(body)  # TODO BODY
+find_solutions(body)
 print(header)
 
 
@@ -487,6 +487,7 @@ def create_header_json(header, body_model, header_model):
         div_header_json.children.append(sn_icons_json)
 
     sort_children(div_header_json)
+    sort_children1(div_header, div_header_model, div_header_json)
     header_json.children.append(div_header_json)
     return header_json
 
@@ -548,39 +549,23 @@ def sort_children1(parent, parent_model, parent_json):
                       child_x - child_margin_left <= another_child_x - another_child_margin_left <= child_x + child_width + child_margin_right)
                 ):
                     child.top.append(another_child)
-        if len(child.right) > 0:
-            arr = []
-            min_d = 100000
-            for another_child in child.right:
-                s = parent_model[another_child.x].as_long() - parent_model[another_child.margin_left].as_long() - parent_model[child.x].as_long() - parent_model[child.margin_right].as_long() - parent_model[child.col_count].as_long()
-                if s < min_d:
-                    min_d = s
-                    arr = [another_child]
-                elif s == min_d:
-                    arr.append(another_child)
-            child.right = arr
-        if len(child.left) > 0:
-            arr = []
-            min_d = 100000
-            for another_child in child.left:
-                s = parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() - parent_model[another_child.x].as_long() - parent_model[another_child.margin_right].as_long() - parent_model[another_child.col_count].as_long()
-                if s < min_d:
-                    min_d = s
-                    arr = [another_child]
-                elif s == min_d:
-                    arr.append(another_child)
-            child.left = arr
+        child.min_bottom = []
+        child.min_top = []
         if len(child.bottom) > 0:
             arr = []
             min_d = 100000
             for another_child in child.bottom:
                 s = parent_model[another_child.y].as_long() - parent_model[another_child.margin_top].as_long() - parent_model[child.y].as_long() - parent_model[child.margin_bottom].as_long() - parent_model[child.row_count].as_long()
+                #t = (
+                #        parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[another_child.x].as_long() - parent_model[another_child.margin_left].as_long() <= parent_model[child.x].as_long() + parent_model[child.col_count].as_long() + parent_model[child.margin_right].as_long() and
+                #        parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[another_child.x].as_long() + parent_model[another_child.col_count].as_long() + parent_model[another_child.margin_right].as_long() <= parent_model[child.x].as_long() + parent_model[child.col_count].as_long() + parent_model[child.margin_right].as_long()
+                #)
                 if s < min_d:
                     min_d = s
                     arr = [another_child]
                 elif s == min_d:
                     arr.append(another_child)
-            child.bottom = arr
+            child.min_bottom = arr
         if len(child.top) > 0:
             arr = []
             min_d = 100000
@@ -591,25 +576,123 @@ def sort_children1(parent, parent_model, parent_json):
                     arr = [another_child]
                 elif s == min_d:
                     arr.append(another_child)
-            child.top = arr
+            child.min_top = arr
         print("\n\nneighbours")
         print(child.name)
         print("Right:" + ",".join(ch.name for ch in child.right))
         print("Left:" + ",".join(ch.name for ch in child.left))
         print("Bottom:" + ",".join(ch.name for ch in child.bottom))
         print("Top:" + ",".join(ch.name for ch in child.top))
-        # TODO чекать в цикле топ-бот
+    for child in parent.children:
+        div = [child]
+        print("----------")
+        print("child name: " + child.name)
+        if child.name == 'card_image':
+            print('card_image')
+        for another_child in child.min_bottom + child.min_top:
+            print("Min bottom children")
+            print(another_child.name)
+            t = (
+                    parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
+                another_child.x].as_long() - parent_model[another_child.margin_left].as_long() <= parent_model[
+                        child.x].as_long() + parent_model[child.col_count].as_long() + parent_model[
+                        child.margin_right].as_long() and
+                    parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
+                        another_child.x].as_long() + parent_model[another_child.col_count].as_long() + parent_model[
+                        another_child.margin_right].as_long() <= parent_model[child.x].as_long() + parent_model[
+                        child.col_count].as_long() + parent_model[child.margin_right].as_long()
+            )
+            d = (
+                    parent_model[another_child.x].as_long() - parent_model[another_child.margin_left].as_long() <= parent_model[
+                another_child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
+                        another_child.x].as_long() + parent_model[another_child.col_count].as_long() + parent_model[
+                        another_child.margin_right].as_long() and
+                    parent_model[another_child.x].as_long() - parent_model[another_child.margin_left].as_long() <= parent_model[
+                        child.x].as_long() + parent_model[another_child.col_count].as_long() +
+                    parent_model[another_child.margin_right].as_long() <= parent_model[another_child.x].as_long() +
+                    parent_model[another_child.col_count].as_long() + parent_model[another_child.margin_right].as_long()
+            )
+            if t or d:
+                div.append(another_child)
+                for neighbour in another_child.right + another_child.left:
+                    # если координаты внутри координат элемента
+                    nt = (
+                            parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
+                        neighbour.x].as_long() - parent_model[neighbour.margin_left].as_long() <= parent_model[
+                                child.x].as_long() + parent_model[child.col_count].as_long() + parent_model[
+                                child.margin_right].as_long() and
+                            parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
+                                neighbour.x].as_long() + parent_model[neighbour.col_count].as_long() +
+                            parent_model[neighbour.margin_right].as_long() <= parent_model[child.x].as_long() +
+                            parent_model[child.col_count].as_long() + parent_model[child.margin_right].as_long()
+                    )
+                    # если одна из координат вне координат элемент
+                    nw = (
+                            (parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() >= parent_model[neighbour.x].as_long() - parent_model[neighbour.margin_left].as_long() and
+                            parent_model[neighbour.x].as_long() + parent_model[neighbour.col_count].as_long() + parent_model[neighbour.margin_right].as_long() <= parent_model[child.x].as_long() + parent_model[child.col_count].as_long() + parent_model[child.margin_right].as_long())
+                            or
+                            (parent_model[neighbour.x].as_long() + parent_model[neighbour.col_count].as_long() + parent_model[neighbour.margin_right].as_long() >= parent_model[child.x].as_long() + parent_model[child.col_count].as_long() + parent_model[child.margin_right].as_long() and
+                             parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() >= parent_model[neighbour.x].as_long() - parent_model[neighbour.margin_left].as_long())
+                    )
+                    # если координаты элемента внутри координат соседа
+                    nd = (
+                            parent_model[neighbour.x].as_long() - parent_model[neighbour.margin_left].as_long() <= parent_model[
+                        neighbour.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
+                                neighbour.x].as_long() + parent_model[neighbour.col_count].as_long() + parent_model[
+                                neighbour.margin_right].as_long() and
+                            parent_model[neighbour.x].as_long() - parent_model[neighbour.margin_left].as_long() <= parent_model[
+                                child.x].as_long() + parent_model[neighbour.col_count].as_long() +
+                            parent_model[neighbour.margin_right].as_long() <= parent_model[neighbour.x].as_long() +
+                            parent_model[neighbour.col_count].as_long() + parent_model[neighbour.margin_right].as_long()
+                    )
+                    if nt or nd:
+                        div.append(neighbour)
+                    elif nw:
+                        div = []
+        div_json = None
 
-    #for i in range(len(arr)):
-    #    for j in range(0, len(arr)):
-    #        x_i = parent_model[arr[i].x].as_long()
-    #        y_i = parent_model[arr[i].y].as_long()
-    #        x_j = parent_model[arr[j].x].as_long()
-    #        y_j = parent_model[arr[j].y].as_long()
-    #        width_i = parent_model[arr[i].col_count].as_long()
-    #        margin_right_i = parent_model[arr[i].margin_right].as_long()
-    #        margin_left_j = parent_model[arr[j].margin_left].as_long()
-            # if y_j > y_i and (x_i + width_i + margin_right_i)
+        # То есть есть элементы, которые можно объединить в один див
+        if len(div) > 1:
+            arr = []
+            for el in div:
+                for el_json in parent_json.children:
+                    if el.label == el_json.label:
+                        arr.append(el_json)
+            if len(arr) > 1:
+                for el_json in arr:
+                    if hasattr(el_json, "div"):
+                        div_json = el_json.div
+                        break
+                if not div_json:
+                    div_json = BaseElementJSON(
+                        "div",
+                        ValueJSON(0, Measure.WORD),
+                        ValueJSON(0, Measure.WORD),
+                        ValueJSON(0, Measure.WORD),
+                        ValueJSON(0, Measure.WORD),
+                        ValueJSON(0, Measure.PIXEL),
+                        ValueJSON(0, Measure.PIXEL),
+                        ValueJSON(0, Measure.PIXEL),
+                        ValueJSON(0, Measure.PIXEL),
+                        "unite_div" + str(len(parent_json.children)) + parent_json.label,
+                        center_horizontal=parent_json.center_horizontal,
+                        center_vertical=parent_json.center_vertical,
+                        flexflow=parent_json.flexflow,
+                        flexgrow=1,
+                        justify_left=parent_json.justify_left,
+                        justify_right=parent_json.justify_right
+                    )
+                    parent_json.children.append(div_json)
+                for el_json in arr:
+                    if not hasattr(el_json, "div"):
+                        div_json.children.append(el_json)
+                        el_json.div = div_json
+                        el_json.parent = div_json
+                sort_children(div_json)
+    for i in range(len(parent_json.children)-1, -1, -1):
+        if hasattr(parent_json.children[i], "div"):
+            parent_json.children.pop(i)
+
 
 
 def random_choose_model(child, parent_model):
@@ -735,6 +818,7 @@ def style_header():
     return """
         border-bottom: 1px solid #dfdee2;
     """
+
 
 
 def create_div(child, parent, parent_model, parent_parent_model, measure=Measure.PIXEL):

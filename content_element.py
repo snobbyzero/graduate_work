@@ -27,7 +27,8 @@ def create_content_element(body, min_width, min_height, is_fullwidth, card_size,
             min_margin_right=10,
             min_margin_top=10,
             min_margin_bottom=10,
-            center_horizontal=True
+            center_horizontal=True,
+            center_vertical=True
         )
         card.title = None
         card.description = None
@@ -88,8 +89,8 @@ def create_content_element(body, min_width, min_height, is_fullwidth, card_size,
                     icons,
                     icon,
                     icon_label='card_icon',
-                    icon_width=30,
-                    icon_height=30,
+                    icon_width=25,
+                    icon_height=25,
                     min_margin_left=0,
                     min_margin_right=10,
                     min_margin_top=0,
@@ -120,6 +121,7 @@ def create_content_element(body, min_width, min_height, is_fullwidth, card_size,
                 max_margin_bottom=10,
                 max_margin_top=10,
                 is_flexheight=True,
+                is_flexwidth=True,
                 min_width=150,
                 min_height=250,
             )
@@ -133,8 +135,8 @@ def create_content_element(body, min_width, min_height, is_fullwidth, card_size,
                     min_height=40,
                     min_margin_left=0,
                     min_margin_right=0,
-                    min_margin_top=0,
-                    min_margin_bottom=10
+                    min_margin_top=5,
+                    min_margin_bottom=5
                 )
                 arr.append(button)
             [arr[i].set_neighbours(right_elements=arr[i:], bottom_elements=arr[i:]) for i in range(len(arr))]
@@ -353,7 +355,7 @@ def create_content_element(body, min_width, min_height, is_fullwidth, card_size,
         # card.set_max_size_by_children()
 
         cards.append(card)
-        card.rules = [And(card.icons.y < card.image.y), And(card.icons.y > card.image.y)]
+        card.rules = [And(card.icons.y > card.image.y)]
 
     for i in range(len(cards) - 1):
         cards[i].set_neighbours(right_elements=cards[i + 1:], bottom_elements=cards[i + 1:])

@@ -179,8 +179,8 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
         top_elements=[search_div, nav],
         bottom_elements=[search_div, nav]
     )
-    div_header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
-                    And(nav.y == logo.y, search_div.y >= nav.y + nav.row_count),
-                    And(search_div.y == logo.y, nav.y >= search_div.y + search_div.row_count)]
+    #div_header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
+    #                And(nav.y == logo.y, search_div.y >= nav.y + nav.row_count),
+    #                And(search_div.y == logo.y, nav.y >= search_div.y + search_div.row_count)]
 
     return header
