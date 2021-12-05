@@ -117,8 +117,8 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
     if len(sn_icons_list) > 0:
         sn_icons = create_icons_list(
             div_header,
-            "sn_icons",
-            "sn_icons",
+            "header_sn_icons",
+            "header_sn_icons",
             min_margin_left=10,
             min_margin_right=10,
             min_margin_top=10,
@@ -133,7 +133,7 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
             ic = create_icon(
                 sn_icons,
                 icon,
-                icon_label='sn_icon',
+                icon_label='header_sn_icon',
                 icon_width=25,
                 icon_height=25,
                 min_margin_left=0,
@@ -179,8 +179,8 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
         top_elements=[search_div, nav],
         bottom_elements=[search_div, nav]
     )
-    #div_header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
-    #                And(nav.y == logo.y, search_div.y >= nav.y + nav.row_count),
-    #                And(search_div.y == logo.y, nav.y >= search_div.y + search_div.row_count)]
+    div_header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
+                    And(nav.y == logo.y, search_div.y >= nav.y + nav.row_count),
+                    And(search_div.y == logo.y, nav.y >= search_div.y + search_div.row_count)]
 
     return header
