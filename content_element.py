@@ -48,7 +48,35 @@ def create_content_element(body, min_width, min_height, is_fullwidth, card_size,
     content.cards = cards_el
     content.add_child(cards_el)
 
+    sidebar = create_sidebar(content)
+
+    content.sidebar = sidebar
+    content.add_child(sidebar)
+
     return content
+
+
+def create_sidebar(parent):
+    sidebar = create_div(
+        parent,
+        "sidebar",
+        "sidebar",
+        min_margin_left=10,
+        min_margin_right=10,
+        min_margin_top=10,
+        min_margin_bottom=10,
+        max_margin_left=20,
+        max_margin_right=20,
+        max_margin_top=20,
+        max_margin_bottom=20,
+        min_width=250,
+        is_flexheight=True,
+        center_vertical=True
+    )
+    #TODO
+
+    return sidebar
+
 
 def create_card_element(parent, i, card_size, card_title, card_description, card_image, card_carousel_images: [], card_icons_list: [], card_text_chips: [],
                            card_icon_chips: [], card_buttons: [], card_title_subtitle: [],

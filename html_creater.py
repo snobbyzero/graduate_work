@@ -100,7 +100,6 @@ def create_content_json(content, body_model, content_model):
         height=ValueJSON(body_model[content.row_count].as_long() * body.table.cell_height * 100 / body.height,
                          Measure.PERCENT),
         min_width=ValueJSON(content.min_width, Measure.PIXEL),
-        min_height=ValueJSON(content.min_height, Measure.PIXEL),
         margin_left=ValueJSON(body_model[content.margin_left].as_long() * body.table.cell_width, Measure.PIXEL),
         margin_right=ValueJSON(body_model[content.margin_right].as_long() * body.table.cell_width, Measure.PIXEL),
         margin_top=ValueJSON(body_model[content.margin_top].as_long() * body.table.cell_height, Measure.PIXEL),
@@ -111,8 +110,13 @@ def create_content_json(content, body_model, content_model):
         justify_right=content.justify_right,
         align_content="flex-start",
         center_horizontal=False,
-        center_vertical=False
+        center_vertical=False,
+        flexflow="row nowrap"
     )
+
+    #sidebar_model = random_choose_model(content.sidebar, content_model)
+    sidebar_json = create_div(content.sidebar, content, content_model, body_model, Measure.PIXEL)
+    content_json.children.append(sidebar_json)
 
     cards_model = random_choose_model(content.cards, content_model)
     cards_json = create_div(content.cards, content, content_model, body_model, Measure.PERCENT)
@@ -305,12 +309,12 @@ def create_footer_json(footer, body_model, footer_model):
     div_footer = footer.div_footer
     div_footer_model = random_choose_model(div_footer, footer_model)
 
-    div_header_json = create_div(div_footer, footer, footer_model, body_model, Measure.PERCENT)
+    div_footer_json = create_div(div_footer, footer, footer_model, body_model, Measure.PERCENT)
 
     logo = div_footer.logo
     if logo:
         logo_json = IconButtonJSON(
-            parent=div_header_json,
+            parent=div_footer_json,
             icon_name="adjust",
             x=ValueJSON(div_footer_model[
                             logo.x].as_long() * div_footer.table.cell_width * 100 / div_footer.get_width_with_parent(
@@ -335,13 +339,13 @@ def create_footer_json(footer, body_model, footer_model):
             font_size=ValueJSON(div_footer_model[logo.col_count].as_long() * div_footer.table.cell_width,
                                 Measure.PIXEL),
         )
-        div_header_json.children.append(logo_json)
+        div_footer_json.children.append(logo_json)
 
     links = div_footer.links
     if links:
         links_json = NavListJSON(
             nav_list=links.text_list.text_list,
-            parent=div_header_json,
+            parent=div_footer_json,
             x=ValueJSON(div_footer_model[
                             links.x].as_long() * div_footer.table.cell_width * 100 / div_footer.get_width_with_parent(
                 footer_model), Measure.PERCENT),
@@ -376,7 +380,7 @@ def create_footer_json(footer, body_model, footer_model):
             flexgrow=links.is_flexwidth,
             flexflow="row nowrap"
         )
-        div_header_json.children.append(links_json)
+        div_footer_json.children.append(links_json)
 
 
     sn_icons = div_footer.sn_icons
@@ -420,17 +424,86 @@ def create_footer_json(footer, body_model, footer_model):
                 )
             )
         sort_children(sn_icons_json)
-        div_header_json.children.append(sn_icons_json)
+        div_footer_json.children.append(sn_icons_json)
 
 
     vert_lists = div_footer.vert_lists
+    vert_lists_model = random_choose_model(vert_lists, div_footer_model)
     if vert_lists:
+        vert_lists_json = create_div(vert_lists, div_footer, div_footer_model, footer_model)
         for vert_list in vert_lists.children:
-            pass
+            vert_list_model = random_choose_model(vert_list, vert_lists_model)
+            vert_list_json = create_div(vert_list, vert_lists, vert_lists_model, div_footer_model, flexflow="column nowrap")
+            title = vert_list.title
+            link_list = vert_list.list
+            title_json = BaseElementJSON(
+                "h5",
+                parent=vert_list_json,
+                x=ValueJSON(vert_list_model[title.x].as_long() * vert_list.table.cell_width * 100 / vert_list.get_width_with_parent(
+                    vert_lists_model), Measure.PERCENT),
+                y=ValueJSON(vert_list_model[title.y].as_long() * vert_list.table.cell_height * 100 / vert_list.get_height_with_parent(
+                    vert_lists_model), Measure.PERCENT),
+                width=ValueJSON(vert_list_model[title.col_count].as_long() * vert_list.table.cell_width * 100 / vert_list.get_width_with_parent(
+                    vert_lists_model), Measure.PERCENT),
+                height=ValueJSON(vert_list_model[title.row_count].as_long() * vert_list.table.cell_height * 100 / vert_list.get_height_with_parent(
+                    vert_lists_model), Measure.PERCENT),
+                min_width=ValueJSON(title.min_width, Measure.PIXEL),
+                margin_right=ValueJSON(vert_list_model[title.margin_right].as_long() * vert_list.table.cell_width, Measure.PIXEL),
+                margin_left=ValueJSON(vert_list_model[title.margin_left].as_long() * vert_list.table.cell_width, Measure.PIXEL),
+                margin_top=ValueJSON(vert_list_model[title.margin_top].as_long() * vert_list.table.cell_height, Measure.PIXEL),
+                margin_bottom=ValueJSON(vert_list_model[title.margin_bottom].as_long() * vert_list.table.cell_height,
+                                        Measure.PIXEL),
+                text=title.text,
+                text_align="center",
+                label=title.label,
+                flexgrow=title.is_flexwidth
+            )
+            link_list_json = NavListJSON(
+                link_list.text_list.text_list,
+                parent=vert_list_json,
+                x=ValueJSON(vert_list_model[
+                                link_list.x].as_long() * vert_list.table.cell_width * 100 / vert_list.get_width_with_parent(
+                    vert_lists_model), Measure.PERCENT),
+                y=ValueJSON(vert_list_model[
+                                link_list.y].as_long() * vert_list.table.cell_height * 100 / vert_list.get_height_with_parent(
+                    vert_lists_model), Measure.PERCENT),
+                width=ValueJSON(
+                    vert_list_model[
+                        link_list.col_count].as_long() * vert_list.table.cell_width * 100 / vert_list.get_width_with_parent(
+                        vert_lists_model),
+                    Measure.PERCENT),
+                height=ValueJSON(
+                    vert_list_model[
+                        link_list.row_count].as_long() * vert_list.table.cell_height * 100 / vert_list.get_height_with_parent(
+                        vert_lists_model),
+                    Measure.PERCENT),
+                min_width=ValueJSON(link_list.min_width, Measure.PIXEL),
+                min_height=ValueJSON(link_list.min_height, Measure.PIXEL),
+                margin_left=ValueJSON(vert_list_model[link_list.margin_left].as_long() * vert_list.table.cell_width,
+                                      Measure.PIXEL),
+                margin_right=ValueJSON(vert_list_model[link_list.margin_right].as_long() * vert_list.table.cell_width,
+                                       Measure.PIXEL),
+                margin_top=ValueJSON(vert_list_model[link_list.margin_top].as_long() * vert_list.table.cell_height,
+                                     Measure.PIXEL),
+                margin_bottom=ValueJSON(vert_list_model[link_list.margin_bottom].as_long() * vert_list.table.cell_height,
+                                        Measure.PIXEL),
+                label=link_list.label,
+                fullwidth=link_list.is_fullwidth,
+                fullheight=link_list.is_fullheight,
+                center_vertical=True,
+                center_horizontal=True,
+                flexgrow=link_list.is_flexwidth,
+                flexflow="column nowrap"
+            )
+            vert_list_json.children.append(title_json)
+            vert_list_json.children.append(link_list_json)
+            vert_lists_json.children.append(vert_list_json)
+        div_footer_json.children.append(vert_lists_json)
 
-    sort_children(div_header_json)
-    #sort_children1(div_footer, div_footer_model, div_header_json)
-    footer_json.children.append(div_header_json)
+
+    sort_children(div_footer_json)
+    sort_children1(div_footer, div_footer_model, div_footer_json)
+    footer_json.children.append(div_footer_json)
     return footer_json
 
 
@@ -712,8 +785,8 @@ def sort_children1(parent, parent_model, parent_json):
                 another_child_margin_top = parent_model[another_child.margin_top].as_long()
 
                 if ((child_x + child_width + child_margin_right <= another_child_x - another_child_margin_left) and
-                    (another_child_y - another_child_margin_top <= child_y - child_margin_top <= another_child_y + another_child_height + another_child_margin_bottom or
-                    child_y - child_margin_top <= another_child_y - another_child_margin_top <= child_y + child_height + child_margin_bottom)
+                    (another_child_y - another_child_margin_top < child_y - child_margin_top <= another_child_y + another_child_height + another_child_margin_bottom or
+                    child_y - child_margin_top < another_child_y - another_child_margin_top <= child_y + child_height + child_margin_bottom)
                 ):
                     child.right.append(another_child)
                 elif ((another_child_x + another_child_width + another_child_margin_right <= child_x - child_margin_left) and
@@ -841,9 +914,9 @@ def sort_children1(parent, parent_model, parent_json):
                                 print(f"nw neighbour:  {neighbour.label}")
                                 div = []
             div_json = None
-            print(div)
             # То есть есть элементы, которые можно объединить в один див
             if len(div) > 1:
+                print(", ".join(el.name for el in div))
                 arr = []
                 for el in div:
                     for el_json in parent_json.children:
@@ -1022,7 +1095,7 @@ def style_header():
 
 
 
-def create_div(child, parent, parent_model, parent_parent_model, measure=Measure.PIXEL):
+def create_div(child, parent, parent_model, parent_parent_model, measure=Measure.PIXEL, flexflow="row wrap"):
     if measure == Measure.PIXEL:
         width = ValueJSON(parent_model[child.col_count].as_long() * parent.table.cell_width, measure)
         height = ValueJSON(parent_model[child.row_count].as_long() * parent.table.cell_height, measure)
@@ -1049,6 +1122,7 @@ def create_div(child, parent, parent_model, parent_parent_model, measure=Measure
         justify_left=child.justify_left,
         justify_right=child.justify_right,
         flexgrow=child.is_flexwidth,
+        flexflow=flexflow,
     )
 
 

@@ -7,11 +7,11 @@ def create_footer_element(body, min_width, min_height, is_fullwidth, is_logo, ve
     footer = create_footer(body, min_width=min_width, min_height=min_height, is_fullwidth=is_fullwidth)
 
     div_footer = None
-    fullwidth = random.choice([True, False])
+    fullwidth = random.choice([False, False])
     if fullwidth:
-        div_footer = create_div(footer, "div_footer", "div_footer", min_width=footer.min_width, min_height=footer.min_height, is_flexheight=True, center_vertical=True)
+        div_footer = create_div(footer, "div_footer", "div_footer", min_width=footer.min_width, min_height=footer.min_height, is_flexheight=True, is_fullwidth=True)
     else:
-        div_footer = create_div(footer, "div_footer", "div_footer", min_width=1000, min_height=footer.min_height, is_flexheight=True, center_vertical=True)
+        div_footer = create_div(footer, "div_footer", "div_footer", min_width=1000, min_height=footer.min_height, is_flexheight=True)
 
     div_footer.logo = None
     div_footer.vert_lists = None
@@ -76,21 +76,22 @@ def create_footer_element(body, min_width, min_height, is_fullwidth, is_logo, ve
             max_margin_bottom=10,
             max_margin_top=10,
             is_flexwidth=True,
+            center_horizontal=True
         )
         arr = []
         for i in range(len(vert_lists)):
             vert_list = create_div(
                 vert_lists_div,
-                "vert_list_div",
+                f"vert_list_div_{i}",
                 "vld",
                 min_margin_left=10,
                 min_margin_right=10,
-                min_margin_top=10,
+                min_margin_top=0,
                 min_margin_bottom=10,
                 max_margin_left=20,
                 max_margin_right=20,
                 max_margin_bottom=10,
-                max_margin_top=10,
+                max_margin_top=0,
                 center_vertical=True,
                 center_horizontal=True,
             )
@@ -112,10 +113,17 @@ def create_footer_element(body, min_width, min_height, is_fullwidth, is_logo, ve
                 TextList(links_text, is_vertical=True)
             )
             vert_list.add_children([title, list])
+            vert_list.title = title
+            vert_list.list = list
             vert_list.min_width = max(title.min_width + title.min_margin_right + title.min_margin_left, list.min_width + list.min_margin_left, list.min_margin_right)
+            vert_list.min_height = sum(ch.min_height + ch.min_margin_bottom + ch.min_margin_top for ch in [title, list])
             title.set_neighbours(bottom_elements=[list])
             arr.append(vert_list)
         vert_lists_div.add_children(arr)
+        #vert_lists_div.min_width = sum(vert_list.min_width + vert_list.min_margin_right + vert_list.min_margin_left for vert_list in arr)
+        vert_lists_div.min_width = 400
+        #vert_lists_div.min_height = max(vert_list.min_height + vert_list.min_margin_bottom + vert_list.min_margin_top for vert_list in arr)
+        vert_lists_div.min_height = 300
         [arr[i].set_neighbours(right_elements=arr[i:], left_elements=arr[i:]) for i in range(len(arr))]
 
 
@@ -165,6 +173,9 @@ def create_footer_element(body, min_width, min_height, is_fullwidth, is_logo, ve
     if div_footer.vert_lists:
         div_footer.vert_lists.set_neighbours(bottom_elements=[div_footer.links, div_footer.sn_icons], right_elements=[div_footer.sn_icons], left_elements=[div_footer.sn_icons])
     if div_footer.logo:
-        div_footer.logo.set_neighbours(bottom_elements=[div_footer.links, div_footer.vert_lists, div_footer.sn_icons], right_elements=[div_footer.vert_lists, div_footer.sn_icons], top_elements=[div_footer.links, div_footer.vert_lists, div_footer.sn_icons])
+        div_footer.logo.set_neighbours(bottom_elements=[div_footer.links, div_footer.vert_lists, div_footer.sn_icons], right_elements=[div_footer.vert_lists], left_elements=[div_footer.vert_lists])
+    if div_footer.sn_icons:
+        div_footer.sn_icons.set_neighbours(bottom_elements=[div_footer.links], right_elements=[div_footer.links])
+    div_footer.rules = []
 
     return footer

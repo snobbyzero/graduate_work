@@ -268,9 +268,9 @@ def solve(parent, rule=None, parent_model=None):
                         another_child not in child.bottom_elements, another_child not in child.top_elements)
                 ))
         if len(child.right_elements) > 0:
-            s.add_soft(child.right_elements[0].y == child.y)
+            s.add_soft(child.right_elements[0].y - child.right_elements[0].margin_top == child.y - child.margin_top)
         if len(child.left_elements) > 0:
-            s.add_soft(child.left_elements[0].y == child.y)
+            s.add_soft(child.left_elements[0].y - child.left_elements[0].margin_top == child.y - child.margin_top)
 
         if parent.center_vertical:
             pass
