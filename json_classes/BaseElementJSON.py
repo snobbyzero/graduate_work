@@ -37,7 +37,8 @@ class BaseElementJSON:
             padding_right=ValueJSON(0, Measure.EM),
             padding_left=ValueJSON(0, Measure.EM),
             padding_top=ValueJSON(0, Measure.EM),
-            padding_bottom=ValueJSON(0, Measure.EM)
+            padding_bottom=ValueJSON(0, Measure.EM),
+            css=[],
     ):
         if attrs is None:
             self.attrs = []
