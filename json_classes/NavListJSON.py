@@ -35,7 +35,8 @@ class NavListJSON(BaseElementJSON):
                  padding_right=ValueJSON(0, Measure.EM),
                  padding_left=ValueJSON(0, Measure.EM),
                  padding_top=ValueJSON(0, Measure.EM),
-                 padding_bottom=ValueJSON(0, Measure.EM)
+                 padding_bottom=ValueJSON(0, Measure.EM),
+                 css={}
                  ):
         BaseElementJSON.__init__(
             self,
@@ -67,7 +68,8 @@ class NavListJSON(BaseElementJSON):
             padding_right=padding_right,
             padding_left=padding_left,
             padding_top=padding_top,
-            padding_bottom=padding_bottom
+            padding_bottom=padding_bottom,
+            css=css
         )
         self.nav_list = nav_list
         self.set_children()
@@ -81,10 +83,10 @@ class NavListJSON(BaseElementJSON):
                 y=0,
                 width=ValueJSON("auto", Measure.WORD),
                 height=ValueJSON("auto", Measure.WORD),
-                margin_right=ValueJSON(1, Measure.EM),
-                margin_left=ValueJSON(0, Measure.EM),
-                margin_top=ValueJSON(0, Measure.EM),
-                margin_bottom=ValueJSON(0, Measure.EM),
+                margin_right=ValueJSON(link.margin_right, Measure.EM),
+                margin_left=ValueJSON(link.margin_left, Measure.EM),
+                margin_top=ValueJSON(link.margin_top, Measure.EM),
+                margin_bottom=ValueJSON(link.margin_bottom, Measure.EM),
                 padding_right=ValueJSON(1, Measure.REM),
                 padding_left=ValueJSON(1, Measure.REM),
                 padding_top=ValueJSON(1, Measure.REM),

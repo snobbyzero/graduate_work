@@ -24,6 +24,7 @@ class BaseElementJSON:
             text_align="center",
             min_width=ValueJSON(0, Measure.PERCENT),
             min_height=ValueJSON(0, Measure.PERCENT),
+            max_height=ValueJSON("auto", Measure.WORD),
             fullwidth=False,
             fullheight=False,
             flexgrow=0,
@@ -38,7 +39,7 @@ class BaseElementJSON:
             padding_left=ValueJSON(0, Measure.EM),
             padding_top=ValueJSON(0, Measure.EM),
             padding_bottom=ValueJSON(0, Measure.EM),
-            css=[],
+            css={}
     ):
         if attrs is None:
             self.attrs = []
@@ -62,6 +63,7 @@ class BaseElementJSON:
 
         self.min_width = min_width
         self.min_height = min_height
+        self.max_height = max_height
 
         self.fullwidth = fullwidth
         self.fullheight = fullheight
@@ -92,3 +94,5 @@ class BaseElementJSON:
         self.padding_left = padding_left
         self.padding_bottom = padding_bottom
         self.padding_top = padding_top
+
+        self.css = css

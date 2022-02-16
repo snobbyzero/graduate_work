@@ -1,6 +1,5 @@
 from classes.BaseElement import BaseElement
 
-# TODO static size
 class TextElement(BaseElement):
     def __init__(
             self,
@@ -32,7 +31,7 @@ class TextElement(BaseElement):
         self.text = text
         BaseElement.__init__(
             self,
-            text+label,
+            label,
             right_elements=right_elements,
             left_elements=left_elements,
             top_elements=top_elements,

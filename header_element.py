@@ -39,7 +39,7 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
         div_header.logo = logo
 
     if len(nav_list) > 0:
-        links = [TextElement(nav_list[i], label='nav_a', min_width=100, min_height=10) for i in range(len(nav_list))]
+        links = [TextElement(nav_list[i], label='nav_a', min_width=100, min_height=10, min_margin_right=0, max_margin_right=20) for i in range(len(nav_list))]
         nav = create_text_list(
             div_header,
             "nav",
@@ -62,7 +62,7 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
         search_div = create_search_div(
             div_header,
             search_min_width=200,
-            search_min_height=50,
+            search_min_height=40,
             min_margin_left=10,
             min_margin_right=10,
             min_margin_top=10,
@@ -71,10 +71,11 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
             max_margin_right=20,
             max_margin_bottom=10,
             max_margin_top=10,
-            is_flexwidth=True
+            is_flexwidth=True,
         )
         div_header.add_child(search_div)
         div_header.search_div = search_div
+
 
     if len(icls_icons_list) > 0:
         icls_icons = create_icons_list(
@@ -179,8 +180,11 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
         top_elements=[search_div, nav],
         bottom_elements=[search_div, nav]
     )
+
     div_header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
                     And(nav.y == logo.y, search_div.y >= nav.y + nav.row_count),
                     And(search_div.y == logo.y, nav.y >= search_div.y + search_div.row_count)]
+
+
 
     return header

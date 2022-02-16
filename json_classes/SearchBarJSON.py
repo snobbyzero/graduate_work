@@ -32,7 +32,8 @@ class SearchBarJSON(BaseElementJSON):
                  padding_right=ValueJSON(0, Measure.EM),
                  padding_left=ValueJSON(0, Measure.EM),
                  padding_top=ValueJSON(0, Measure.EM),
-                 padding_bottom=ValueJSON(0, Measure.EM)
+                 padding_bottom=ValueJSON(0, Measure.EM),
+                 css={}
                  ):
         if attrs is None:
             self.attrs = []
@@ -71,5 +72,6 @@ class SearchBarJSON(BaseElementJSON):
             padding_right=padding_right,
             padding_left=padding_left,
             padding_top=padding_top,
-            padding_bottom=padding_bottom
+            padding_bottom=padding_bottom,
+            css=css
         )

@@ -1,21 +1,24 @@
-<html><head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" /><style>html {
-        font: caption;
-        --main: #732673;
-        --black-text: #000000;
-        --white-text: #FFFFFF;
-        }
-        a {
-        text-decoration: none;
-        }
-        a:hover {
-        text-decoration: none;
-        }
+<html><head><link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" /><link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" /><style>html {
+    font-size: 1.1em;
+    --primary: #73c090;
+    --secondary: #8be6ad;
+    font: "Roboto","Arial",sans-serif;
+    --black: #0e1111;
+    --white: #fafafa;
+    color: var(--black);
+    }
+    a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+    }
+    input, textarea, select { font-family:inherit; }
         .body {
         flex-grow: 0;
         flex-basis: 100%;
         font-size: 1em;   
         min-width:0%;
         min-height:0%;
+        max-height:;
         margin-right: 0%;
         margin-left: 0%;
         margin-top: 0%;
@@ -36,6 +39,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:1000px;
         min-height:150px;
+        max-height:;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
@@ -58,6 +62,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:1000px;
         min-height:0%;
+        max-height:;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
@@ -77,6 +82,7 @@ flex-flow: row wrap;
         font-size: 60px;   
         min-width:60px;
         min-height:40px;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -87,125 +93,16 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-}
-.s {
-        flex-grow: 1;
-        flex-basis: 68.5%;
-        font-size: 1em;   
-        min-width:220px;
-        min-height:0%;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-justify-content: end;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.search {
-        flex-grow: 0;
-        flex-basis: 200px;
-        font-size: 1em;   
-        min-width:200px;
-        min-height:50px;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: left;
-        border: 0;
-    
-}
-.header_sn_icons {
-        flex-grow: 0;
-        flex-basis: 105px;
-        font-size: 1em;   
-        min-width:105px;
-        min-height:0%;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-justify-content: center;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.header_sn_icon {
-        flex-grow: 0;
-        flex-basis: 25px;
-        font-size: 25px;   
-        min-width:25px;
-        min-height:25px;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        
-}
-.icls_icons {
-        flex-grow: 0;
-        flex-basis: 70px;
-        font-size: 1em;   
-        min-width:70px;
-        min-height:0%;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-justify-content: end;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.icls_icon {
-        flex-grow: 0;
-        flex-basis: 25px;
-        font-size: 25px;   
-        min-width:25px;
-        min-height:25px;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
+        color: var(--primary);
         
 }
 .n {
         flex-grow: 1;
-        flex-basis: 98.0%;
+        flex-basis: 44.5%;
         font-size: 1em;   
         min-width:400px;
         min-height:10px;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -226,15 +123,161 @@ flex-flow: row nowrap;
         font-size: 1em;   
         min-width:0%;
         min-height:0%;
-        margin-right: 1em;
-        margin-left: 0em;
-        margin-top: 0em;
-        margin-bottom: 0em;
+        max-height:;
+        margin-right: nav_a_margin_rightem;
+        margin-left: nav_a_margin_leftem;
+        margin-top: nav_a_margin_topem;
+        margin-bottom: nav_a_margin_bottomem;
         padding-left: 1rem;
         padding-right: 1rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
         text-align: center;
+        
+}
+.s {
+        flex-grow: 1;
+        flex-basis: 22.0%;
+        font-size: 1em;   
+        min-width:220px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: center;
+justify-content: start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.search {
+        flex-grow: 0;
+        flex-basis: 200px;
+        font-size: 1em;   
+        min-width:200px;
+        min-height:40px;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: left;
+        
+        border-radius: 17px;
+        padding-left: 10px;
+        border: 3px var(--primary) solid;
+        
+}
+.search_butt {
+        flex-grow: 0;
+        flex-basis: 20px;
+        font-size: 20px;   
+        min-width:None;
+        min-height:None;
+        max-height:;
+        margin-right: 0px;
+        margin-left: -40px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+        color: var(--secondary);
+        
+}
+.header_sn_icons {
+        flex-grow: 0;
+        flex-basis: 105px;
+        font-size: 1em;   
+        min-width:105px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+justify-content: start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.header_sn_icon {
+        flex-grow: 0;
+        flex-basis: 25px;
+        font-size: 25px;   
+        min-width:25px;
+        min-height:25px;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+        color: var(--primary);
+        
+}
+.icls_icons {
+        flex-grow: 0;
+        flex-basis: 70px;
+        font-size: 1em;   
+        min-width:70px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+justify-content: end;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.icls_icon {
+        flex-grow: 0;
+        flex-basis: 25px;
+        font-size: 25px;   
+        min-width:25px;
+        min-height:25px;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+        color: var(--primary);
         
 }
 .content {
@@ -243,6 +286,7 @@ flex-flow: row nowrap;
         font-size: 1em;   
         min-width:1000px;
         min-height:0%;
+        max-height:;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
@@ -262,9 +306,10 @@ flex-flow: row nowrap;
         font-size: 1em;   
         min-width:250px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
-        margin-left: 15px;
-        margin-top: 10px;
+        margin-left: 10px;
+        margin-top: 0px;
         margin-bottom: 10px;
         padding-left: 0em;
         padding-right: 0em;
@@ -279,6 +324,7 @@ flex-flow: row nowrap;
         font-size: 1em;   
         min-width:0px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -294,10 +340,11 @@ align-content: normal;
 flex-flow: row wrap;
 }.c {
         flex-grow: 0;
-        flex-basis: 500px;
+        flex-basis: 600px;
         font-size: 1em;   
-        min-width:500px;
+        min-width:600px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -313,20 +360,24 @@ align-content: normal;
 flex-flow: row wrap;
 }.card_title {
         flex-grow: 1;
-        flex-basis: 96.0%;
+        flex-basis: 96.66666666666667%;
         font-size: 1em;   
         min-width:200px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
-        margin-top: 10px;
+        margin-top: 0px;
         margin-bottom: 10px;
         padding-left: 0em;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: start;
-        
+        font-weight: 500;
+
+            color: var(--primary);
+            
 }
 .card_img_div {
         flex-grow: 0;
@@ -334,6 +385,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:200px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -354,6 +406,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:200px;
         min-height:200px;
+        max-height:200px;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
@@ -371,6 +424,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:0%;
         min-height:0%;
+        max-height:;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
@@ -386,30 +440,94 @@ align-content: normal;
 flex-flow: row wrap;
 }.card_description {
         flex-grow: 1;
-        flex-basis: 22.88%;
+        flex-basis: 22.0%;
         font-size: 1em;   
         min-width:200px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
-        margin-top: 10px;
+        margin-top: 0px;
         margin-bottom: 10px;
         padding-left: 0em;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: start;
-        
+        overflow: hidden;
+
 }
-.buttons_div {
-        flex-grow: 1;
-        flex-basis: 170px;
+.card_icon_text {
+        flex-grow: 0;
+        flex-basis: 150px;
         font-size: 1em;   
         min-width:150px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
-        margin-top: 10px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: center;
+justify-content: center;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.cit_icon {
+        flex-grow: 0;
+        flex-basis: 20px;
+        font-size: 20px;   
+        min-width:None;
+        min-height:None;
+        max-height:;
+        margin-right: 5px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+            color: var(--black);
+            filter: brightness(3.0);
+            
+}
+.cit_text {
+        flex-grow: 1;
+        flex-basis: 86.66666666666667px;
+        font-size: 1em;   
+        min-width:20px;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        font-weight: 600;
+
+}
+.buttons_div {
+        flex-grow: 1;
+        flex-basis: 270px;
+        font-size: 1em;   
+        min-width:150px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 0px;
         margin-bottom: 10px;
         padding-left: 0em;
         padding-right: 0em;
@@ -426,6 +544,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:0%;
         min-height:0%;
+        max-height:;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 5px;
@@ -435,7 +554,14 @@ flex-flow: row wrap;
         padding-top: 0.5em;
         padding-bottom: 0.5em;
         text-align: center;
+        border: 0;
+        border-radius: 16px;
+        font-weight: 500;
+        cursor: pointer;
         
+                background: var(--primary);
+                color: var(--white);
+                
 }
 .card_icons {
         flex-grow: 1;
@@ -443,9 +569,10 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:70px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
-        margin-top: 10px;
+        margin-top: 0px;
         margin-bottom: 10px;
         padding-left: 0em;
         padding-right: 0em;
@@ -462,6 +589,7 @@ flex-flow: row wrap;
         font-size: 25px;   
         min-width:None;
         min-height:None;
+        max-height:;
         margin-right: 10px;
         margin-left: 0px;
         margin-top: 0px;
@@ -472,58 +600,7 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-}
-.card_icon_text {
-        flex-grow: 0;
-        flex-basis: 150px;
-        font-size: 1em;   
-        min-width:150px;
-        min-height:0%;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.cit_icon {
-        flex-grow: 0;
-        flex-basis: 20px;
-        font-size: 20px;   
-        min-width:None;
-        min-height:None;
-        margin-right: 5px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        
-}
-.cit_text {
-        flex-grow: 1;
-        flex-basis: 86.66666666666667px;
-        font-size: 1em;   
-        min-width:20px;
-        min-height:0%;
-        margin-right: 0px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: start;
+        color: var(--primary);
         
 }
 .footer {
@@ -532,6 +609,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:1000px;
         min-height:0%;
+        max-height:;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
@@ -552,6 +630,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:1000px;
         min-height:0%;
+        max-height:;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
@@ -571,6 +650,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:400px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -591,6 +671,7 @@ flex-flow: row wrap;
         font-size: 1em;   
         min-width:100px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 0px;
@@ -611,6 +692,7 @@ flex-flow: column nowrap;
         font-size: 1em;   
         min-width:100px;
         min-height:0%;
+        max-height:;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
@@ -620,14 +702,18 @@ flex-flow: column nowrap;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: center;
-        
+        font-weight: 700;
+
+            color: var(--primary);
+            
 }
 .vl {
         flex-grow: 0;
         flex-basis: 100.0%;
         font-size: 1em;   
         min-width:100px;
-        min-height:40px;
+        min-height:50px;
+        max-height:;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
@@ -648,10 +734,11 @@ flex-flow: column nowrap;
         font-size: 1em;   
         min-width:0%;
         min-height:0%;
-        margin-right: 1em;
-        margin-left: 0em;
-        margin-top: 0em;
-        margin-bottom: 0em;
+        max-height:;
+        margin-right: footer_vert_list_a_margin_rightem;
+        margin-left: footer_vert_list_a_margin_leftem;
+        margin-top: footer_vert_list_a_margin_topem;
+        margin-bottom: footer_vert_list_a_margin_bottomem;
         padding-left: 1rem;
         padding-right: 1rem;
         padding-top: 1rem;
@@ -665,6 +752,7 @@ flex-flow: column nowrap;
         font-size: 60px;   
         min-width:60px;
         min-height:40px;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -675,6 +763,8 @@ flex-flow: column nowrap;
         padding-bottom: 0em;
         text-align: center;
         
+        color: var(--secondary);
+        
 }
 .fn {
         flex-grow: 1;
@@ -682,6 +772,7 @@ flex-flow: column nowrap;
         font-size: 1em;   
         min-width:150px;
         min-height:10px;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -702,10 +793,11 @@ flex-flow: row nowrap;
         font-size: 1em;   
         min-width:0%;
         min-height:0%;
-        margin-right: 1em;
-        margin-left: 0em;
-        margin-top: 0em;
-        margin-bottom: 0em;
+        max-height:;
+        margin-right: footer_link_a_margin_rightem;
+        margin-left: footer_link_a_margin_leftem;
+        margin-top: footer_link_a_margin_topem;
+        margin-bottom: footer_link_a_margin_bottomem;
         padding-left: 1rem;
         padding-right: 1rem;
         padding-top: 1rem;
@@ -719,6 +811,7 @@ flex-flow: row nowrap;
         font-size: 1em;   
         min-width:105px;
         min-height:0%;
+        max-height:;
         margin-right: 10px;
         margin-left: 10px;
         margin-top: 10px;
@@ -739,6 +832,7 @@ flex-flow: row wrap;
         font-size: 25px;   
         min-width:25px;
         min-height:25px;
+        max-height:;
         margin-right: 10px;
         margin-left: 0px;
         margin-top: 0px;
@@ -749,5 +843,8 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
+        color: var(--primary);
+        
 }
-</style></head><body><body class="body"><header class="header"><div class="div_header"><i class="fa fa-adjust l"></i><div class="s"><input type="text" placeholder="Search" class="search" /></div><div class="header_sn_icons"><i class="fa fa-vk header_sn_icon"></i><i class="fa fa-github header_sn_icon"></i><i class="fa fa-twitter header_sn_icon"></i></div><div class="icls_icons"><i class="fa fa-user icls_icon"></i><i class="fa fa-shopping-cart icls_icon"></i></div><nav class="n"><a href="#" class="nav_a">Home</a><a href="#" class="nav_a">Profile</a><a href="#" class="nav_a">About Us</a><a href="#" class="nav_a">Contacts</a></nav></div></header><content class="content"><div class="sidebar"></div><div class="cards"><div class="c"><h5 class="card_title">Title</h5><div class="card_img_div"><img src="https://sun9-43.userapi.com/impg/Ha_wpq_AueJtwdspfxmpeG_wi4g7TLMaARg3Xg/tpMV0yQDJxI.jpg?size=528x482&amp;quality=96&amp;sign=54957fbf71c1e9944a8670baf6ecddc0&amp;type=album" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="fa fa-heart card_icon"></i><i class="fa fa-list card_icon"></i></div><div class="card_icon_text"><i class="fa fa-star cit_icon"></i><p class="cit_text">45 Отзывы</p></div></div></div><div class="c"><h5 class="card_title">Title</h5><div class="card_img_div"><img src="https://sun9-43.userapi.com/impg/Ha_wpq_AueJtwdspfxmpeG_wi4g7TLMaARg3Xg/tpMV0yQDJxI.jpg?size=528x482&amp;quality=96&amp;sign=54957fbf71c1e9944a8670baf6ecddc0&amp;type=album" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="fa fa-heart card_icon"></i><i class="fa fa-list card_icon"></i></div><div class="card_icon_text"><i class="fa fa-star cit_icon"></i><p class="cit_text">45 Отзывы</p></div></div></div><div class="c"><h5 class="card_title">Title</h5><div class="card_img_div"><img src="https://sun9-43.userapi.com/impg/Ha_wpq_AueJtwdspfxmpeG_wi4g7TLMaARg3Xg/tpMV0yQDJxI.jpg?size=528x482&amp;quality=96&amp;sign=54957fbf71c1e9944a8670baf6ecddc0&amp;type=album" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="fa fa-heart card_icon"></i><i class="fa fa-list card_icon"></i></div><div class="card_icon_text"><i class="fa fa-star cit_icon"></i><p class="cit_text">45 Отзывы</p></div></div></div><div class="c"><h5 class="card_title">Title</h5><div class="card_img_div"><img src="https://sun9-43.userapi.com/impg/Ha_wpq_AueJtwdspfxmpeG_wi4g7TLMaARg3Xg/tpMV0yQDJxI.jpg?size=528x482&amp;quality=96&amp;sign=54957fbf71c1e9944a8670baf6ecddc0&amp;type=album" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="fa fa-heart card_icon"></i><i class="fa fa-list card_icon"></i></div><div class="card_icon_text"><i class="fa fa-star cit_icon"></i><p class="cit_text">45 Отзывы</p></div></div></div><div class="c"><h5 class="card_title">Title</h5><div class="card_img_div"><img src="https://sun9-43.userapi.com/impg/Ha_wpq_AueJtwdspfxmpeG_wi4g7TLMaARg3Xg/tpMV0yQDJxI.jpg?size=528x482&amp;quality=96&amp;sign=54957fbf71c1e9944a8670baf6ecddc0&amp;type=album" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Description blabla</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="fa fa-heart card_icon"></i><i class="fa fa-list card_icon"></i></div><div class="card_icon_text"><i class="fa fa-star cit_icon"></i><p class="cit_text">45 Отзывы</p></div></div></div></div></content><footer class="footer"><div class="div_footer"><div class="vlds"><div class="vld"><h5 class="vld_title">Все новости</h5><nav class="vl"><a href="#" class="footer_vert_list_a">В мире</a><a href="#" class="footer_vert_list_a">Новости Москвы</a><a href="#" class="footer_vert_list_a">Политика</a><a href="#" class="footer_vert_list_a">Общество</a></nav></div><div class="vld"><h5 class="vld_title">Бизнес и финансы</h5><nav class="vl"><a href="#" class="footer_vert_list_a">Экономика</a><a href="#" class="footer_vert_list_a">Компании</a><a href="#" class="footer_vert_list_a">Рынки</a></nav></div></div><i class="fa fa-adjust fl"></i><nav class="fn"><a href="#" class="footer_link_a">© ООО Помойка</a><a href="#" class="footer_link_a">Мобильная версия</a><a href="#" class="footer_link_a">Вакансии</a></nav><div class="footer_sn_icons"><i class="fa fa-vk footer_sn_icon"></i><i class="fa fa-github footer_sn_icon"></i><i class="fa fa-twitter footer_sn_icon"></i></div></div></footer></body></body></html>
+</style></head><body><body class="body"><header class="header"><div class="div_header"><i class="far fa-adjust l"></i><nav class="n"><a href="#" class="nav_a">Home</a><a href="#" class="nav_a">Profile</a><a href="#" class="nav_a">About Us</a><a href="#" class="nav_a">Contacts</a></nav><div class="s"><input type="text" class="search" /><i class="fas fa-search search_butt"></i></div><div class="header_sn_icons"><i class="fab fa-vk header_sn_icon"></i><i class="fab fa-github header_sn_icon"></i><i class="fab fa-twitter header_sn_icon"></i></div><div class="icls_icons"><i class="far fa-user icls_icon"></i><i class="far fa-shopping-cart icls_icon"></i></div></div></header><content class="content"><div class="sidebar"></div><div class="cards"><div class="c"><h5 class="card_title">уточнить</h5><div class="card_img_div"><img src="https://placekitten.com/400/400" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Следовательно плавно инвалид. Совещание роса что изучить предоставить.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">голубчик кузнец эффект</h5><div class="card_img_div"><img src="https://placekitten.com/100/100" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Правление неожиданно сравнение. Инвалид чувство чем сынок плод июнь. Болото банк дрогнуть прощение построить оставить левый.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">одиннадцать изучить развернуться</h5><div class="card_img_div"><img src="https://placeimg.com/400/400/any" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Бетонный деловой очередной ремень настать. Инфекция упор бетонный а витрина. Бетонный смертельный спичка.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">миф сынок смеяться</h5><div class="card_img_div"><img src="https://placeimg.com/100/100/any" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Бегать помолчать выражение плод академик. Назначить командующий кожа наслаждение.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">пламя беспомощный</h5><div class="card_img_div"><img src="https://placekitten.com/600/600" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Исследование посидеть приходить трубка палец способ. Более чувство способ заведение. Покидать тута ставить бетонный заплакать грустный. Домашний угол идея изба успокоиться.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">спасть сохранять угроза</h5><div class="card_img_div"><img src="https://placekitten.com/600/600" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Термин куча руководитель издали. Ленинград хозяйка отражение упорно пробовать вскинуть через пропаганда. Очутиться увеличиваться картинка пересечь мелочь экзамен.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">степь парень</h5><div class="card_img_div"><img src="https://picsum.photos/800/800" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Армейский пол песня банк левый термин. Деловой затянуться конструкция тысяча головной заявление медицина. Спалить сынок выраженный плавно мягкий виднеться забирать.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">район</h5><div class="card_img_div"><img src="https://placekitten.com/200/200" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Правление изменение полоска. Господь реклама коробка миллиард.
+Налоговый висеть невозможно место естественный мгновение трясти. Строительство провинция пространство анализ торговля.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">четыре домашний</h5><div class="card_img_div"><img src="https://placeimg.com/400/400/any" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Следовательно хотеть сутки механический. Мягкий смеяться выражаться правый.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">витрина плод хлеб</h5><div class="card_img_div"><img src="https://placekitten.com/400/400" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Одиннадцать выраженный цвет конструкция избегать изучить совет. Выраженный неожиданный смертельный материя трубка. Виднеться ложиться дрогнуть отдел предоставить.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div></div></content><footer class="footer"><div class="div_footer"><div class="vlds"><div class="vld"><h5 class="vld_title">багровый</h5><nav class="vl"><a href="#" class="footer_vert_list_a">сынок</a><a href="#" class="footer_vert_list_a">проход</a><a href="#" class="footer_vert_list_a">кожа</a><a href="#" class="footer_vert_list_a">пастух</a><a href="#" class="footer_vert_list_a">спалить</a></nav></div><div class="vld"><h5 class="vld_title">премьера</h5><nav class="vl"><a href="#" class="footer_vert_list_a">славный</a><a href="#" class="footer_vert_list_a">салон</a><a href="#" class="footer_vert_list_a">порода</a><a href="#" class="footer_vert_list_a">стакан</a><a href="#" class="footer_vert_list_a">потянуться</a></nav></div></div><i class="far fa-adjust fl"></i><nav class="fn"><a href="#" class="footer_link_a">© ООО возбуждение</a><a href="#" class="footer_link_a">Мобильная версия</a><a href="#" class="footer_link_a">Вакансии</a></nav><div class="footer_sn_icons"><i class="fab fa-vk footer_sn_icon"></i><i class="fab fa-github footer_sn_icon"></i><i class="fab fa-twitter footer_sn_icon"></i></div></div></footer></body></body></html>

@@ -12,8 +12,7 @@ import copy
 # card_icons_texts = [("icon", "text"), ...]
 
 
-def create_content_element(body, min_width, min_height, is_fullwidth, card_size, card_title, card_description,
-                           card_image, card_carousel_images: [], card_icons_list: [], card_text_chips: [],
+def create_content_element(body, min_width, min_height, is_fullwidth, card_size, cards_inf, card_carousel_images: [], card_icons_list: [], card_text_chips: [],
                            card_icon_chips: [], card_buttons: [], card_title_subtitle: [],
                            card_key_value: [], card_icons_texts: []):
     content = create_content(body, min_width=min_width, min_height=min_height, is_fullwidth=is_fullwidth)
@@ -33,9 +32,9 @@ def create_content_element(body, min_width, min_height, is_fullwidth, card_size,
         max_margin_bottom=10,
     )
     cards = []
-    for i in range(5):
-        card = create_card_element(cards_el, i, card_size, card_title, card_description,
-                           card_image, card_carousel_images, card_icons_list, card_text_chips,
+    for i in range(len(cards_inf)):
+        card = create_card_element(cards_el, i, card_size, cards_inf[i]["title"], cards_inf[i]["description"],
+                           cards_inf[i]["image"], card_carousel_images, card_icons_list, card_text_chips,
                            card_icon_chips, card_buttons, card_title_subtitle,
                            card_key_value, card_icons_texts)
         cards.append(card)
@@ -63,7 +62,7 @@ def create_sidebar(parent):
         "sidebar",
         min_margin_left=10,
         min_margin_right=10,
-        min_margin_top=10,
+        min_margin_top=0,
         min_margin_bottom=10,
         max_margin_left=20,
         max_margin_right=20,
@@ -81,6 +80,7 @@ def create_sidebar(parent):
 def create_card_element(parent, i, card_size, card_title, card_description, card_image, card_carousel_images: [], card_icons_list: [], card_text_chips: [],
                            card_icon_chips: [], card_buttons: [], card_title_subtitle: [],
                            card_key_value: [], card_icons_texts: []):
+    print(f"title: {card_title}")
     card = create_card(
         parent,
         i,
@@ -108,7 +108,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
             label='card_title',
             min_margin_left=10,
             min_margin_right=10,
-            min_margin_top=10,
+            min_margin_top=0,
             min_margin_bottom=10,
             is_flexwidth=True
         )
@@ -124,7 +124,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
             min_width=200,
             min_margin_left=10,
             min_margin_right=10,
-            min_margin_top=10,
+            min_margin_top=0,
             min_margin_bottom=10,
             is_flexwidth=True
         )
@@ -138,7 +138,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
             'card_icons',
             min_margin_left=10,
             min_margin_right=10,
-            min_margin_top=10,
+            min_margin_top=0,
             min_margin_bottom=10,
             max_margin_left=20,
             max_margin_right=20,
@@ -177,7 +177,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
             "buttons_div",
             min_margin_left=10,
             min_margin_right=10,
-            min_margin_top=10,
+            min_margin_top=0,
             min_margin_bottom=10,
             max_margin_left=10,
             max_margin_right=10,
@@ -217,7 +217,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
             "icons_chips_div",
             min_margin_left=10,
             min_margin_right=10,
-            min_margin_top=10,
+            min_margin_top=0,
             min_margin_bottom=10,
             max_margin_left=10,
             max_margin_right=10,
@@ -238,7 +238,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
                 min_margin_left=10,
                 min_margin_right=10,
                 min_margin_bottom=10,
-                min_margin_top=10,
+                min_margin_top=0,
                 is_flexwidth=True,
             )
             title = create_text(
@@ -257,7 +257,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
                 min_margin_left=10,
                 min_margin_right=10,
                 min_margin_bottom=10,
-                min_margin_top=10,
+                min_margin_top=0,
                 is_fullwidth=True,
             )
             chip_div.add_child(chips_list)
@@ -343,7 +343,9 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
                 min_margin_left=10,
                 min_margin_right=10,
                 min_margin_bottom=10,
-                min_margin_top=10,
+                min_margin_top=0,
+                center_horizontal=True,
+                center_vertical=True
             )
             icon = create_icon(
                 icon_text,
@@ -377,7 +379,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
 
     if card.size == 'sm':
         if card.image_div:
-            card.image_div.set_neighbours(right_elements=[], left_elements=[], top_elements=[],
+            card.image_div.set_neighbours(right_elements=[], left_elements=[], top_elements=[card.title],
                                       bottom_elements=[card.title, card.description, card.icons,
                                                        card.buttons] + card.icons_texts)
 
@@ -411,7 +413,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
         # card.min_width = max(child.min_width + child.min_margin_right + child.min_margin_left for child in card.children)
         card.min_width = 300
 
-        card.rules = [And(card.icons.y > card.image_div.y)]
+        card.rules = [And(card.icons.y > card.image_div.y), And(card.title.y < card.image_div.y)]
     # TODO сортировка ширина карточки описание под картинкой
     elif card.size == 'md':
         if card.image_div:
@@ -429,13 +431,15 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
         if card.buttons:
             card.buttons.set_neighbours(bottom_elements=card.icons_texts, top_elements=card.icons_texts)
 
-        card.min_height = 400
+        card.min_height = 800
         # card.min_width = max(child.min_width + child.min_margin_right + child.min_margin_left for child in card.children)
         # card.min_width = card.image.width + card.image.min_margin_left + card.image.min_margin_right + max([child.min_width + child.min_margin_left + child.min_margin_right for child in card.children]) + 100
-        card.min_width = 500
+        card.min_width = 600
+        card.max_width = 800
 
         # card.rules = [And(card.icons.y > card.title.y), And(card.icons.y < card.title.y)]
-        card.rules = [And(card.title.y < card.image_div.y)]
+        #card.rules = [And(card.title.y < card.image_div.y)]
+        card.rules = [And(card.title.y > card.image_div.y), And(card.title.y < card.image_div.y), And(card.buttons.x < card.icons_texts[0].x)]
     else:
         pass
     # title.set_neighbours(right_elements=[], left_elements=[], top_elements=[], bottom_elements=[])

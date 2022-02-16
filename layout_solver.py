@@ -182,9 +182,10 @@ def create_search_div(parent, is_fullwidth=False, is_flexwidth=False, is_flexhei
                              min_margin_left=min_margin_left, min_margin_top=min_margin_top,
                              min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right,
                              max_margin_left=max_margin_left, max_margin_top=max_margin_top,
-                             max_margin_bottom=max_margin_bottom)
+                             max_margin_bottom=max_margin_bottom, center_vertical=True)
     search.parent = search_div
     search_div.add_child(search)
+
     return search_div
 
 
@@ -327,6 +328,7 @@ def solve(parent, rule=None, parent_model=None):
 
 
 def find_solutions(parent, model=None):
+    
     if len(parent.rules) > 0:
         for rule in parent.rules:
             solve(parent, rule, model)
@@ -334,3 +336,4 @@ def find_solutions(parent, model=None):
         solve(parent, parent_model=model)
     else:
         solve(parent)
+
