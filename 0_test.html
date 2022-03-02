@@ -1,11 +1,14 @@
 <html><head><link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" /><link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" /><style>html {
-    font-size: 1.1em;
-    --primary: #73c090;
-    --secondary: #8be6ad;
+    font-size: 1.1684012351343254em;
+    --primary: #4b7a76;
+    --secondary: #63a09b;
     font: "Roboto","Arial",sans-serif;
-    --black: #0e1111;
+    --black: #333;
     --white: #fafafa;
-    color: var(--black);
+    --color: --white;
+    --background: --black;
+    color: var(--white);
+    background: var(--black);
     }
     a, a:hover, a:focus, a:active {
     text-decoration: none;
@@ -35,10 +38,10 @@ align-content: start;
 flex-flow: row wrap;
 }.header {
         flex-grow: 0;
-        flex-basis: 100.0%;
+        flex-basis: 100%;
         font-size: 1em;   
         min-width:1000px;
-        min-height:150px;
+        min-height:70px;
         max-height:;
         margin-right: 0px;
         margin-left: 0px;
@@ -50,6 +53,7 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
+        background: var(--secondary);
         border-bottom: 1px solid #dfdee2;
     align-items: center;
 justify-content: center;
@@ -58,7 +62,7 @@ align-content: normal;
 flex-flow: row wrap;
 }.div_header {
         flex-grow: 0;
-        flex-basis: 66.66666666666667%;
+        flex-basis: 73.15436241610739%;
         font-size: 1em;   
         min-width:1000px;
         min-height:0%;
@@ -96,12 +100,12 @@ flex-flow: row wrap;
         color: var(--primary);
         
 }
-.n {
-        flex-grow: 1;
-        flex-basis: 44.5%;
+.icls_icons {
+        flex-grow: 0;
+        flex-basis: 140px;
         font-size: 1em;   
-        min-width:400px;
-        min-height:10px;
+        min-width:140px;
+        min-height:0%;
         max-height:;
         margin-right: 10px;
         margin-left: 10px;
@@ -112,32 +116,34 @@ flex-flow: row wrap;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: center;
-        align-items: center;
-justify-content: center;
+        align-items: flex-start;
+justify-content: end;
 display: flex;
 align-content: normal;
-flex-flow: row nowrap;
-}.nav_a {
+flex-flow: row wrap;
+}.icls_icon {
         flex-grow: 0;
-        flex-basis: ;
-        font-size: 1em;   
-        min-width:0%;
-        min-height:0%;
+        flex-basis: 25px;
+        font-size: 25px;   
+        min-width:25px;
+        min-height:25px;
         max-height:;
-        margin-right: nav_a_margin_rightem;
-        margin-left: nav_a_margin_leftem;
-        margin-top: nav_a_margin_topem;
-        margin-bottom: nav_a_margin_bottomem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        margin-right: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
         text-align: center;
+        
+        color: var(--secondary);
         
 }
 .s {
         flex-grow: 1;
-        flex-basis: 22.0%;
+        flex-basis: 64.6788990825688%;
         font-size: 1em;   
         min-width:220px;
         min-height:0%;
@@ -158,7 +164,7 @@ align-content: normal;
 flex-flow: row wrap;
 }.search {
         flex-grow: 0;
-        flex-basis: 200px;
+        flex-basis: 290px;
         font-size: 1em;   
         min-width:200px;
         min-height:40px;
@@ -173,9 +179,9 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: left;
         
-        border-radius: 17px;
+        border-radius: 8px;
         padding-left: 10px;
-        border: 3px var(--primary) solid;
+        border: 2px var(--black) solid;
         
 }
 .search_butt {
@@ -195,8 +201,9 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-        color: var(--secondary);
-        
+            color: var(--color);
+            filter: brightness(3.0);
+            
 }
 .header_sn_icons {
         flex-grow: 0;
@@ -215,52 +222,11 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         align-items: flex-start;
-justify-content: start;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.header_sn_icon {
-        flex-grow: 0;
-        flex-basis: 25px;
-        font-size: 25px;   
-        min-width:25px;
-        min-height:25px;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        
-        color: var(--primary);
-        
-}
-.icls_icons {
-        flex-grow: 0;
-        flex-basis: 70px;
-        font-size: 1em;   
-        min-width:70px;
-        min-height:0%;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
 justify-content: end;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
-}.icls_icon {
+}.header_sn_icon {
         flex-grow: 0;
         flex-basis: 25px;
         font-size: 25px;   
@@ -302,9 +268,9 @@ align-content: flex-start;
 flex-flow: row nowrap;
 }.sidebar {
         flex-grow: 0;
-        flex-basis: 250px;
+        flex-basis: 460px;
         font-size: 1em;   
-        min-width:250px;
+        min-width:400px;
         min-height:0%;
         max-height:;
         margin-right: 10px;
@@ -317,6 +283,92 @@ flex-flow: row nowrap;
         padding-bottom: 0em;
         text-align: center;
         
+    border-right: 1px solid #dfdee2;
+    align-items: flex-start;
+justify-content: end;
+display: flex;
+align-content: flex-start;
+flex-flow: row nowrap;
+}.sidebar_nav_div {
+        flex-grow: 0;
+        flex-basis: 340px;
+        font-size: 1em;   
+        min-width:300px;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.sidebar_nav_link {
+        flex-grow: 0;
+        flex-basis: 320px;
+        font-size: 1em;   
+        min-width:250px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: center;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.sidebar_nav_icon {
+        flex-grow: 0;
+        flex-basis: 20px;
+        font-size: 1.5em;   
+        min-width:None;
+        min-height:None;
+        max-height:;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+        color: var(--secondary);
+        
+}
+.sidebar_nav_text {
+        flex-grow: 0;
+        flex-basis: 53.125%;
+        font-size: 1.5em;   
+        min-width:100px;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        font-weight: 700;
+
+            color: var(--color);
+            
 }
 .cards {
         flex-grow: 1;
@@ -340,9 +392,9 @@ align-content: normal;
 flex-flow: row wrap;
 }.c {
         flex-grow: 0;
-        flex-basis: 600px;
+        flex-basis: 440px;
         font-size: 1em;   
-        min-width:600px;
+        min-width:300px;
         min-height:0%;
         max-height:;
         margin-right: 10px;
@@ -358,9 +410,129 @@ flex-flow: row wrap;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
-}.card_title {
+}.card_avatar_div {
+        flex-grow: 0;
+        flex-basis: 50px;
+        font-size: 1em;   
+        min-width:0px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+justify-content: center;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.card_avatar {
+        flex-grow: 0;
+        flex-basis: 50px;
+        font-size: 1em;   
+        min-width:50px;
+        min-height:50px;
+        max-height:50px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        border-radius: 25px;
+
+}
+.titles_subtitles_div {
         flex-grow: 1;
-        flex-basis: 96.66666666666667%;
+        flex-basis: 79.54545454545455%;
+        font-size: 1em;   
+        min-width:150px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.title_subtitle_div {
+        flex-grow: 0;
+        flex-basis: 210px;
+        font-size: 1em;   
+        min-width:120px;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.card_t {
+        flex-grow: 1;
+        flex-basis: 66.66666666666667%;
+        font-size: 1em;   
+        min-width:50px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        font-weight: 700;
+
+            color: var(--color);
+            
+}
+.card_subt {
+        flex-grow: 1;
+        flex-basis: 33.333333333333336%;
+        font-size: 1em;   
+        min-width:50px;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        filter: brightness(3.0);
+
+}
+.card_description {
+        flex-grow: 1;
+        flex-basis: 95.45454545454545%;
         font-size: 1em;   
         min-width:200px;
         min-height:0%;
@@ -374,14 +546,12 @@ flex-flow: row wrap;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: start;
-        font-weight: 500;
+        overflow: hidden;
 
-            color: var(--primary);
-            
 }
 .card_img_div {
-        flex-grow: 0;
-        flex-basis: 200px;
+        flex-grow: 1;
+        flex-basis: 420px;
         font-size: 1em;   
         min-width:200px;
         min-height:0%;
@@ -418,50 +588,11 @@ flex-flow: row wrap;
         text-align: center;
         
 }
-.unite_div6c {
-        flex-grow: 1;
-        flex-basis: 220px;
-        font-size: 1em;   
-        min-width:0%;
-        min-height:0%;
-        max-height:;
-        margin-right: 0px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: center;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.card_description {
-        flex-grow: 1;
-        flex-basis: 22.0%;
-        font-size: 1em;   
-        min-width:200px;
-        min-height:0%;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: start;
-        overflow: hidden;
-
-}
 .card_icon_text {
         flex-grow: 0;
-        flex-basis: 150px;
+        flex-basis: 50px;
         font-size: 1em;   
-        min-width:150px;
+        min-width:0px;
         min-height:0%;
         max-height:;
         margin-right: 10px;
@@ -478,7 +609,7 @@ justify-content: center;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
-}.cit_icon {
+}.cardit_icon {
         flex-grow: 0;
         flex-basis: 20px;
         font-size: 20px;   
@@ -495,13 +626,12 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-            color: var(--black);
-            filter: brightness(3.0);
-            
+        color: var(--primary);
+        
 }
-.cit_text {
-        flex-grow: 1;
-        flex-basis: 86.66666666666667px;
+.cardit_text {
+        flex-grow: 0;
+        flex-basis: ;
         font-size: 1em;   
         min-width:20px;
         min-height:0%;
@@ -515,97 +645,12 @@ flex-flow: row wrap;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: start;
-        font-weight: 600;
+        font-weight: 700;
 
-}
-.buttons_div {
-        flex-grow: 1;
-        flex-basis: 270px;
-        font-size: 1em;   
-        min-width:150px;
-        min-height:0%;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.card_button {
-        flex-grow: 0;
-        flex-basis: 150px;
-        font-size: 1em;   
-        min-width:0%;
-        min-height:0%;
-        max-height:;
-        margin-right: 0px;
-        margin-left: 0px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        padding-left: 1em;
-        padding-right: 1em;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-        text-align: center;
-        border: 0;
-        border-radius: 16px;
-        font-weight: 500;
-        cursor: pointer;
-        
-                background: var(--primary);
-                color: var(--white);
-                
-}
-.card_icons {
-        flex-grow: 1;
-        flex-basis: 70px;
-        font-size: 1em;   
-        min-width:70px;
-        min-height:0%;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.card_icon {
-        flex-grow: 0;
-        flex-basis: 25px;
-        font-size: 25px;   
-        min-width:None;
-        min-height:None;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        
-        color: var(--primary);
-        
 }
 .footer {
         flex-grow: 0;
-        flex-basis: 100.0%;
+        flex-basis: 100%;
         font-size: 1em;   
         min-width:1000px;
         min-height:0%;
@@ -619,14 +664,17 @@ flex-flow: row wrap;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: center;
-        align-items: center;
+        
+        background: var(--background);
+        border-top: 1px solid #dfdee2;
+    align-items: center;
 justify-content: center;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
 }.div_footer {
         flex-grow: 0;
-        flex-basis: 66.66666666666667%;
+        flex-basis: 74.48275862068965%;
         font-size: 1em;   
         min-width:1000px;
         min-height:0%;
@@ -644,109 +692,7 @@ flex-flow: row wrap;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
-}.vlds {
-        flex-grow: 1;
-        flex-basis: 900px;
-        font-size: 1em;   
-        min-width:400px;
-        min-height:0%;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-justify-content: center;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.vld {
-        flex-grow: 0;
-        flex-basis: 100px;
-        font-size: 1em;   
-        min-width:100px;
-        min-height:0%;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: center;
-justify-content: center;
-display: flex;
-align-content: normal;
-flex-flow: column nowrap;
-}.vld_title {
-        flex-grow: 1;
-        flex-basis: 100.0%;
-        font-size: 1em;   
-        min-width:100px;
-        min-height:0%;
-        max-height:;
-        margin-right: 0px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        font-weight: 700;
-
-            color: var(--primary);
-            
-}
-.vl {
-        flex-grow: 0;
-        flex-basis: 100.0%;
-        font-size: 1em;   
-        min-width:100px;
-        min-height:50px;
-        max-height:;
-        margin-right: 0px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: center;
-justify-content: center;
-display: flex;
-align-content: normal;
-flex-flow: column nowrap;
-}.footer_vert_list_a {
-        flex-grow: 0;
-        flex-basis: ;
-        font-size: 1em;   
-        min-width:0%;
-        min-height:0%;
-        max-height:;
-        margin-right: footer_vert_list_a_margin_rightem;
-        margin-left: footer_vert_list_a_margin_leftem;
-        margin-top: footer_vert_list_a_margin_topem;
-        margin-bottom: footer_vert_list_a_margin_bottomem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        text-align: center;
-        
-}
-.fl {
+}.fl {
         flex-grow: 0;
         flex-basis: 60px;
         font-size: 60px;   
@@ -766,9 +712,50 @@ flex-flow: column nowrap;
         color: var(--secondary);
         
 }
+.footer_sn_icons {
+        flex-grow: 0;
+        flex-basis: 105px;
+        font-size: 1em;   
+        min-width:105px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+justify-content: end;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.footer_sn_icon {
+        flex-grow: 0;
+        flex-basis: 25px;
+        font-size: 25px;   
+        min-width:25px;
+        min-height:25px;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+        color: var(--primary);
+        
+}
 .fn {
         flex-grow: 1;
-        flex-basis: 85.5%;
+        flex-basis: 86.57407407407408%;
         font-size: 1em;   
         min-width:150px;
         min-height:10px;
@@ -805,46 +792,10 @@ flex-flow: row nowrap;
         text-align: center;
         
 }
-.footer_sn_icons {
-        flex-grow: 0;
-        flex-basis: 105px;
-        font-size: 1em;   
-        min-width:105px;
-        min-height:0%;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-justify-content: start;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.footer_sn_icon {
-        flex-grow: 0;
-        flex-basis: 25px;
-        font-size: 25px;   
-        min-width:25px;
-        min-height:25px;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        
-        color: var(--primary);
-        
-}
-</style></head><body><body class="body"><header class="header"><div class="div_header"><i class="far fa-adjust l"></i><nav class="n"><a href="#" class="nav_a">Home</a><a href="#" class="nav_a">Profile</a><a href="#" class="nav_a">About Us</a><a href="#" class="nav_a">Contacts</a></nav><div class="s"><input type="text" class="search" /><i class="fas fa-search search_butt"></i></div><div class="header_sn_icons"><i class="fab fa-vk header_sn_icon"></i><i class="fab fa-github header_sn_icon"></i><i class="fab fa-twitter header_sn_icon"></i></div><div class="icls_icons"><i class="far fa-user icls_icon"></i><i class="far fa-shopping-cart icls_icon"></i></div></div></header><content class="content"><div class="sidebar"></div><div class="cards"><div class="c"><h5 class="card_title">уточнить</h5><div class="card_img_div"><img src="https://placekitten.com/400/400" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Следовательно плавно инвалид. Совещание роса что изучить предоставить.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">голубчик кузнец эффект</h5><div class="card_img_div"><img src="https://placekitten.com/100/100" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Правление неожиданно сравнение. Инвалид чувство чем сынок плод июнь. Болото банк дрогнуть прощение построить оставить левый.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">одиннадцать изучить развернуться</h5><div class="card_img_div"><img src="https://placeimg.com/400/400/any" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Бетонный деловой очередной ремень настать. Инфекция упор бетонный а витрина. Бетонный смертельный спичка.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">миф сынок смеяться</h5><div class="card_img_div"><img src="https://placeimg.com/100/100/any" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Бегать помолчать выражение плод академик. Назначить командующий кожа наслаждение.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">пламя беспомощный</h5><div class="card_img_div"><img src="https://placekitten.com/600/600" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Исследование посидеть приходить трубка палец способ. Более чувство способ заведение. Покидать тута ставить бетонный заплакать грустный. Домашний угол идея изба успокоиться.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">спасть сохранять угроза</h5><div class="card_img_div"><img src="https://placekitten.com/600/600" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Термин куча руководитель издали. Ленинград хозяйка отражение упорно пробовать вскинуть через пропаганда. Очутиться увеличиваться картинка пересечь мелочь экзамен.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">степь парень</h5><div class="card_img_div"><img src="https://picsum.photos/800/800" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Армейский пол песня банк левый термин. Деловой затянуться конструкция тысяча головной заявление медицина. Спалить сынок выраженный плавно мягкий виднеться забирать.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">район</h5><div class="card_img_div"><img src="https://placekitten.com/200/200" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Правление изменение полоска. Господь реклама коробка миллиард.
-Налоговый висеть невозможно место естественный мгновение трясти. Строительство провинция пространство анализ торговля.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">четыре домашний</h5><div class="card_img_div"><img src="https://placeimg.com/400/400/any" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Следовательно хотеть сутки механический. Мягкий смеяться выражаться правый.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div><div class="c"><h5 class="card_title">витрина плод хлеб</h5><div class="card_img_div"><img src="https://placekitten.com/400/400" alt="card_image" class="card_image" /></div><div class="unite_div6c"><p class="card_description">Одиннадцать выраженный цвет конструкция избегать изучить совет. Выраженный неожиданный смертельный материя трубка. Виднеться ложиться дрогнуть отдел предоставить.</p><div class="card_icon_text"><i class="far fa-star cit_icon"></i><p class="cit_text">4.5</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div></div></content><footer class="footer"><div class="div_footer"><div class="vlds"><div class="vld"><h5 class="vld_title">багровый</h5><nav class="vl"><a href="#" class="footer_vert_list_a">сынок</a><a href="#" class="footer_vert_list_a">проход</a><a href="#" class="footer_vert_list_a">кожа</a><a href="#" class="footer_vert_list_a">пастух</a><a href="#" class="footer_vert_list_a">спалить</a></nav></div><div class="vld"><h5 class="vld_title">премьера</h5><nav class="vl"><a href="#" class="footer_vert_list_a">славный</a><a href="#" class="footer_vert_list_a">салон</a><a href="#" class="footer_vert_list_a">порода</a><a href="#" class="footer_vert_list_a">стакан</a><a href="#" class="footer_vert_list_a">потянуться</a></nav></div></div><i class="far fa-adjust fl"></i><nav class="fn"><a href="#" class="footer_link_a">© ООО возбуждение</a><a href="#" class="footer_link_a">Мобильная версия</a><a href="#" class="footer_link_a">Вакансии</a></nav><div class="footer_sn_icons"><i class="fab fa-vk footer_sn_icon"></i><i class="fab fa-github footer_sn_icon"></i><i class="fab fa-twitter footer_sn_icon"></i></div></div></footer></body></body></html>
+</style></head><body><body class="body"><header class="header"><div class="div_header"><i class="far fa-adjust l"></i><div class="icls_icons"><i class="fas fa-house icls_icon"></i><i class="far fa-music icls_icon"></i><i class="far fa-users icls_icon"></i><i class="far fa-envelope icls_icon"></i></div><div class="s"><input type="text" class="search" /><i class="fas fa-search search_butt"></i></div><div class="header_sn_icons"><i class="fab fa-vk header_sn_icon"></i><i class="fab fa-github header_sn_icon"></i><i class="fab fa-twitter header_sn_icon"></i></div></div></header><content class="content"><aside class="sidebar"><div class="sidebar_nav_div"><div class="sidebar_nav_link"><i class="far fa-user sidebar_nav_icon"></i><h5 class="sidebar_nav_text">Him</h5></div><div class="sidebar_nav_link"><i class="far fa-chart-bar sidebar_nav_icon"></i><h5 class="sidebar_nav_text">Establish</h5></div><div class="sidebar_nav_link"><i class="fas fa-search sidebar_nav_icon"></i><h5 class="sidebar_nav_text">Meeting</h5></div><div class="sidebar_nav_link"><i class="far fa-chart-bar sidebar_nav_icon"></i><h5 class="sidebar_nav_text">Man</h5></div><div class="sidebar_nav_link"><i class="far fa-user sidebar_nav_icon"></i><h5 class="sidebar_nav_text">Respond</h5></div><div class="sidebar_nav_link"><i class="far fa-heart sidebar_nav_icon"></i><h5 class="sidebar_nav_text">In</h5></div><div class="sidebar_nav_link"><i class="far fa-user sidebar_nav_icon"></i><h5 class="sidebar_nav_text">Actually</h5></div><div class="sidebar_nav_link"><i class="far fa-chart-bar sidebar_nav_icon"></i><h5 class="sidebar_nav_text">High</h5></div></div></aside><div class="cards"><div class="c"><div class="card_avatar_div"><img src="https://picsum.photos/898/691" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@brittanymahoney</h5><h5 class="card_subt">Jesse Trevino</h5></div></div><p class="card_description">Table name resource street himself phone. Force will likely subject often one break.
+Beyond safe not response. Skill score too reduce.</p><div class="card_img_div"><img src="https://placekitten.com/304/309" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div><div class="c"><div class="card_avatar_div"><img src="https://placekitten.com/180/180" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@xavierfranklin</h5><h5 class="card_subt">Ann Rojas</h5></div></div><p class="card_description">Ahead possible wife pay party travel. Upon another play.
+Save exactly trade hospital perform something. Role get reach side through agree personal deal.</p><div class="card_img_div"><img src="https://placekitten.com/900/900" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div><div class="c"><div class="card_avatar_div"><img src="https://picsum.photos/60/60" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@andrew87</h5><h5 class="card_subt">Felicia Price</h5></div></div><p class="card_description">Daughter example vote. Buy contain kitchen.
+Star save no party together including. Child consider mission whatever because public memory. Hotel budget win question toward deal blood box.</p><div class="card_img_div"><img src="https://placeimg.com/300/300/any" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div><div class="c"><div class="card_avatar_div"><img src="https://picsum.photos/140/140" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@alexandra78</h5><h5 class="card_subt">Andrew Peters</h5></div></div><p class="card_description">Soon test discussion than see. Imagine last brother cause challenge speak. Story most here add suffer opportunity all future.</p><div class="card_img_div"><img src="https://placekitten.com/700/700" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div><div class="c"><div class="card_avatar_div"><img src="https://placeimg.com/200/200/any" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@kyleruiz</h5><h5 class="card_subt">Stephanie Randall</h5></div></div><p class="card_description">Interview compare power serious our recent. Reduce truth probably exist civil choice.</p><div class="card_img_div"><img src="https://placeimg.com/1000/1000/any" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div><div class="c"><div class="card_avatar_div"><img src="https://placekitten.com/20/20" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@robertlambert</h5><h5 class="card_subt">Chris Williams</h5></div></div><p class="card_description">Cut born deal cut require center.
+Event behavior protect customer task government source serve. Your discover likely small popular have. Hundred sound just above.</p><div class="card_img_div"><img src="https://picsum.photos/100/100" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div><div class="c"><div class="card_avatar_div"><img src="https://picsum.photos/80/80" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@kdiaz</h5><h5 class="card_subt">Robin Haynes</h5></div></div><p class="card_description">Stand term old road air record read. Total college sea decade skill throw feeling memory. Research involve government term reveal cold maintain.</p><div class="card_img_div"><img src="https://placeimg.com/400/400/any" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div><div class="c"><div class="card_avatar_div"><img src="https://placekitten.com/120/120" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@charles04</h5><h5 class="card_subt">Christopher Campbell</h5></div></div><p class="card_description">Here mother task walk doctor.
+Choose which hand. Put standard including good.
+Sometimes hundred threat yeah down sure. Imagine bit education with result president real cell.</p><div class="card_img_div"><img src="https://placekitten.com/600/600" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div><div class="c"><div class="card_avatar_div"><img src="https://picsum.photos/60/60" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@vsmith</h5><h5 class="card_subt">Sarah Delgado</h5></div></div><p class="card_description">Agree experience direction while direction could. Great then so lay act shoulder. Gun single matter woman movie region spring firm. Marriage health quickly measure situation middle.</p><div class="card_img_div"><img src="https://picsum.photos/300/300" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div><div class="c"><div class="card_avatar_div"><img src="https://placeimg.com/100/100/any" alt="card_avatar" class="card_avatar" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">@david46</h5><h5 class="card_subt">Kathleen Erickson</h5></div></div><p class="card_description">Account trade yeah beat such event war out. Service bill camera create. Seat under stand allow nor seven remember. Buy subject reveal.</p><div class="card_img_div"><img src="https://placeimg.com/500/500/any" alt="card_image" class="card_image" /></div><div class="card_icon_text"><i class="far fa-heart cardit_icon"></i><p class="cardit_text">45</p></div><div class="card_icon_text"><i class="far fa-comment cardit_icon"></i><p class="cardit_text">10</p></div><div class="card_icon_text"><i class="far fa-retweet cardit_icon"></i><p class="cardit_text">5</p></div><div class="card_icon_text"><i class="far fa-share-alt cardit_icon"></i><p class="cardit_text"></p></div></div></div></content><footer class="footer"><div class="div_footer"><i class="far fa-adjust fl"></i><div class="footer_sn_icons"><i class="fab fa-twitter footer_sn_icon"></i><i class="fab fa-github footer_sn_icon"></i><i class="fab fa-vk footer_sn_icon"></i></div><nav class="fn"><a href="#" class="footer_link_a">© ООО truth</a><a href="#" class="footer_link_a">Мобильная версия</a><a href="#" class="footer_link_a">Вакансии</a></nav></div></footer></body></body></html>

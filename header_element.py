@@ -1,13 +1,8 @@
 from layout_solver import *
 
 
-def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, nav_list: [], is_search, icls_icons_list: [], sn_icons_list: []):
-    header = create_header(body, min_width=min_width, min_height=min_height, is_fullwidth=is_fullwidth)
-    logo = None
-    nav = None
-    search_div = None
-    icls_icons = None
-    sn_icons = None
+def create_header_element(body, min_width, min_height, max_height, is_fullwidth, is_logo, nav_list: [], is_search, icls_icons_list: [], sn_icons_list: []):
+    header = create_header(body, min_width=min_width, min_height=min_height, max_height=max_height, is_fullwidth=is_fullwidth)
 
     div_header = None
     fullwidth = random.choice([True, False])
@@ -18,6 +13,11 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
 
     header.add_child(div_header)
     header.div_header = div_header
+    div_header.logo = None
+    div_header.nav = None
+    div_header.search_div = None
+    div_header.icls_icons = None
+    div_header.sn_icons = None
 
     if is_logo:
         logo = create_child(
@@ -153,37 +153,41 @@ def create_header_element(body, min_width, min_height, is_fullwidth, is_logo, na
         div_header.add_child(sn_icons)
         div_header.sn_icons = sn_icons
 
-    logo.set_neighbours(
-        right_elements=[nav, search_div, icls_icons, sn_icons],
-        bottom_elements=[nav, search_div]
+    div_header.logo.set_neighbours(
+        right_elements=[div_header.nav, div_header.search_div, div_header.icls_icons, div_header.sn_icons],
+        bottom_elements=[div_header.nav, div_header.search_div]
     )
-    nav.set_neighbours(
-        left_elements=[logo, search_div],
-        top_elements=[search_div, icls_icons, sn_icons, logo],
-        bottom_elements=[search_div],
-        right_elements=[search_div, icls_icons, sn_icons])
-    search_div.set_neighbours(
-        left_elements=[logo, nav],
-        top_elements=[nav, icls_icons, sn_icons, logo],
-        bottom_elements=[nav],
-        right_elements=[nav, icls_icons, sn_icons]
-    )
-    icls_icons.set_neighbours(
-        left_elements=[logo, sn_icons, search_div, nav],
-        top_elements=[search_div, nav],
-        bottom_elements=[search_div, nav],
-        right_elements=[sn_icons]
-    )
-    sn_icons.set_neighbours(
-        right_elements=[icls_icons],
-        left_elements=[logo, search_div, nav, icls_icons],
-        top_elements=[search_div, nav],
-        bottom_elements=[search_div, nav]
-    )
+    if div_header.nav:
+        div_header.nav.set_neighbours(
+            left_elements=[div_header.logo, div_header.search_div],
+            top_elements=[div_header.search_div, div_header.icls_icons, div_header.sn_icons, div_header.logo],
+            bottom_elements=[div_header.search_div],
+            right_elements=[div_header.search_div, div_header.icls_icons, div_header.sn_icons])
+    if div_header.search_div:
+        div_header.search_div.set_neighbours(
+            left_elements=[div_header.logo, div_header.nav, div_header.icls_icons],
+            top_elements=[div_header.nav, div_header.icls_icons, div_header.sn_icons, div_header.logo],
+            bottom_elements=[div_header.nav],
+            right_elements=[div_header.nav, div_header.icls_icons, div_header.sn_icons]
+        )
+    if div_header.icls_icons:
+        div_header.icls_icons.set_neighbours(
+            left_elements=[div_header.logo, div_header.sn_icons, div_header.search_div, div_header.nav],
+            top_elements=[div_header.search_div, div_header.nav],
+            bottom_elements=[div_header.search_div, div_header.nav],
+            right_elements=[div_header.sn_icons, div_header.search_div]
+        )
+    if div_header.sn_icons:
+        div_header.sn_icons.set_neighbours(
+            right_elements=[div_header.icls_icons],
+            left_elements=[div_header.logo, div_header.search_div, div_header.nav, div_header.icls_icons],
+            top_elements=[div_header.search_div, div_header.nav],
+            bottom_elements=[div_header.search_div, div_header.nav]
+        )
 
-    div_header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
-                    And(nav.y == logo.y, search_div.y >= nav.y + nav.row_count),
-                    And(search_div.y == logo.y, nav.y >= search_div.y + search_div.row_count)]
+    #div_header.rules = [And(nav.y == logo.y, logo.y == search_div.y),
+    #                And(nav.y == logo.y, search_div.y >= nav.y + nav.row_count),
+    #                And(search_div.y == logo.y, nav.y >= search_div.y + search_div.row_count)]
 
 
 

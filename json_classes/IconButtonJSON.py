@@ -102,5 +102,13 @@ class IconButtonJSON(BaseElementJSON):
             self.attrs.append(('class', 'far fa-comment'))
         elif icon_name == 'search':
             self.attrs.append(('class', 'fas fa-search'))
+        elif icon_name == 'share':
+            self.attrs.append(('class', 'far fa-share-alt'))
+        elif icon_name == 'retweet':
+            self.attrs.append(('class', 'far fa-retweet'))
+        elif icon_name == 'home':
+            self.attrs.append(('class', 'fas fa-house'))
+        elif icon_name == 'message':
+            self.attrs.append(('class', 'fas fa-message'))
         else:
             self.attrs.append(('class', f'far fa-{icon_name}'))

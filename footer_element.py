@@ -9,9 +9,9 @@ def create_footer_element(body, min_width, min_height, is_fullwidth, is_logo, ve
     div_footer = None
     fullwidth = random.choice([False, False])
     if fullwidth:
-        div_footer = create_div(footer, "div_footer", "div_footer", min_width=footer.min_width, min_height=footer.min_height, is_flexheight=True, is_fullwidth=True)
+        div_footer = create_div(footer, "div_footer", "div_footer", min_width=footer.min_width, min_height=footer.min_height, max_margin_right=0, max_margin_left=0, is_flexheight=True, is_fullwidth=True)
     else:
-        div_footer = create_div(footer, "div_footer", "div_footer", min_width=1000, min_height=footer.min_height, is_flexheight=True)
+        div_footer = create_div(footer, "div_footer", "div_footer", min_width=1000, min_height=footer.min_height, max_margin_right=0, max_margin_left=0, is_flexheight=True)
 
     div_footer.logo = None
     div_footer.vert_lists = None
@@ -115,7 +115,7 @@ def create_footer_element(body, min_width, min_height, is_fullwidth, is_logo, ve
             vert_list.add_children([title, list])
             vert_list.title = title
             vert_list.list = list
-            vert_list.min_width = max(title.min_width + title.min_margin_right + title.min_margin_left, list.min_width + list.min_margin_left, list.min_margin_right)
+            vert_list.min_width = max(title.min_width + title.min_margin_right + title.min_margin_left, list.min_width + list.min_margin_left + list.min_margin_right)
             vert_list.min_height = sum(ch.min_height + ch.min_margin_bottom + ch.min_margin_top for ch in [title, list])
             title.set_neighbours(bottom_elements=[list])
             arr.append(vert_list)

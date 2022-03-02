@@ -118,7 +118,7 @@ def create_header(parent, width=None, height=None, rules=None, is_fullwidth=Fals
                   min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0):
     header = BaseElement("header", rules=rules, width=width,
                          height=height, parent=parent, label="header", is_fullwidth=is_fullwidth,
-                         justify_left=justify_left,
+                         justify_left=justify_left, max_margin_left=0, max_margin_right=0, min_margin_left=0, min_margin_right=0,
                          justify_right=justify_right, min_width=min_width,
                          min_height=min_height, max_width=max_width, max_height=max_height)
 
@@ -130,7 +130,7 @@ def create_footer(parent, width=None, height=None, rules=None, is_fullwidth=Fals
                   max_width=None, max_height=None):
     footer = BaseElement("footer", rules=rules, width=width,
                          height=height, parent=parent, label="footer", is_fullwidth=is_fullwidth,
-                         justify_left=justify_left,
+                         justify_left=justify_left, max_margin_left=0, max_margin_right=0, min_margin_left=0, min_margin_right=0,
                          justify_right=justify_right, min_width=min_width,
                          min_height=min_height, max_width=max_width, max_height=max_height)
 
@@ -209,8 +209,10 @@ def create_icon(parent, name, icon_label, icon_width=20, icon_height=20, min_mar
 
 def solve(parent, rule=None, parent_model=None):
     s = Optimize()
-    if rule is not None:
-        s.add(rule)
+    #if rule is not None:
+    #    s.add(rule)
+    for r in rule:
+        s.add_soft(r)
 
     if parent.width:
         s.add(parent.col_count == parent.table.get_col_count_from_width(parent.width))
@@ -269,9 +271,11 @@ def solve(parent, rule=None, parent_model=None):
                         another_child not in child.bottom_elements, another_child not in child.top_elements)
                 ))
         if len(child.right_elements) > 0:
-            s.add_soft(child.right_elements[0].y - child.right_elements[0].margin_top == child.y - child.margin_top)
+            if child.right_elements[0] is not None:
+                s.add_soft(child.right_elements[0].y - child.right_elements[0].margin_top == child.y - child.margin_top)
         if len(child.left_elements) > 0:
-            s.add_soft(child.left_elements[0].y - child.left_elements[0].margin_top == child.y - child.margin_top)
+            if child.left_elements[0] is not None:
+                s.add_soft(child.left_elements[0].y - child.left_elements[0].margin_top == child.y - child.margin_top)
 
         if parent.center_vertical:
             pass
@@ -302,6 +306,7 @@ def solve(parent, rule=None, parent_model=None):
         parent.add_model(model)
 
         for child in parent.children:
+
             print(m[parent.col_count])
             print(f"{child.x} : {m[child.x]}")
             print(f"{child.y} : {m[child.y]}")
@@ -318,7 +323,7 @@ def solve(parent, rule=None, parent_model=None):
                 child.table = Table(5, 5, width=child.get_width_with_parent(m),
                                     height=child.get_height_with_parent(m))
                 find_solutions(child, model)
-        if parent.name != 'body' and parent.name != 'content' and parent.name != 'cards':
+        if parent.name == 'div_header' or parent.name == 'card0' and parent.name != 'body' and parent.name != 'content' and parent.name != 'cards':
             for i in range(len(arr)):
                 print(arr[i])
         print("----------------------------------------------------")
@@ -328,12 +333,51 @@ def solve(parent, rule=None, parent_model=None):
 
 
 def find_solutions(parent, model=None):
-    
-    if len(parent.rules) > 0:
-        for rule in parent.rules:
-            solve(parent, rule, model)
-    elif model is not None:
-        solve(parent, parent_model=model)
+    soft_rules = []
+    # Составляем список всевозможных софт правил
+    # Ширина и высота с шагом 10
+    # Если макс значение отсутствует, то макс = мин + 100
+    for child in parent.children:
+        if child.width is None:
+            if child.max_width:
+                for i in range(0, (child.max_width - child.min_width) // 10):
+                    soft_rules.append(And(child.col_count >= parent.table.get_col_count_from_width(child.min_width + i * 10)))
+            else:
+                for i in range(0, 10):
+                    soft_rules.append(And(child.col_count >= parent.table.get_col_count_from_width(child.min_width + i * 10)))
+        #if child.height is None:
+        #    if child.max_height:
+        #        for i in range(0, (child.max_height - child.min_height) // 10):
+        #            soft_rules.append(And(child.row_count >= parent.table.get_row_count_from_height(child.min_height + i * 10)))
+        #    else:
+        #        for i in range(0, 20):
+        #            soft_rules.append(And(child.row_count >= parent.table.get_row_count_from_height(child.min_height + i * 10)))
+        for another_child in child.right_elements:
+            if another_child is not None:
+                soft_rules.append(And(child.x <= another_child.x))
+        for another_child in child.left_elements:
+            if another_child is not None:
+                soft_rules.append(And(child.x >= another_child.x))
+        for another_child in child.top_elements:
+            if another_child is not None:
+                soft_rules.append(And(child.y <= another_child.y))
+        for another_child in child.bottom_elements:
+            if another_child is not None:
+                soft_rules.append(And(child.y >= another_child.y))
+    # выбираем n рандомных софт правил
+    print(len(soft_rules))
+    k = len(soft_rules) // 3
+
+    arr = random.choices(soft_rules, k=k)
+    if model is not None:
+        solve(parent, arr, parent_model=model)
     else:
-        solve(parent)
+        solve(parent, arr)
+    #if len(parent.rules) > 0:
+    #    for rule in parent.rules:
+    #        solve(parent, rule, model)
+    #elif model is not None:
+    #    solve(parent, parent_model=model)
+    #else:
+    #    solve(parent)
 
