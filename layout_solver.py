@@ -81,7 +81,7 @@ def create_text(text, parent, label, min_width=0, min_height=0, max_width=None, 
 
 
 def create_icons_list(parent, name, label, rules=None, center_horizontal=False, center_vertical=False,
-                      min_margin_right=0, is_fullwidth=False, is_flexwidth=False,
+                      min_margin_right=0, is_fullwidth=False, is_flexwidth=False, justify_left=False,
                       min_margin_left=0, min_margin_top=0, min_margin_bottom=0, max_margin_right=0,
                       max_margin_left=0, max_margin_top=0, max_margin_bottom=0, is_vertical=False):
     icons_list = IconsListElement(name, rules=rules, label=label, is_fullwidth=is_fullwidth,
@@ -90,7 +90,7 @@ def create_icons_list(parent, name, label, rules=None, center_horizontal=False, 
                                   min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom,
                                   max_margin_right=max_margin_right, max_margin_left=max_margin_left,
                                   max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom,
-                                  is_vertical=is_vertical, is_flexwidth=is_flexwidth)
+                                  is_vertical=is_vertical, is_flexwidth=is_flexwidth, justify_left=justify_left)
 
     return icons_list
 
@@ -164,6 +164,17 @@ def create_text_list(parent, name, label, text_list, is_fullwidth=False,
                             max_margin_bottom=max_margin_bottom)
 
     return text_list
+
+
+def create_input(parent, is_fullwidth=False, is_flexwidth=False, max_width=None, max_height=None,
+                      min_width=0, min_height=0, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0,
+                      max_margin_right=10, max_margin_left=10, max_margin_top=10, max_margin_bottom=10):
+    input = BaseElement("input", min_height=min_height, min_width=min_width, label="input", max_width=max_width,
+                        max_height=max_height, parent=parent, is_fullwidth=is_fullwidth, is_flexwidth=is_flexwidth,
+                        min_margin_right=min_margin_right, min_margin_left=min_margin_left, min_margin_top=min_margin_top,
+                        min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right, max_margin_left=max_margin_left,
+                        max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom)
+    return input
 
 
 def create_search_div(parent, is_fullwidth=False, is_flexwidth=False, is_flexheight=False,
@@ -323,7 +334,7 @@ def solve(parent, rule=None, parent_model=None):
                 child.table = Table(5, 5, width=child.get_width_with_parent(m),
                                     height=child.get_height_with_parent(m))
                 find_solutions(child, model)
-        if parent.name == 'div_header' or parent.name == 'card0' and parent.name != 'body' and parent.name != 'content' and parent.name != 'cards':
+        if parent.name == 'div_header' or parent.name == 'card0' or parent.name == 'top_div' and parent.name != 'body' and parent.name != 'content' and parent.name != 'cards':
             for i in range(len(arr)):
                 print(arr[i])
         print("----------------------------------------------------")
@@ -337,6 +348,8 @@ def find_solutions(parent, model=None):
     # Составляем список всевозможных софт правил
     # Ширина и высота с шагом 10
     # Если макс значение отсутствует, то макс = мин + 100
+    if parent.label == 'top':
+        print()
     for child in parent.children:
         if child.width is None:
             if child.max_width:

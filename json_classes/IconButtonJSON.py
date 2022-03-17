@@ -110,5 +110,17 @@ class IconButtonJSON(BaseElementJSON):
             self.attrs.append(('class', 'fas fa-house'))
         elif icon_name == 'message':
             self.attrs.append(('class', 'fas fa-message'))
+        elif icon_name == 'music':
+            self.attrs.append(('class', 'fas fa-music'))
+        elif icon_name == 'image':
+            self.attrs.append(('class', 'fas fa-image'))
+        elif icon_name == 'video':
+            self.attrs.append(('class', 'fas fa-video'))
+        elif icon_name == 'sort':
+            self.attrs.append(('class', 'fas fa-sort-alt'))
+        elif icon_name == 'bars':
+            self.attrs.append(('class', 'fas fa-bars'))
+        elif icon_name == 'cells':
+            self.attrs.append(('class', 'fas fa-th-large'))
         else:
             self.attrs.append(('class', f'far fa-{icon_name}'))
