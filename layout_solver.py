@@ -166,10 +166,10 @@ def create_text_list(parent, name, label, text_list, is_fullwidth=False,
     return text_list
 
 
-def create_input(parent, is_fullwidth=False, is_flexwidth=False, max_width=None, max_height=None,
+def create_input(parent, name, label, is_fullwidth=False, is_flexwidth=False, max_width=None, max_height=None,
                       min_width=0, min_height=0, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0,
                       max_margin_right=10, max_margin_left=10, max_margin_top=10, max_margin_bottom=10):
-    input = BaseElement("input", min_height=min_height, min_width=min_width, label="input", max_width=max_width,
+    input = BaseElement(name, min_height=min_height, min_width=min_width, label=label, max_width=max_width,
                         max_height=max_height, parent=parent, is_fullwidth=is_fullwidth, is_flexwidth=is_flexwidth,
                         min_margin_right=min_margin_right, min_margin_left=min_margin_left, min_margin_top=min_margin_top,
                         min_margin_bottom=min_margin_bottom, max_margin_right=max_margin_right, max_margin_left=max_margin_left,

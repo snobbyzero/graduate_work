@@ -47,11 +47,11 @@ for i in range(10):
         "title": None,
         "description": faker.text(max_nb_chars=200),
         # "description": None,
-        "avatar": faker.image_url(rand * 20, rand * 20),
-        # "avatar": None,
+        #"avatar": faker.image_url(rand * 20, rand * 20),
+        "avatar": None,
         "image": faker.image_url(rand * 100, rand * 100),
-        "titles_subtitles": [(f"@{profile['username']}", profile['name'])]
-        # "titles_subtitles": []
+        #"titles_subtitles": [(f"@{profile['username']}", profile['name'])]
+        "titles_subtitles": []
     })
 
 content = create_content_element(
@@ -60,17 +60,22 @@ content = create_content_element(
     min_height=8000,
     is_fullwidth=True,
     cards_inf=cards,
-    card_size=random.choice(['md']),
-    # card_size='sm',
-    card_icons_list=[],
-    card_buttons=[],
+    #card_size=random.choice(['md']),
+    card_size='sm',
+    card_icons_list=['compare', 'wishlist'],
+    card_buttons=['Add to cart'],
     card_key_value=[],
-    card_icons_texts=[("wishlist", "45"), ("comment", "10"), ("retweet", "5"), ("share", "")],
+    card_icons_texts=[("rating", "4.5"), ('comments', '4')],
     sidebar={
         'is_nav': False,
         'nav': [(random.choice(icons), faker.word().capitalize()) for i in range(random.randint(7, 10))],
         'sn_icons': ['twitter', 'vk', 'github'],
-        'filters': [{"type": "checkbox", "name": faker.word(), "checkboxes": faker.words(random.randint(5, 8))}, {"type": "checkbox", "name": faker.word(), "checkboxes": faker.words(random.randint(5, 8))}]
+        'filters': [
+            {"type": "checkbox", "name": faker.word().capitalize(), "checkboxes": [faker.word().capitalize() for i in range(random.randint(5, 7))]},
+            {"type": "checkbox", "name": faker.word().capitalize(), "checkboxes": [faker.word().capitalize() for i in range(random.randint(5, 7))]},
+            {"type": "input", "name": faker.word().capitalize()},
+            {"type": "input", "name": faker.word().capitalize()}
+        ]
     },
     top_dict={
         'input': False,
@@ -235,7 +240,7 @@ def create_content_json(content, body_model, content_model):
             nav_div_json.children.append(link_json)
         sidebar_json.children.append(nav_div_json)
     else:
-        filters_div_json = create_div(sidebar.filters_div, sidebar, sidebar_model, content_model, Measure.PERCENT)
+        filters_div_json = create_div(sidebar.filters_div, sidebar, sidebar_model, content_model, Measure.PERCENT, css={'padding-top': '15px'})
         filters_div_model = random_choose_model(sidebar.filters_div, sidebar_model)
         sidebar_json.children.append(filters_div_json)
 
@@ -266,7 +271,7 @@ def create_content_json(content, body_model, content_model):
                 text_align="start",
                 label=checkbox_name.label,
                 flexgrow=checkbox_name.is_flexwidth,
-                font_size=ValueJSON(1.3, Measure.EM),
+                font_size=ValueJSON(1.1, Measure.EM),
                 css={"font-weight": random.choice(["600", "700"])}
             )
                 checkbox_container_div_json.children.append(checkbox_name_json)
@@ -275,7 +280,7 @@ def create_content_json(content, body_model, content_model):
                 checkboxes_div_json = create_div(checkboxes_div, checkbox_container_div, checkbox_container_div_model, filters_div_model, Measure.PERCENT)
                 checkboxes_div_model = random_choose_model(checkboxes_div, checkbox_container_div)
                 for j in range(len(checkboxes_div.children)):
-                    checkbox = checkboxes_div.children[j]
+                    checkbox = checkboxes_div.children[0]
                     checkbox_json = BaseElementJSON(
                         "checkbox",
                         x=ValueJSON(checkboxes_div_model[checkbox.x].as_long() * checkboxes_div.table.cell_width * 100 / checkboxes_div.get_width_with_parent(
@@ -305,10 +310,105 @@ def create_content_json(content, body_model, content_model):
                         font_size=ValueJSON("1.1", Measure.EM),
                         fullwidth=checkbox.is_fullwidth,
                         flexgrow=checkbox.is_flexwidth,
-                        text=checkbox.text
+                        text=checkboxes_div.children[j].text
                     )
                     checkboxes_div_json.children.append(checkbox_json)
                 checkbox_container_div_json.children.append(checkboxes_div_json)
+            elif "input" in sidebar.filters_div.children[i].name:
+                input_container_div = sidebar.filters_div.children[i]
+                input_container_div_json = create_div(input_container_div, sidebar.filters_div, filters_div_model, sidebar_model, Measure.PERCENT)
+                input_container_div_model = random_choose_model(input_container_div, filters_div_model)
+                filters_div_json.children.append(input_container_div_json)
+
+                input_name = input_container_div.input_name
+                input_name_json = BaseElementJSON(
+                "h5",
+                x=ValueJSON(input_container_div_model[input_name.x].as_long() * input_container_div.table.cell_width * 100 / input_container_div.get_width_with_parent(
+                    filters_div_model), Measure.PERCENT),
+                y=ValueJSON(input_container_div_model[input_name.y].as_long() * input_container_div.table.cell_height * 100 / input_container_div.get_height_with_parent(
+                    filters_div_model), Measure.PERCENT),
+                width=ValueJSON("auto", Measure.WORD),
+                height=ValueJSON(input_container_div_model[input_name.row_count].as_long() * input_container_div.table.cell_height * 100 / input_container_div.get_height_with_parent(
+                        filters_div_model), Measure.PERCENT),
+                min_width=ValueJSON(input_name.min_width, Measure.PIXEL),
+                margin_right=ValueJSON(input_container_div_model[input_name.margin_right].as_long() * input_container_div.table.cell_width, Measure.PIXEL),
+                margin_left=ValueJSON(input_container_div_model[input_name.margin_left].as_long() * input_container_div.table.cell_width, Measure.PIXEL),
+                margin_top=ValueJSON(input_container_div_model[input_name.margin_top].as_long() * input_container_div.table.cell_height, Measure.PIXEL),
+                margin_bottom=ValueJSON(input_container_div_model[input_name.margin_bottom].as_long() * input_container_div.table.cell_height,
+                                        Measure.PIXEL),
+                text=input_name.text,
+                text_align="start",
+                label=input_name.label,
+                flexgrow=input_name.is_flexwidth,
+                font_size=ValueJSON(1.1, Measure.EM),
+                css={"font-weight": random.choice(["600", "700"])}
+            )
+                input_container_div_json.children.append(input_name_json)
+
+                input_min = input_container_div.input_min
+                input_min_json = BaseElementJSON(
+                    "input",
+                    x=ValueJSON(input_container_div_model[
+                                    input_min.x].as_long() * input_container_div.table.cell_width * 100 / input_container_div.get_width_with_parent(
+                        filters_div_model), Measure.PERCENT),
+                    y=ValueJSON(input_container_div_model[
+                                    input_min.y].as_long() * input_container_div.table.cell_height * 100 / input_container_div.get_height_with_parent(
+                        filters_div_model), Measure.PERCENT),
+                    width=ValueJSON(input_container_div_model[input_min.col_count].as_long() * input_container_div.table.cell_width, Measure.PIXEL),
+                    height=ValueJSON(input_container_div_model[input_min.row_count].as_long() * input_container_div.table.cell_height, Measure.PIXEL),
+                    min_height=ValueJSON(input_container_div_model[input_min.row_count].as_long() * input_container_div.table.cell_height, Measure.PIXEL),
+                    min_width=ValueJSON(input_min.min_width, Measure.PIXEL),
+                    margin_right=ValueJSON(input_container_div_model[
+                                               input_min.margin_right].as_long() * input_container_div.table.cell_width,
+                                           Measure.PIXEL),
+                    margin_left=ValueJSON(input_container_div_model[
+                                              input_min.margin_left].as_long() * input_container_div.table.cell_width,
+                                          Measure.PIXEL),
+                    margin_top=ValueJSON(input_container_div_model[
+                                             input_min.margin_top].as_long() * input_container_div.table.cell_height,
+                                         Measure.PIXEL),
+                    margin_bottom=ValueJSON(input_container_div_model[
+                                                input_min.margin_bottom].as_long() * input_container_div.table.cell_height,
+                                            Measure.PIXEL),
+                    text_align="start",
+                    label=input_min.label,
+                    flexgrow=input_min.is_flexwidth,
+                    text="From 0.0"
+                )
+                input_container_div_json.children.append(input_min_json)
+
+                input_max = input_container_div.input_max
+                input_max_json = BaseElementJSON(
+                    "input",
+                    x=ValueJSON(input_container_div_model[
+                                    input_max.x].as_long() * input_container_div.table.cell_width * 100 / input_container_div.get_width_with_parent(
+                        filters_div_model), Measure.PERCENT),
+                    y=ValueJSON(input_container_div_model[
+                                    input_max.y].as_long() * input_container_div.table.cell_height * 100 / input_container_div.get_height_with_parent(
+                        filters_div_model), Measure.PERCENT),
+                    width=ValueJSON(input_container_div_model[input_max.col_count].as_long() * input_container_div.table.cell_height, Measure.PIXEL),
+                    height=ValueJSON(input_container_div_model[input_max.row_count].as_long() * input_container_div.table.cell_height, Measure.PIXEL),
+                    min_height=ValueJSON(input_container_div_model[input_max.row_count].as_long() * input_container_div.table.cell_height, Measure.PIXEL),
+                    min_width=ValueJSON(input_max.min_width, Measure.PIXEL),
+                    margin_right=ValueJSON(input_container_div_model[
+                                               input_max.margin_right].as_long() * input_container_div.table.cell_width,
+                                           Measure.PIXEL),
+                    margin_left=ValueJSON(input_container_div_model[
+                                              input_max.margin_left].as_long() * input_container_div.table.cell_width,
+                                          Measure.PIXEL),
+                    margin_top=ValueJSON(input_container_div_model[
+                                             input_max.margin_top].as_long() * input_container_div.table.cell_height,
+                                         Measure.PIXEL),
+                    margin_bottom=ValueJSON(input_container_div_model[
+                                                input_max.margin_bottom].as_long() * input_container_div.table.cell_height,
+                                            Measure.PIXEL),
+                    text_align="start",
+                    label=input_max.label,
+                    flexgrow=input_max.is_flexwidth,
+                    text="To 10000.0"
+                )
+                input_container_div_json.children.append(input_max_json)
+
 
     content_json.children.append(sidebar_json)
 
@@ -1344,6 +1444,7 @@ def create_header_json(header, body_model, header_model):
             center_horizontal=True,
             flexgrow=nav.is_flexwidth,
             flexflow="row nowrap",
+            font_size=ValueJSON(1.3, Measure.EM),
             css={'font-weight': random.choice(['500', '600', '700']), 'color': '--primary'}
         )
         div_header_json.children.append(nav_json)
@@ -1888,8 +1989,13 @@ def generate_html_style(styles):
     color: inherit;
     }}
     input, textarea, select {{ font-family:inherit; }}
+    input[type='checkbox'] {{
+        transform: scale(1.5);
+        margin-right: 15px;
+        }}
         """
     )
+
 
 
 def generate_color():

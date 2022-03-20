@@ -183,6 +183,8 @@ def create_content_element(body, min_width, min_height, is_fullwidth, card_size,
 
         input = create_input(
             input_div,
+            "top_input",
+            "top_input",
             min_margin_left=0,
             min_margin_right=10,
             min_margin_top=0,
@@ -471,18 +473,18 @@ def create_sidebar(parent, sidebar):
         filters_div = create_div(sidebar_div, 'filters_div', 'filters_div', is_flexheight=True, min_width=300, min_height=2000)
         for i in range(len(sidebar['filters'])):
             if sidebar['filters'][i]['type'] == 'checkbox':
-                checkbox_container_div = create_div(filters_div, 'checkbox_container_div', 'checkbox_container_div', min_width=250, min_height=50*len(sidebar['filters'][i]['checkboxes'])+100, min_margin_bottom=10, max_margin_bottom=20)
+                checkbox_container_div = create_div(filters_div, 'checkbox_container_div'+str(i), 'checkbox_container_div'+str(i), min_width=250, min_height=50*len(sidebar['filters'][i]['checkboxes'])+100, min_margin_bottom=10, max_margin_bottom=20)
                 checkbox_name = create_text(
                     sidebar['filters'][i]['name'],
                     checkbox_container_div,
                     min_width=200,
                     min_height=30,
                     label='checkbox_name',
-                    min_margin_left=20,
+                    min_margin_left=0,
                     min_margin_right=0,
                     min_margin_top=0,
-                    min_margin_bottom=20,
-                    max_margin_bottom=30,
+                    min_margin_bottom=10,
+                    max_margin_bottom=15,
                     is_flexwidth=True
                 )
                 checkboxes_div = create_div(checkbox_container_div, 'checkboxes_div'+str(i), 'checkboxes_div'+str(i), min_width=250, min_height=50*len(sidebar['filters'][i]['checkboxes']))
@@ -499,7 +501,65 @@ def create_sidebar(parent, sidebar):
 
                 filters_div.add_child(checkbox_container_div)
             elif sidebar['filters'][i]['type'] == 'input':
-                pass
+                input_container_div = create_div(filters_div, 'input_container_div'+str(i), 'input_container_div'+str(i), min_width=250, min_height=300, min_margin_bottom=10, max_margin_bottom=20)
+                input_name = create_text(
+                    sidebar['filters'][i]['name'],
+                    input_container_div,
+                    min_width=200,
+                    min_height=30,
+                    label='input_name',
+                    min_margin_left=0,
+                    min_margin_right=0,
+                    min_margin_top=0,
+                    min_margin_bottom=10,
+                    max_margin_bottom=15,
+                    is_flexwidth=True
+                )
+                input_min = create_input(
+                    input_container_div,
+                    "input_min",
+                    "input_min_max",
+                    min_margin_left=0,
+                    min_margin_right=20,
+                    min_margin_top=0,
+                    min_margin_bottom=10,
+                    max_margin_left=0,
+                    max_margin_right=30,
+                    max_margin_top=0,
+                    max_margin_bottom=20,
+                    min_width=100,
+                    max_width=110,
+                    min_height=40,
+                    max_height=50
+                )
+                input_max = create_input(
+                    input_container_div,
+                    "input_max",
+                    "input_min_max",
+                    min_margin_left=0,
+                    min_margin_right=0,
+                    min_margin_top=0,
+                    min_margin_bottom=10,
+                    max_margin_left=0,
+                    max_margin_right=0,
+                    max_margin_top=0,
+                    max_margin_bottom=20,
+                    min_width=100,
+                    max_width=110,
+                    min_height=40,
+                    max_height=50
+                )
+                input_container_div.input_name = input_name
+                input_container_div.add_child(input_name)
+                input_container_div.input_min = input_min
+                input_container_div.add_child(input_min)
+                input_container_div.input_max = input_max
+                input_container_div.add_child(input_max)
+
+                input_name.set_neighbours(bottom_elements=[input_min, input_max])
+                input_min.set_neighbours(right_elements=[input_max])
+
+                filters_div.add_child(input_container_div)
             elif sidebar['filters'][i]['type'] == 'switcher':
                 pass
             [filters_div.children[i].set_neighbours(bottom_elements=filters_div.children[i:], top_elements=filters_div.children[i:]) for i in range(len(filters_div.children))]
@@ -848,7 +908,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
 
         if card.image_div:
             card.image_div.is_flexwidth = True
-            card.image_div.set_neighbours(right_elements=[], left_elements=[], top_elements=[card.avatar_div, card.titles_subtitles, card.title, card.description],
+            card.image_div.set_neighbours(right_elements=[], left_elements=[], top_elements=[card.avatar_div, card.titles_subtitles, card.title],
                                       bottom_elements=[card.title, card.description, card.icons,
                                                        card.buttons] + card.icons_texts)
 
