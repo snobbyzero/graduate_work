@@ -15,16 +15,18 @@ from faker import Faker
 # random.seed(3)
 # faker = Faker('ru_RU')
 faker = Faker()
-
+faker.seed_instance(0)
+print("Faker")
+print(faker.word())
 icons = ['profile', 'cart', 'wishlist', 'compare', 'search', 'rating']
 
 body = create_body(1500, 10000)
 
 word_style = random.choice(['capitalize', 'all_caps'])
 if word_style == 'capitalize':
-    nav_list = [faker.word().capitalize() for i in range(random.randint(4, 5))]
+    nav_list = [faker.word().capitalize() for i in range(5)]
 else:
-    nav_list = [faker.word().upper() for i in range(random.randint(4, 5))]
+    nav_list = [faker.word().upper() for i in range(5)]
 header = create_header_element(
     body,
     min_width=1000,
@@ -41,17 +43,16 @@ header = create_header_element(
 cards = []
 for i in range(10):
     profile = faker.profile()
-    rand = random.randint(0, 10)
     cards.append({
         # "title": " ".join(faker.words(random.randint(1,3))),
-        "title": None,
+        "title": " ".join(faker.words(3)),
         "description": faker.text(max_nb_chars=200),
         # "description": None,
         #"avatar": faker.image_url(rand * 20, rand * 20),
         "avatar": None,
-        "image": faker.image_url(rand * 100, rand * 100),
+        "image": faker.image_url(i * 100, i * 100),
         #"titles_subtitles": [(f"@{profile['username']}", profile['name'])]
-        "titles_subtitles": []
+        "titles_subtitles": [("1000 $", "")]
     })
 
 content = create_content_element(
@@ -68,11 +69,11 @@ content = create_content_element(
     card_icons_texts=[("rating", "4.5"), ('comments', '4')],
     sidebar={
         'is_nav': False,
-        'nav': [(random.choice(icons), faker.word().capitalize()) for i in range(random.randint(7, 10))],
+        'nav': [(random.choice(icons), faker.word().capitalize()) for i in range(7)],
         'sn_icons': ['twitter', 'vk', 'github'],
         'filters': [
-            {"type": "checkbox", "name": faker.word().capitalize(), "checkboxes": [faker.word().capitalize() for i in range(random.randint(5, 7))]},
-            {"type": "checkbox", "name": faker.word().capitalize(), "checkboxes": [faker.word().capitalize() for i in range(random.randint(5, 7))]},
+            {"type": "checkbox", "name": faker.word().capitalize(), "checkboxes": [faker.word().capitalize() for i in range(5)]},
+            {"type": "checkbox", "name": faker.word().capitalize(), "checkboxes": [faker.word().capitalize() for i in range(6)]},
             {"type": "input", "name": faker.word().capitalize()},
             {"type": "input", "name": faker.word().capitalize()}
         ]
@@ -81,7 +82,8 @@ content = create_content_element(
         'input': False,
         'avatar': faker.image_url(100, 100),
         'icons': ['bars', 'cells']
-    }
+    },
+    theme="shop"
 )
 
 footer = create_footer_element(
@@ -405,7 +407,7 @@ def create_content_json(content, body_model, content_model):
                     text_align="start",
                     label=input_max.label,
                     flexgrow=input_max.is_flexwidth,
-                    text="To 10000.0"
+                    text="To 1000.0"
                 )
                 input_container_div_json.children.append(input_max_json)
 
@@ -1964,7 +1966,7 @@ def generate_element_html(element, doc, tag):
 
 def generate_html_style(styles):
     primary, secondary, black, white = generate_color()
-    theme = random.choice([1, 1])
+    theme = random.choice([0, 1])
     if theme == 0:
         font_color = "--white"
         background = "--black"
@@ -1976,7 +1978,7 @@ def generate_html_style(styles):
     font-size: {random.uniform(1.0, 1.2)}em;
     --primary: {primary};
     --secondary: {secondary};
-    font: "Roboto","Arial",sans-serif;
+    font-family: "Helvetica", sans-serif;
     --black: {black};
     --white: {white};
     --color: {font_color};
@@ -2002,7 +2004,7 @@ def generate_color():
     black = random.choice(["#0e1111", "#333", "#28282B"])
     white = random.choice(["#fafafa", "#f5f5f5", "#eeeeee"])
 
-    h = random.uniform(0.3, 1.0)
+    h = random.uniform(0.1, 1.0)
     s = random.uniform(0.2, 0.8)
     v = random.uniform(0.4, 0.8)
     v2 = v + 0.15
