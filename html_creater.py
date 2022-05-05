@@ -11,13 +11,17 @@ from json_classes.SearchBarJSON import SearchBarJSON
 from json_classes.ValueJSON import ValueJSON
 from layout_solver import *
 from faker import Faker
+from datetime import datetime
+import time
+
+start_time = datetime.now()
 
 # random.seed(3)
 # faker = Faker('ru_RU')
 faker = Faker()
 faker.seed_instance(0)
-print("Faker")
-print(faker.word())
+#print("Faker")
+#print(faker.word())
 icons = ['profile', 'cart', 'wishlist', 'compare', 'search', 'rating']
 
 body = create_body(1500, 10000)
@@ -70,10 +74,9 @@ content = create_content_element(
     sidebar={
         'is_nav': False,
         'nav': [(random.choice(icons), faker.word().capitalize()) for i in range(7)],
-        'sn_icons': ['twitter', 'vk', 'github'],
+        'sn_icons': [],
         'filters': [
-            {"type": "checkbox", "name": faker.word().capitalize(), "checkboxes": [faker.word().capitalize() for i in range(5)]},
-            {"type": "checkbox", "name": faker.word().capitalize(), "checkboxes": [faker.word().capitalize() for i in range(6)]},
+            {"type": "input", "name": faker.word().capitalize()},
             {"type": "input", "name": faker.word().capitalize()},
             {"type": "input", "name": faker.word().capitalize()}
         ]
@@ -103,7 +106,7 @@ body.add_children([header, content, footer])
 header.set_neighbours(bottom_elements=[content])
 content.set_neighbours(bottom_elements=[footer])
 find_solutions(body)
-print(footer)
+#print(footer)
 
 
 def create_body(body_model):
@@ -1624,9 +1627,6 @@ def create_header_json(header, body_model, header_model):
 def sort_children(parent):
     arr = sorted(parent.children, key=lambda child: (child.y.val - child.margin_top.val, child.x.val))
 
-    # if arr[j].y.val > arr[i].y.val:
-    #    arr[i], arr[j] = arr[j], arr[i]
-
     parent.children = arr
 
 
@@ -1713,24 +1713,24 @@ def group(parent, parent_model, parent_json):
                 elif s == min_d:
                     arr.append(another_child)
             child.min_top = arr
-        print("\n\nneighbours")
-        print(child.name)
-        if child.name == 'card_icon_text':
-            print()
-        print("Right:" + ",".join(ch.name for ch in child.right))
-        print("Left:" + ",".join(ch.name for ch in child.left))
-        print("Bottom:" + ",".join(ch.name for ch in child.bottom))
-        print("Top:" + ",".join(ch.name for ch in child.top))
+        #print("\n\nneighbours")
+        #print(child.name)
+        #if child.name == 'card_icon_text':
+        #    print()
+        #print("Right:" + ",".join(ch.name for ch in child.right))
+        #print("Left:" + ",".join(ch.name for ch in child.left))
+        #print("Bottom:" + ",".join(ch.name for ch in child.bottom))
+        #print("Top:" + ",".join(ch.name for ch in child.top))
     for child in parent.children:
         div = []
         if len(child.left) + len(child.right) > 0:
             div = [child]
-            print("----------")
-            print("child name: " + child.name)
+            #print("----------")
+            #print("child name: " + child.name)
             for another_child in child.min_bottom + child.min_top:
                 if len(another_child.right) + len(another_child.left) > 0:
-                    print("Min top bottom children")
-                    print(another_child.name)
+                    #print("Min top bottom children")
+                    #print(another_child.name)
                     t = (
                             parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
                         another_child.x].as_long() - parent_model[another_child.margin_left].as_long() <= parent_model[
@@ -1824,12 +1824,12 @@ def group(parent, parent_model, parent_json):
                             if nt or nd:
                                 div.append(neighbour)
                             elif nw and nu:
-                                print(f"nw neighbour:  {neighbour.label}")
+                                #print(f"nw neighbour:  {neighbour.label}")
                                 div = []
             div_json = None
             # То есть есть элементы, которые можно объединить в один див
             if len(div) > 1:
-                print(", ".join(el.name for el in div))
+                #print(", ".join(el.name for el in div))
                 arr = []
                 for el in div:
                     for el_json in parent_json.children:
@@ -1872,8 +1872,8 @@ def group(parent, parent_model, parent_json):
                     div_json.y = ValueJSON(min(el.y.val for el in div_json.children), Measure.PIXEL)
                     div_json.height = ValueJSON(max(el.height.val for el in div_json.children),
                                                 Measure.WORD)  # для сортировки, в хтмл не используется
-                    print(f"div_json.x: {div_json.x}")
-                    print(f"div_json.y: {div_json.y}")
+                    #print(f"div_json.x: {div_json.x}")
+                    #print(f"div_json.y: {div_json.y}")
     for i in range(len(parent_json.children) - 1, -1, -1):
         if hasattr(parent_json.children[i], "div"):
             if parent_json.children[i].div not in parent_json.children:
@@ -1892,14 +1892,14 @@ def get_new_width(el_json, prev_parent_json):
 
 def random_choose_model(child, parent_model):
     models = []
-    print(child.name)
-    print(len(child.models))
+    #print(child.name)
+    #print(len(child.models))
 
     for model in child.models:
         # if model.parent.m == parent_model:
         models.append(model)
 
-    print(f"{child.label} models count: {len(models)}")
+    #print(f"{child.label} models count: {len(models)}")
     return random.choice(child.models).m
 
 
@@ -1921,16 +1921,6 @@ def generate_html(parent):
     res = doc.getvalue()
     return res
 
-
-def random_justify(parent):
-    # rc = random.choice([0, 1, 2])
-    rc = random.choice([1, 2])
-    if rc == 0:
-        parent.center_horizontal = True
-    elif rc == 1:
-        parent.justify_right = True
-    else:
-        parent.justify_left = True
 
 
 def generate_element_html(element, doc, tag):
@@ -1999,6 +1989,16 @@ def generate_html_style(styles):
     )
 
 
+def random_justify(parent):
+    # rc = random.choice([0, 1, 2])
+    rc = random.choice([1, 2])
+    if rc == 0:
+        parent.center_horizontal = True
+    elif rc == 1:
+        parent.justify_right = True
+    else:
+        parent.justify_left = True
+
 
 def generate_color():
     black = random.choice(["#0e1111", "#333", "#28282B"])
@@ -2008,7 +2008,7 @@ def generate_color():
     s = random.uniform(0.2, 0.8)
     v = random.uniform(0.4, 0.8)
     v2 = v + 0.15
-    print(f"H: {h}, S: {s}, V: {v}")
+    #(f"H: {h}, S: {s}, V: {v}")
     primary = colorsys.hsv_to_rgb(h, s, v)
     secondary = colorsys.hsv_to_rgb(h, s, v2)
     primary = f"#{'%02x%02x%02x' % (int(primary[0] * 255), int(primary[1] * 255), int(primary[2] * 255))}"
@@ -2204,7 +2204,8 @@ def create_div(child, parent, parent_model, parent_parent_model, measure=Measure
     )
 
 
-for i in range(len(footer.models)):
-    with open(f'{i}_test.html', 'w') as f:
-        f.write(generate_html(create_body(body.models[0].m)))
-        f.close()
+
+with open(f'0_test.html', 'w') as f:
+    f.write(generate_html(create_body(body.models[0].m)))
+    f.close()
+print(datetime.now() - start_time)

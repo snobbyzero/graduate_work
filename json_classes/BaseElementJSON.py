@@ -74,8 +74,6 @@ class BaseElementJSON:
             self.flexgrow = 1
         else:
             self.flexgrow = 0
-        #if flexgrow == 1:
-        #    self.width = ValueJSON(0, Measure.PERCENT)
         self.flexflow = flexflow
 
         self.center_horizontal = center_horizontal

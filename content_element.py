@@ -415,7 +415,7 @@ def create_sidebar(parent, sidebar):
     #TODO
     sidebar_div.nav_div = None
 
-    if sidebar['is_nav']:
+    if 'is_nav' in sidebar.keys() and sidebar['is_nav']:
         nav_div = create_div(sidebar_div, 'sidebar_nav_div', 'sidebar_nav_div', is_flexheight=True, min_width=300, min_height=1000)
         for el in sidebar['nav']:
             link = create_div(nav_div, 'sidebar_nav_link', 'sidebar_nav_link', min_width=250, min_height=40, min_margin_right=10, min_margin_left=10,min_margin_bottom=10,min_margin_top=10, center_vertical=True)
@@ -468,110 +468,111 @@ def create_sidebar(parent, sidebar):
             sidebar_div.add_child(sn_icons)
             sidebar_div.sn_icons = sn_icons
 
-        sidebar_div.nav_div.set_neighbours(top_elements=[sidebar_div.sn_icons], bottom_elements=[sidebar_div.sn_icons])
+            sidebar_div.nav_div.set_neighbours(top_elements=[sidebar_div.sn_icons], bottom_elements=[sidebar_div.sn_icons])
     else:
         filters_div = create_div(sidebar_div, 'filters_div', 'filters_div', is_flexheight=True, min_width=300, min_height=2000)
-        for i in range(len(sidebar['filters'])):
-            if sidebar['filters'][i]['type'] == 'checkbox':
-                checkbox_container_div = create_div(filters_div, 'checkbox_container_div'+str(i), 'checkbox_container_div'+str(i), min_width=250, min_height=50*len(sidebar['filters'][i]['checkboxes'])+100, min_margin_bottom=10, max_margin_bottom=20)
-                checkbox_name = create_text(
-                    sidebar['filters'][i]['name'],
-                    checkbox_container_div,
-                    min_width=200,
-                    min_height=30,
-                    label='checkbox_name',
-                    min_margin_left=0,
-                    min_margin_right=0,
-                    min_margin_top=0,
-                    min_margin_bottom=10,
-                    max_margin_bottom=15,
-                    is_flexwidth=True
-                )
-                checkboxes_div = create_div(checkbox_container_div, 'checkboxes_div'+str(i), 'checkboxes_div'+str(i), min_width=250, min_height=50*len(sidebar['filters'][i]['checkboxes']))
-                for j in range(len(sidebar['filters'][i]['checkboxes'])):
-                    checkbox = create_text(sidebar['filters'][i]['checkboxes'][j], checkboxes_div, 'checkbox'+str(j), min_width=200, min_height=30, min_margin_bottom=0, max_margin_bottom=0)
-                    checkboxes_div.add_child(checkbox)
-                [checkboxes_div.children[i].set_neighbours(bottom_elements=checkboxes_div.children[i:], top_elements=checkboxes_div.children[i:]) for i in range(len(checkboxes_div.children))]
+        if 'filters' in sidebar.keys():
+            for i in range(len(sidebar['filters'])):
+                if sidebar['filters'][i]['type'] == 'checkbox':
+                    checkbox_container_div = create_div(filters_div, 'checkbox_container_div'+str(i), 'checkbox_container_div'+str(i), min_width=250, min_height=50*len(sidebar['filters'][i]['checkboxes'])+100, min_margin_bottom=10, max_margin_bottom=20)
+                    checkbox_name = create_text(
+                        sidebar['filters'][i]['name'],
+                        checkbox_container_div,
+                        min_width=200,
+                        min_height=30,
+                        label='checkbox_name',
+                        min_margin_left=0,
+                        min_margin_right=0,
+                        min_margin_top=0,
+                        min_margin_bottom=10,
+                        max_margin_bottom=15,
+                        is_flexwidth=True
+                    )
+                    checkboxes_div = create_div(checkbox_container_div, 'checkboxes_div'+str(i), 'checkboxes_div'+str(i), min_width=250, min_height=50*len(sidebar['filters'][i]['checkboxes']))
+                    for j in range(len(sidebar['filters'][i]['checkboxes'])):
+                        checkbox = create_text(sidebar['filters'][i]['checkboxes'][j], checkboxes_div, 'checkbox'+str(j), min_width=200, min_height=30, min_margin_bottom=0, max_margin_bottom=0)
+                        checkboxes_div.add_child(checkbox)
+                    [checkboxes_div.children[i].set_neighbours(bottom_elements=checkboxes_div.children[i:], top_elements=checkboxes_div.children[i:]) for i in range(len(checkboxes_div.children))]
 
-                checkbox_container_div.add_child(checkbox_name)
-                checkbox_container_div.checkbox_name = checkbox_name
-                checkbox_container_div.add_child(checkboxes_div)
-                checkbox_container_div.checkboxes_div = checkboxes_div
-                checkbox_name.set_neighbours(bottom_elements=[checkboxes_div])
+                    checkbox_container_div.add_child(checkbox_name)
+                    checkbox_container_div.checkbox_name = checkbox_name
+                    checkbox_container_div.add_child(checkboxes_div)
+                    checkbox_container_div.checkboxes_div = checkboxes_div
+                    checkbox_name.set_neighbours(bottom_elements=[checkboxes_div])
 
-                filters_div.add_child(checkbox_container_div)
-            elif sidebar['filters'][i]['type'] == 'input':
-                input_container_div = create_div(filters_div, 'input_container_div'+str(i), 'input_container_div'+str(i), min_width=250, min_height=300, min_margin_bottom=10, max_margin_bottom=20)
-                input_name = create_text(
-                    sidebar['filters'][i]['name'],
-                    input_container_div,
-                    min_width=200,
-                    min_height=30,
-                    label='input_name',
-                    min_margin_left=0,
-                    min_margin_right=0,
-                    min_margin_top=0,
-                    min_margin_bottom=10,
-                    max_margin_bottom=15,
-                    is_flexwidth=True
-                )
-                input_min = create_input(
-                    input_container_div,
-                    "input_min",
-                    "input_min_max",
-                    min_margin_left=0,
-                    min_margin_right=20,
-                    min_margin_top=0,
-                    min_margin_bottom=10,
-                    max_margin_left=0,
-                    max_margin_right=30,
-                    max_margin_top=0,
-                    max_margin_bottom=20,
-                    min_width=100,
-                    max_width=110,
-                    min_height=40,
-                    max_height=50
-                )
-                input_max = create_input(
-                    input_container_div,
-                    "input_max",
-                    "input_min_max",
-                    min_margin_left=0,
-                    min_margin_right=0,
-                    min_margin_top=0,
-                    min_margin_bottom=10,
-                    max_margin_left=0,
-                    max_margin_right=0,
-                    max_margin_top=0,
-                    max_margin_bottom=20,
-                    min_width=100,
-                    max_width=110,
-                    min_height=40,
-                    max_height=50
-                )
-                input_container_div.input_name = input_name
-                input_container_div.add_child(input_name)
-                input_container_div.input_min = input_min
-                input_container_div.add_child(input_min)
-                input_container_div.input_max = input_max
-                input_container_div.add_child(input_max)
+                    filters_div.add_child(checkbox_container_div)
+                elif sidebar['filters'][i]['type'] == 'input':
+                    input_container_div = create_div(filters_div, 'input_container_div'+str(i), 'input_container_div'+str(i), min_width=250, min_height=300, min_margin_bottom=10, max_margin_bottom=20)
+                    input_name = create_text(
+                        sidebar['filters'][i]['name'],
+                        input_container_div,
+                        min_width=200,
+                        min_height=30,
+                        label='input_name',
+                        min_margin_left=0,
+                        min_margin_right=0,
+                        min_margin_top=0,
+                        min_margin_bottom=10,
+                        max_margin_bottom=15,
+                        is_flexwidth=True
+                    )
+                    input_min = create_input(
+                        input_container_div,
+                        "input_min",
+                        "input_min_max",
+                        min_margin_left=0,
+                        min_margin_right=20,
+                        min_margin_top=0,
+                        min_margin_bottom=10,
+                        max_margin_left=0,
+                        max_margin_right=30,
+                        max_margin_top=0,
+                        max_margin_bottom=20,
+                        min_width=100,
+                        max_width=110,
+                        min_height=40,
+                        max_height=50
+                    )
+                    input_max = create_input(
+                        input_container_div,
+                        "input_max",
+                        "input_min_max",
+                        min_margin_left=0,
+                        min_margin_right=0,
+                        min_margin_top=0,
+                        min_margin_bottom=10,
+                        max_margin_left=0,
+                        max_margin_right=0,
+                        max_margin_top=0,
+                        max_margin_bottom=20,
+                        min_width=100,
+                        max_width=110,
+                        min_height=40,
+                        max_height=50
+                    )
+                    input_container_div.input_name = input_name
+                    input_container_div.add_child(input_name)
+                    input_container_div.input_min = input_min
+                    input_container_div.add_child(input_min)
+                    input_container_div.input_max = input_max
+                    input_container_div.add_child(input_max)
 
-                input_name.set_neighbours(bottom_elements=[input_min, input_max])
-                input_min.set_neighbours(right_elements=[input_max])
+                    input_name.set_neighbours(bottom_elements=[input_min, input_max])
+                    input_min.set_neighbours(right_elements=[input_max])
 
-                filters_div.add_child(input_container_div)
-            elif sidebar['filters'][i]['type'] == 'switcher':
-                pass
-            [filters_div.children[i].set_neighbours(bottom_elements=filters_div.children[i:], top_elements=filters_div.children[i:]) for i in range(len(filters_div.children))]
-            sidebar_div.add_child(filters_div)
-            sidebar_div.filters_div = filters_div
+                    filters_div.add_child(input_container_div)
+                elif sidebar['filters'][i]['type'] == 'switcher':
+                    pass
+                [filters_div.children[i].set_neighbours(bottom_elements=filters_div.children[i:], top_elements=filters_div.children[i:]) for i in range(len(filters_div.children))]
+                sidebar_div.add_child(filters_div)
+                sidebar_div.filters_div = filters_div
     return sidebar_div
 
 
 def create_card_element(parent, i, card_size, card_title, card_description, card_image, card_avatar, card_icons_list: [],
                         card_buttons: [], card_titles_subtitles: [],
                         card_key_value: [], card_icons_texts: [], theme):
-    print(f"title: {card_title}")
+    #print(f"title: {card_title}")
     card = create_card(
         parent,
         i,
@@ -596,14 +597,12 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
             card_title,
             card,
             min_width=150,
-            max_width=150,
             min_height=30,
             label='card_title',
             min_margin_left=10,
             min_margin_right=10,
             min_margin_top=10,
             min_margin_bottom=10,
-            is_flexwidth=True
         )
         card.add_child(title)
         card.title = title
@@ -615,12 +614,10 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
             'card_description',
             min_height=100,
             min_width=200,
-            max_width=200,
             min_margin_left=10,
             min_margin_right=10,
             min_margin_top=0,
             min_margin_bottom=10,
-            is_flexwidth=True
         )
         card.add_child(description)
         card.description = description
@@ -638,7 +635,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
             max_margin_right=10,
             max_margin_bottom=10,
             max_margin_top=10,
-            width=150,
+            min_width=150,
             min_height=100,
             is_flexwidth=True
         )
@@ -657,7 +654,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
                 max_margin_bottom=10,
                 max_margin_top=10,
                 is_flexwidth=random.choice([True, False]),
-                min_width=120,
+                min_width=150,
                 min_height=75,
             )
             title = create_text(
@@ -882,9 +879,9 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
                 card_icon_text[1],
                 icon_text,
                 label="cardit_text",
-                min_width=20,
+                min_width=30,
                 min_height=20,
-                max_width=30
+                max_width=40
             )
             icon_text.icon = icon
             icon_text.text = text
@@ -904,13 +901,16 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
                                                                card.buttons] + card.icons_texts)
 
             if card.titles_subtitles:
+                card.titles_subtitles.is_flexwidth = True
                 card.titles_subtitles.set_neighbours(bottom_elements=[card.title, card.description, card.buttons, card.icons] + card.icons_texts)
 
             if card.title:
+                card.title.is_flexwidth = True
                 card.title.set_neighbours(top_elements=[card.titles_subtitles, card.image_div] + card.icons_texts,
                                           bottom_elements=[card.description, card.icons, card.buttons] + card.icons_texts)
 
             if card.description:
+                card.description.is_flexwidth = True
                 card.description.set_neighbours(bottom_elements=[card.icons, card.buttons], top_elements=card.icons_texts)
 
             if card.icons:
@@ -925,7 +925,7 @@ def create_card_element(parent, i, card_size, card_title, card_description, card
                 sh += child.min_margin_top + child.min_margin_bottom
             card.min_height = sh
             # card.min_width = max(child.min_width + child.min_margin_right + child.min_margin_left for child in card.children)
-            card.min_width = 300
+            card.min_width = 400
             card.max_width = 450
 
         else:
