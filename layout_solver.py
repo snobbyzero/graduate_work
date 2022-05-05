@@ -69,8 +69,8 @@ def create_card(parent, number, size, min_margin_right=0, min_margin_left=0, cen
 
 def create_text(text, parent, label, min_width=0, min_height=0, max_width=None, max_height=None, min_margin_right=0,
                 min_margin_left=0, is_fullwidth=False, is_flexwidth=False,
-                min_margin_top=0, min_margin_bottom=0, max_margin_right=0, max_margin_left=0, max_margin_top=0,
-                max_margin_bottom=0):
+                min_margin_top=0, min_margin_bottom=0, max_margin_right=None, max_margin_left=None, max_margin_top=None,
+                max_margin_bottom=None):
     text = TextElement(text, min_width=min_width, min_height=min_height, max_width=max_width, max_height=max_height,
                        parent=parent, is_fullwidth=is_fullwidth, is_flexwidth=is_flexwidth,
                        min_margin_right=min_margin_right, min_margin_left=min_margin_left,
@@ -96,14 +96,14 @@ def create_icons_list(parent, name, label, rules=None, center_horizontal=False, 
 
 
 def create_div(parent, name, label, min_margin_right=0, min_margin_left=0, min_margin_top=0, min_margin_bottom=0,
-               is_flexheight=False, is_flexwidth=False,
-               max_margin_right=0, max_margin_left=0, max_margin_top=0, max_margin_bottom=0, min_width=0, min_height=0,
+               is_flexheight=False, is_flexwidth=False, max_height=None,
+               max_margin_right=None, max_margin_left=None, max_margin_top=None, max_margin_bottom=None, min_width=0, min_height=0,
                is_fullwidth=False,
                width=None, height=None, center_horizontal=False, center_vertical=False, ):
     div = BaseElement(name, min_width=min_width, min_height=min_height, label=label, min_margin_right=min_margin_right,
                       min_margin_left=min_margin_left,
                       min_margin_top=min_margin_top, min_margin_bottom=min_margin_bottom, is_fullwidth=is_fullwidth,
-                      is_flexwidth=is_flexwidth,
+                      is_flexwidth=is_flexwidth, max_height=max_height,
                       max_margin_right=max_margin_right, max_margin_left=max_margin_left, is_flexheight=is_flexheight,
                       max_margin_top=max_margin_top, max_margin_bottom=max_margin_bottom, parent=parent, width=width,
                       height=height,
@@ -318,15 +318,16 @@ def solve(parent, rule=None, parent_model=None):
 
         for child in parent.children:
 
-            #print(m[parent.col_count])
-            #print(f"{child.x} : {m[child.x]}")
-            #print(f"{child.y} : {m[child.y]}")
-            #print(f"{child.col_count} : {m[child.col_count]}")
-            #print(f"{child.row_count} : {m[child.row_count]}")
-            #print(f"{child.margin_right} : {m[child.margin_right]}")
-            #print(f"{child.margin_left} : {m[child.margin_left]}")
-            #print(f"{child.margin_bottom} : {m[child.margin_bottom]}")
-            #print(f"{child.margin_top} : {m[child.margin_top]}")
+            if parent.name == 'card0':
+                print(m[parent.col_count])
+                print(f"{child.x} : {m[child.x]}")
+                print(f"{child.y} : {m[child.y]}")
+                print(f"{child.col_count} : {m[child.col_count]}")
+                print(f"{child.row_count} : {m[child.row_count]}")
+                print(f"{child.margin_right} : {m[child.margin_right]}")
+                print(f"{child.margin_left} : {m[child.margin_left]}")
+                print(f"{child.margin_bottom} : {m[child.margin_bottom]}")
+                print(f"{child.margin_top} : {m[child.margin_top]}")
             place_elem(m[child.x].as_long(), m[child.y].as_long(), m[child.col_count].as_long(),
                        m[child.row_count].as_long(), child.label, arr)
 
@@ -334,10 +335,10 @@ def solve(parent, rule=None, parent_model=None):
                 child.table = Table(5, 5, width=child.get_width_with_parent(m),
                                     height=child.get_height_with_parent(m))
                 find_solutions(child, model)
-        #if parent.name == 'div_header' or parent.name == 'card0' or parent.name == 'top_div' and parent.name != 'body' and parent.name != 'content' and parent.name != 'cards':
-            #for i in range(len(arr)):
-                #print(arr[i])
-        #print("----------------------------------------------------")
+        if parent.name == 'card0':
+            for i in range(len(arr)):
+                print(arr[i])
+            print("----------------------------------------------------")
 
     #else:
         #print(res)

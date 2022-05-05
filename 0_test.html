@@ -1,10 +1,10 @@
 <html><head><link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css" /><link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" /><style>html {
-    font-size: 1.1011242029950552em;
-    --primary: #3b246d;
-    --secondary: #503193;
+    font-size: 1.0817100097044872em;
+    --primary: #51b99d;
+    --secondary: #61e0bd;
     font-family: "Helvetica", sans-serif;
     --black: #333;
-    --white: #fafafa;
+    --white: #f5f5f5;
     --color: --white;
     --background: --black;
     color: var(--white);
@@ -57,7 +57,7 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-        background: var(--background);
+        background: var(--secondary);
         border-bottom: 1px solid #dfdee2;
     align-items: center;
 justify-content: center;
@@ -66,7 +66,7 @@ align-content: normal;
 flex-flow: row wrap;
 }.div_header {
         flex-grow: 0;
-        flex-basis: 71.33333333333333%;
+        flex-basis: 66.66666666666667%;
         font-size: 1em;   
         min-width:1000px;
         min-height:0%;
@@ -101,12 +101,13 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-        color: var(--primary);
-        
+            color: var(--color);
+            filter: brightness(3.0);
+            
 }
 .s {
         flex-grow: 1;
-        flex-basis: 20.560747663551403%;
+        flex-basis: 22.0%;
         font-size: 1em;   
         min-width:220px;
         min-height:0%;
@@ -121,7 +122,7 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         align-items: center;
-justify-content: end;
+justify-content: start;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
@@ -142,20 +143,20 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: left;
         
-        border-radius: 14px;
+        border-radius: 20px;
         padding-left: 10px;
-        border: 1px var(--black) solid;
+        border: 3px var(--primary) solid;
         
 }
 .search_butt {
         flex-grow: 0;
-        flex-basis: 25px;
-        font-size: 25px;   
+        flex-basis: 20px;
+        font-size: 20px;   
         min-width:None;
         min-height:None;
         max-height:;
         margin-right: 0px;
-        margin-left: -50px;
+        margin-left: -40px;
         margin-top: 0px;
         margin-bottom: 0px;
         padding-left: 0em;
@@ -170,7 +171,7 @@ flex-flow: row wrap;
 }
 .n {
         flex-grow: 1;
-        flex-basis: 56.54205607476636%;
+        flex-basis: 53.5%;
         font-size: 1.3em;   
         min-width:400px;
         min-height:10px;
@@ -225,7 +226,7 @@ flex-flow: row nowrap;
         padding-bottom: 0em;
         text-align: center;
         align-items: flex-start;
-justify-content: start;
+justify-content: end;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
@@ -246,7 +247,7 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-        color: var(--primary);
+        color: var(--secondary);
         
 }
 .content {
@@ -259,7 +260,7 @@ flex-flow: row wrap;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
-        margin-bottom: 0px;
+        margin-bottom: 10px;
         padding-left: 0em;
         padding-right: 0em;
         padding-top: 0em;
@@ -271,7 +272,7 @@ align-content: flex-start;
 flex-flow: row nowrap;
 }.sidebar {
         flex-grow: 0;
-        flex-basis: 480px;
+        flex-basis: 460px;
         font-size: 1em;   
         min-width:400px;
         min-height:0%;
@@ -287,14 +288,15 @@ flex-flow: row nowrap;
         text-align: center;
         
     border-right: 1px solid #dfdee2;
-    align-items: flex-start;
+    height: 160pc;
+align-items: flex-start;
 justify-content: end;
 display: flex;
 align-content: flex-start;
 flex-flow: row nowrap;
 }.filters_div {
         flex-grow: 0;
-        flex-basis: 68.75%;
+        flex-basis: 82.6086956521739%;
         font-size: 1em;   
         min-width:300px;
         min-height:0%;
@@ -315,7 +317,7 @@ align-content: normal;
 flex-flow: row wrap;
 }.input_container_div0 {
         flex-grow: 0;
-        flex-basis: 87.87878787878788%;
+        flex-basis: 86.84210526315789%;
         font-size: 1em;   
         min-width:250px;
         min-height:0%;
@@ -337,47 +339,6 @@ flex-flow: row wrap;
         flex-grow: 1;
         flex-basis: ;
         font-size: 1.1em;   
-        min-width:200px;
-        min-height:0%;
-        max-height:;
-        margin-right: 0px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: start;
-        font-weight: 600;
-
-}
-.input_min_max {
-        flex-grow: 0;
-        flex-basis: 100px;
-        font-size: 1em;   
-        min-width:100px;
-        min-height:40px;
-        max-height:;
-        margin-right: 25px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: start;
-        
-        border-radius: 3px;
-        padding-left: 10px;
-        border: 1px var(--black) solid;
-        
-}
-.input_container_div1 {
-        flex-grow: 0;
-        flex-basis: 78.78787878787878%;
-        font-size: 1em;   
         min-width:250px;
         min-height:0%;
         max-height:;
@@ -389,89 +350,8 @@ flex-flow: row wrap;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.input_name {
-        flex-grow: 1;
-        flex-basis: ;
-        font-size: 1.1em;   
-        min-width:200px;
-        min-height:0%;
-        max-height:;
-        margin-right: 0px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
         text-align: start;
-        font-weight: 600;
-
-}
-.input_min_max {
-        flex-grow: 0;
-        flex-basis: 100px;
-        font-size: 1em;   
-        min-width:100px;
-        min-height:40px;
-        max-height:;
-        margin-right: 20px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: start;
-        
-        border-radius: 17px;
-        padding-left: 10px;
-        border: 1px var(--primary) solid;
-        
-}
-.input_container_div2 {
-        flex-grow: 0;
-        flex-basis: 100.0%;
-        font-size: 1em;   
-        min-width:250px;
-        min-height:0%;
-        max-height:;
-        margin-right: 0px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.input_name {
-        flex-grow: 1;
-        flex-basis: ;
-        font-size: 1.1em;   
-        min-width:200px;
-        min-height:0%;
-        max-height:;
-        margin-right: 0px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: start;
-        font-weight: 600;
+        font-weight: 700;
 
 }
 .input_min_max {
@@ -493,7 +373,129 @@ flex-flow: row wrap;
         
         border-radius: 5px;
         padding-left: 10px;
-        border: 1px var(--primary) solid;
+        border: 2px var(--secondary) solid;
+        
+}
+.input_container_div1 {
+        flex-grow: 0;
+        flex-basis: 89.47368421052632%;
+        font-size: 1em;   
+        min-width:250px;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.input_name {
+        flex-grow: 1;
+        flex-basis: ;
+        font-size: 1.1em;   
+        min-width:250px;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        font-weight: 600;
+
+}
+.input_min_max {
+        flex-grow: 0;
+        flex-basis: 100px;
+        font-size: 1em;   
+        min-width:100px;
+        min-height:40px;
+        max-height:;
+        margin-right: 20px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        
+        border-radius: 6px;
+        padding-left: 10px;
+        border: 1px var(--secondary) solid;
+        
+}
+.input_container_div2 {
+        flex-grow: 0;
+        flex-basis: 81.57894736842105%;
+        font-size: 1em;   
+        min-width:250px;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.input_name {
+        flex-grow: 1;
+        flex-basis: ;
+        font-size: 1.1em;   
+        min-width:250px;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        font-weight: 600;
+
+}
+.input_min_max {
+        flex-grow: 0;
+        flex-basis: 100px;
+        font-size: 1em;   
+        min-width:100px;
+        min-height:40px;
+        max-height:;
+        margin-right: 20px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: start;
+        
+        border-radius: 11px;
+        padding-left: 10px;
+        border: 3px var(--secondary) solid;
         
 }
 .main {
@@ -566,7 +568,7 @@ flex-flow: row wrap;
         min-width:155px;
         min-height:0%;
         max-height:;
-        margin-right: 10px;
+        margin-right: 15px;
         margin-left: 10px;
         margin-top: 20px;
         margin-bottom: 20px;
@@ -577,7 +579,7 @@ flex-flow: row wrap;
         text-align: center;
         flex-basis: 0;
 align-items: center;
-justify-content: end;
+justify-content: start;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
@@ -616,7 +618,7 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-        color: var(--secondary);
+        color: var(--primary);
         
 }
 .top_icons {
@@ -682,9 +684,9 @@ align-content: normal;
 flex-flow: row wrap;
 }.c {
         flex-grow: 0;
-        flex-basis: 405px;
+        flex-basis: 350px;
         font-size: 1em;   
-        min-width:400px;
+        min-width:350px;
         min-height:0%;
         max-height:;
         margin-right: 10px;
@@ -702,7 +704,7 @@ align-content: normal;
 flex-flow: row wrap;
 }.card_img_div {
         flex-grow: 0;
-        flex-basis: 300px;
+        flex-basis: 270px;
         font-size: 1em;   
         min-width:250px;
         min-height:0%;
@@ -741,7 +743,7 @@ flex-flow: row wrap;
 }
 .titles_subtitles_div {
         flex-grow: 1;
-        flex-basis: 95.06172839506173%;
+        flex-basis: 330px;
         font-size: 1em;   
         min-width:150px;
         min-height:0%;
@@ -761,7 +763,7 @@ align-content: normal;
 flex-flow: row wrap;
 }.title_subtitle_div {
         flex-grow: 1;
-        flex-basis: 385px;
+        flex-basis: 330px;
         font-size: 1em;   
         min-width:150px;
         min-height:0%;
@@ -781,7 +783,7 @@ align-content: normal;
 flex-flow: row wrap;
 }.card_t {
         flex-grow: 1;
-        flex-basis: 87.01298701298701%;
+        flex-basis: 84.84848484848484%;
         font-size: 1em;   
         min-width:50px;
         min-height:0%;
@@ -795,14 +797,14 @@ flex-flow: row wrap;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: start;
-        font-weight: 500;
+        font-weight: 700;
 
             color: var(--color);
             
 }
 .card_subt {
         flex-grow: 1;
-        flex-basis: 12.987012987012987%;
+        flex-basis: 15.151515151515152%;
         font-size: 1em;   
         min-width:50px;
         min-height:0%;
@@ -821,7 +823,7 @@ flex-flow: row wrap;
 }
 .card_title {
         flex-grow: 1;
-        flex-basis: 95.06172839506173%;
+        flex-basis: 94.28571428571429%;
         font-size: 1em;   
         min-width:150px;
         min-height:0%;
@@ -840,11 +842,11 @@ flex-flow: row wrap;
             color: var(--primary);
             
 }
-.card_icon_text {
-        flex-grow: 0;
-        flex-basis: 50px;
+.card_description {
+        flex-grow: 1;
+        flex-basis: 94.28571428571429%;
         font-size: 1em;   
-        min-width:0px;
+        min-width:200px;
         min-height:0%;
         max-height:;
         margin-right: 10px;
@@ -855,8 +857,48 @@ flex-flow: row wrap;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
+        text-align: start;
+        overflow: hidden;
+
+}
+.unite_div5cbuttons_div {
+        flex-grow: 1;
+        flex-basis: 170px;
+        font-size: 1em;   
+        min-width:0%;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
         text-align: center;
         align-items: center;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.card_icon_text {
+        flex-grow: 0;
+        flex-basis: 60px;
+        font-size: 1em;   
+        min-width:0px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+align-items: center;
 justify-content: center;
 display: flex;
 align-content: normal;
@@ -878,9 +920,8 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-            color: var(--color);
-            filter: brightness(3.0);
-            
+        color: var(--secondary);
+        
 }
 .cardit_text {
         flex-grow: 0;
@@ -892,7 +933,7 @@ flex-flow: row wrap;
         margin-right: 0px;
         margin-left: 0px;
         margin-top: 0px;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
         padding-left: 0em;
         padding-right: 0em;
         padding-top: 0em;
@@ -901,34 +942,15 @@ flex-flow: row wrap;
         font-weight: 600;
 
 }
-.card_description {
-        flex-grow: 1;
-        flex-basis: 95.06172839506173%;
-        font-size: 1em;   
-        min-width:200px;
-        min-height:0%;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 0px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: start;
-        overflow: hidden;
-
-}
 .buttons_div {
         flex-grow: 0;
-        flex-basis: 220px;
+        flex-basis: 150px;
         font-size: 1em;   
         min-width:150px;
         min-height:0%;
         max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
+        margin-right: 20px;
+        margin-left: 0px;
         margin-top: 10px;
         margin-bottom: 10px;
         padding-left: 0em;
@@ -942,7 +964,7 @@ align-content: normal;
 flex-flow: row wrap;
 }.card_button {
         flex-grow: 0;
-        flex-basis: 220px;
+        flex-basis: 150px;
         font-size: 1em;   
         min-width:0%;
         min-height:0%;
@@ -957,8 +979,8 @@ flex-flow: row wrap;
         padding-bottom: 0.5em;
         text-align: center;
         border: 0;
-        border-radius: 6px;
-        font-weight: 700;
+        border-radius: 10px;
+        font-weight: 500;
         cursor: pointer;
         
                     box-sizing: border-box;
@@ -1007,7 +1029,7 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-        color: var(--primary);
+        color: var(--secondary);
         
 }
 .footer {
@@ -1027,7 +1049,7 @@ flex-flow: row wrap;
         padding-bottom: 0em;
         text-align: center;
         
-        background: var(--background);
+        background: var(--secondary);
         border-top: 1px solid #dfdee2;
     align-items: center;
 justify-content: center;
@@ -1054,27 +1076,27 @@ flex-flow: row wrap;
 display: flex;
 align-content: normal;
 flex-flow: row wrap;
-}.fl {
-        flex-grow: 0;
-        flex-basis: 60px;
-        font-size: 60px;   
-        min-width:60px;
-        min-height:40px;
+}.unite_div2div_footerfn {
+        flex-grow: 1;
+        flex-basis: 420px;
+        font-size: 1em;   
+        min-width:0%;
+        min-height:0%;
         max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         padding-left: 0em;
         padding-right: 0em;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: center;
-        
-        color: var(--primary);
-        
-}
-.vlds {
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.vlds {
         flex-grow: 1;
         flex-basis: 970px;
         font-size: 1em;   
@@ -1097,7 +1119,7 @@ align-content: normal;
 flex-flow: row wrap;
 }.vld {
         flex-grow: 0;
-        flex-basis: 130px;
+        flex-basis: 180px;
         font-size: 1em;   
         min-width:100px;
         min-height:0%;
@@ -1132,14 +1154,14 @@ flex-flow: column nowrap;
         padding-top: 0em;
         padding-bottom: 0em;
         text-align: center;
-        font-weight: 700;
+        font-weight: 600;
 
-            color: var(--color);
+            color: var(--primary);
             
 }
 .vl {
         flex-grow: 0;
-        flex-basis: 100.0%;
+        flex-basis: 94.44444444444444%;
         font-size: 1em;   
         min-width:100px;
         min-height:50px;
@@ -1175,48 +1197,6 @@ flex-flow: column nowrap;
         padding-bottom: 1rem;
         text-align: center;
         
-}
-.footer_sn_icons {
-        flex-grow: 0;
-        flex-basis: 105px;
-        font-size: 1em;   
-        min-width:105px;
-        min-height:0%;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        align-items: flex-start;
-justify-content: start;
-display: flex;
-align-content: normal;
-flex-flow: row wrap;
-}.footer_sn_icon {
-        flex-grow: 0;
-        flex-basis: 25px;
-        font-size: 25px;   
-        min-width:25px;
-        min-height:25px;
-        max-height:;
-        margin-right: 10px;
-        margin-left: 0px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-left: 0em;
-        padding-right: 0em;
-        padding-top: 0em;
-        padding-bottom: 0em;
-        text-align: center;
-        
-            color: var(--color);
-            filter: brightness(3.0);
-            
 }
 .fn {
         flex-grow: 1;
@@ -1257,12 +1237,95 @@ flex-flow: row nowrap;
         text-align: center;
         
 }
-</style></head><body><body class="body"><header class="header"><div class="div_header"><i class="far fa-adjust l"></i><div class="s"><input type="text" class="search" placeholder="" /><i class="fas fa-search search_butt"></i></div><nav class="n"><a href="#" class="nav_a">Home</a><a href="#" class="nav_a">Sale</a><a href="#" class="nav_a">Cart</a><a href="#" class="nav_a">Compare</a></nav><div class="header_sn_icons"><i class="fab fa-github header_sn_icon"></i><i class="fab fa-vk header_sn_icon"></i><i class="fab fa-twitter header_sn_icon"></i></div></div></header><content class="content"><aside class="sidebar"><div class="filters_div"><div class="input_container_div0"><h5 class="input_name">Quite</h5><input type="text" class="input_min_max" placeholder="From 0.0" /><input type="text" class="input_min_max" placeholder="To 1000.0" /></div><div class="input_container_div1"><h5 class="input_name">Assume</h5><input type="text" class="input_min_max" placeholder="From 0.0" /><input type="text" class="input_min_max" placeholder="To 1000.0" /></div><div class="input_container_div2"><h5 class="input_name">Say</h5><input type="text" class="input_min_max" placeholder="From 0.0" /><input type="text" class="input_min_max" placeholder="To 1000.0" /></div></div></aside><div class="main"><div class="top"><div class="top_div"><div class="top_sort_div"><p class="top_sort">Sort by name A-Z</p><i class="fas fa-sort-alt sort_icon"></i></div><div class="top_icons"><i class="fas fa-bars top_icon"></i><i class="fas fa-th-large top_icon"></i></div></div></div><div class="cards"><div class="c"><div class="card_img_div"><img src="https://placekitten.com/151/54" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">employee attorney quickly</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><p class="card_description">Type successful together type. Raise study modern miss dog Democrat quickly.</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/100/100" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">all the nothing</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><p class="card_description">Knowledge else citizen month.
-Page a although for study anyone state. Could yourself plan base rise would. Wear individual about add senior woman.</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/200/200" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">since issue grow</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><p class="card_description">Total later quality. Market either political young.
-Chair cup her national character writer work chance. Point institution miss quickly thousand street.</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/300/300" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">wide require fast</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div><p class="card_description">Son true their race special million. Although hot he couple ground.</p><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/400/400" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">over hour reduce</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><p class="card_description">Federal indicate unit opportunity fear great. Know hard we around impact.
-Kid he weight before control board. Newspaper read somebody land. Control instead company where future model.</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/500/500" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">money at term</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><p class="card_description">Guess break about. Their record road dinner seem. Course its respond himself former.
-Language remember model can. Know smile home southern. Role somebody keep daughter report town.</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/600/600" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">better she increase</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><p class="card_description">Partner stand next though house where. Majority campaign that various floor.
-News experience must cut. Since method left plant evening. Budget situation between.</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/700/700" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">drop actually watch</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><p class="card_description">Start general professional career. Large center find power road. Him important enough most save rather.
+.unite_div2div_footerfl {
+        flex-grow: 1;
+        flex-basis: 125px;
+        font-size: 1em;   
+        min-width:0%;
+        min-height:0%;
+        max-height:;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.fl {
+        flex-grow: 0;
+        flex-basis: 60px;
+        font-size: 60px;   
+        min-width:60px;
+        min-height:40px;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+            color: var(--color);
+            filter: brightness(3.0);
+            
+}
+.footer_sn_icons {
+        flex-grow: 0;
+        flex-basis: 105px;
+        font-size: 1em;   
+        min-width:105px;
+        min-height:0%;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        align-items: flex-start;
+justify-content: end;
+display: flex;
+align-content: normal;
+flex-flow: row wrap;
+}.footer_sn_icon {
+        flex-grow: 0;
+        flex-basis: 25px;
+        font-size: 25px;   
+        min-width:25px;
+        min-height:25px;
+        max-height:;
+        margin-right: 10px;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 0em;
+        padding-right: 0em;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        text-align: center;
+        
+            color: var(--color);
+            filter: brightness(3.0);
+            
+}
+</style></head><body><body class="body"><header class="header"><div class="div_header"><i class="far fa-adjust l"></i><div class="s"><input type="text" class="search" placeholder="" /><i class="fas fa-search search_butt"></i></div><nav class="n"><a href="#" class="nav_a">Home</a><a href="#" class="nav_a">Sale</a><a href="#" class="nav_a">Cart</a><a href="#" class="nav_a">Compare</a></nav><div class="header_sn_icons"><i class="fab fa-github header_sn_icon"></i><i class="fab fa-twitter header_sn_icon"></i><i class="fab fa-vk header_sn_icon"></i></div></div></header><content class="content"><aside class="sidebar"><div class="filters_div"><div class="input_container_div0"><h5 class="input_name">Quite</h5><input type="text" class="input_min_max" placeholder="From 0.0" /><input type="text" class="input_min_max" placeholder="To 1000.0" /></div><div class="input_container_div1"><h5 class="input_name">Assume</h5><input type="text" class="input_min_max" placeholder="From 0.0" /><input type="text" class="input_min_max" placeholder="To 1000.0" /></div><div class="input_container_div2"><h5 class="input_name">Say</h5><input type="text" class="input_min_max" placeholder="From 0.0" /><input type="text" class="input_min_max" placeholder="To 1000.0" /></div></div></aside><div class="main"><div class="top"><div class="top_div"><div class="top_sort_div"><p class="top_sort">Sort by name A-Z</p><i class="fas fa-sort-alt sort_icon"></i></div><div class="top_icons"><i class="fas fa-bars top_icon"></i><i class="fas fa-th-large top_icon"></i></div></div></div><div class="cards"><div class="c"><div class="card_img_div"><img src="https://placekitten.com/151/54" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">employee attorney quickly</h5><p class="card_description">Type successful together type. Raise study modern miss dog Democrat quickly.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/100/100" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">all the nothing</h5><p class="card_description">Knowledge else citizen month.
+Page a although for study anyone state. Could yourself plan base rise would. Wear individual about add senior woman.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/200/200" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">since issue grow</h5><p class="card_description">Total later quality. Market either political young.
+Chair cup her national character writer work chance. Point institution miss quickly thousand street.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/300/300" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">wide require fast</h5><p class="card_description">Son true their race special million. Although hot he couple ground.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/400/400" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">over hour reduce</h5><p class="card_description">Federal indicate unit opportunity fear great. Know hard we around impact.
+Kid he weight before control board. Newspaper read somebody land. Control instead company where future model.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/500/500" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">money at term</h5><p class="card_description">Guess break about. Their record road dinner seem. Course its respond himself former.
+Language remember model can. Know smile home southern. Role somebody keep daughter report town.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/600/600" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">better she increase</h5><p class="card_description">Partner stand next though house where. Majority campaign that various floor.
+News experience must cut. Since method left plant evening. Budget situation between.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/700/700" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">drop actually watch</h5><p class="card_description">Start general professional career. Large center find power road. Him important enough most save rather.
 North but west. About catch than method. Bag down stock computer.
-Sea stuff no response.</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/800/800" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">add sing standard</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><p class="card_description">Mrs never wrong couple site. Suddenly seek choice produce.
-Guess we no in pass sound. Tonight gun word citizen create. Physical market room eat through ever.</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/900/900" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">end red effect</h5><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><p class="card_description">Very your choice too need although one. Almost serious stand author possible lead draw.</p><div class="buttons_div"><button class="card_button">Add to cart</button></div><div class="card_icons"><i class="far fa-heart card_icon"></i><i class="far fa-chart-bar card_icon"></i></div></div></div></div></content><footer class="footer"><div class="div_footer"><i class="far fa-adjust fl"></i><div class="vlds"><div class="vld"><h5 class="vld_title">style</h5><nav class="vl"><a href="#" class="footer_vert_list_a">hope</a><a href="#" class="footer_vert_list_a">appear</a><a href="#" class="footer_vert_list_a">should</a><a href="#" class="footer_vert_list_a">represent</a><a href="#" class="footer_vert_list_a">group</a></nav></div><div class="vld"><h5 class="vld_title">thing</h5><nav class="vl"><a href="#" class="footer_vert_list_a">unit</a><a href="#" class="footer_vert_list_a">impact</a><a href="#" class="footer_vert_list_a">key</a><a href="#" class="footer_vert_list_a">page</a><a href="#" class="footer_vert_list_a">per</a></nav></div><div class="vld"><h5 class="vld_title">especially</h5><nav class="vl"><a href="#" class="footer_vert_list_a">public</a><a href="#" class="footer_vert_list_a">none</a><a href="#" class="footer_vert_list_a">sound</a><a href="#" class="footer_vert_list_a">include</a><a href="#" class="footer_vert_list_a">air</a></nav></div></div><div class="footer_sn_icons"><i class="fab fa-github footer_sn_icon"></i><i class="fab fa-twitter footer_sn_icon"></i><i class="fab fa-vk footer_sn_icon"></i></div><nav class="fn"><a href="#" class="footer_link_a">© ООО suffer</a><a href="#" class="footer_link_a">Мобильная версия</a><a href="#" class="footer_link_a">Вакансии</a></nav></div></footer></body></body></html>
+Sea stuff no response.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/800/800" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">add sing standard</h5><p class="card_description">Mrs never wrong couple site. Suddenly seek choice produce.
+Guess we no in pass sound. Tonight gun word citizen create. Physical market room eat through ever.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div><div class="c"><div class="card_img_div"><img src="https://placekitten.com/900/900" alt="card_image" class="card_image" /></div><div class="titles_subtitles_div"><div class="title_subtitle_div"><h5 class="card_t">1000 $</h5><h5 class="card_subt"></h5></div></div><h5 class="card_title">end red effect</h5><p class="card_description">Very your choice too need although one. Almost serious stand author possible lead draw.</p><div class="unite_div5cbuttons_div"><div class="card_icon_text"><i class="far fa-star cardit_icon"></i><p class="cardit_text">4.5</p></div><div class="card_icon_text"><i class="far fa-comments cardit_icon"></i><p class="cardit_text">4</p></div><div class="buttons_div"><button class="card_button">Add to cart</button></div></div><div class="card_icons"><i class="far fa-chart-bar card_icon"></i><i class="far fa-heart card_icon"></i></div></div></div></div></content><footer class="footer"><div class="div_footer"><div class="unite_div2div_footerfn"><div class="vlds"><div class="vld"><h5 class="vld_title">style</h5><nav class="vl"><a href="#" class="footer_vert_list_a">hope</a><a href="#" class="footer_vert_list_a">appear</a><a href="#" class="footer_vert_list_a">should</a><a href="#" class="footer_vert_list_a">represent</a><a href="#" class="footer_vert_list_a">group</a></nav></div><div class="vld"><h5 class="vld_title">thing</h5><nav class="vl"><a href="#" class="footer_vert_list_a">unit</a><a href="#" class="footer_vert_list_a">impact</a><a href="#" class="footer_vert_list_a">key</a><a href="#" class="footer_vert_list_a">page</a><a href="#" class="footer_vert_list_a">per</a></nav></div><div class="vld"><h5 class="vld_title">especially</h5><nav class="vl"><a href="#" class="footer_vert_list_a">public</a><a href="#" class="footer_vert_list_a">none</a><a href="#" class="footer_vert_list_a">sound</a><a href="#" class="footer_vert_list_a">include</a><a href="#" class="footer_vert_list_a">air</a></nav></div></div><nav class="fn"><a href="#" class="footer_link_a">© ООО suffer</a><a href="#" class="footer_link_a">Мобильная версия</a><a href="#" class="footer_link_a">Вакансии</a></nav></div><div class="unite_div2div_footerfl"><i class="far fa-adjust fl"></i><div class="footer_sn_icons"><i class="fab fa-twitter footer_sn_icon"></i><i class="fab fa-github footer_sn_icon"></i><i class="fab fa-vk footer_sn_icon"></i></div></div></div></footer></body></body></html>

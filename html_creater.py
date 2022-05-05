@@ -16,7 +16,7 @@ import time
 
 start_time = datetime.now()
 
-# random.seed(3)
+#random.seed(2)
 # faker = Faker('ru_RU')
 faker = Faker()
 faker.seed_instance(0)
@@ -179,6 +179,7 @@ def create_content_json(content, body_model, content_model):
         center_horizontal=False,
         center_vertical=False,
         flexflow="row nowrap",
+        css={'height': "160pc"}
     )
 
     if sidebar.nav_div:
@@ -915,7 +916,18 @@ def create_content_json(content, body_model, content_model):
         titles_subtitles = card.titles_subtitles
         if titles_subtitles:
             titles_subtitles_model = random_choose_model(titles_subtitles, card_model)
-            titles_subtitles_div_json = create_div(titles_subtitles, card, card_model, cards_model, Measure.PERCENT)
+            titles_subtitles_div_json = create_div(titles_subtitles, card, card_model, cards_model, Measure.PIXEL)
+            print(f"""
+            titles subtitles
+            min_mr: {card.titles_subtitles.min_margin_right}
+            min_ml: {card.titles_subtitles.min_margin_left}
+            min_mt: {card.titles_subtitles.min_margin_top}
+            min_mb: {card.titles_subtitles.min_margin_bottom}
+            max_mr: {card.titles_subtitles.max_margin_right}
+            max_ml: {card.titles_subtitles.max_margin_left}
+            max_mt: {card.titles_subtitles.max_margin_top}
+            max_mb: {card.titles_subtitles.max_margin_bottom}
+            """)
             for i in range(len(titles_subtitles.children)):
                 title_subtitle = titles_subtitles.children[i]
                 title_subtitle_model = random_choose_model(title_subtitle, titles_subtitles_model)
@@ -944,12 +956,8 @@ def create_content_json(content, body_model, content_model):
                     margin_left=ValueJSON(
                         title_subtitle_model[title.margin_left].as_long() * title_subtitle.table.cell_width,
                         Measure.PIXEL),
-                    margin_top=ValueJSON(
-                        title_subtitle_model[title.margin_top].as_long() * title_subtitle.table.cell_width,
-                        Measure.PIXEL),
-                    margin_bottom=ValueJSON(
-                        title_subtitle_model[title.margin_bottom].as_long() * title_subtitle.table.cell_width,
-                        Measure.PIXEL),
+                    margin_top=ValueJSON(0, Measure.PIXEL),
+                    margin_bottom=ValueJSON(0, Measure.PIXEL),
                     text=title.text,
                     text_align="start",
                     label=title.label,
@@ -978,12 +986,8 @@ def create_content_json(content, body_model, content_model):
                     margin_left=ValueJSON(
                         title_subtitle_model[subtitle.margin_left].as_long() * title_subtitle.table.cell_width,
                         Measure.PIXEL),
-                    margin_top=ValueJSON(
-                        title_subtitle_model[subtitle.margin_top].as_long() * title_subtitle.table.cell_width,
-                        Measure.PIXEL),
-                    margin_bottom=ValueJSON(
-                        title_subtitle_model[subtitle.margin_bottom].as_long() * title_subtitle.table.cell_width,
-                        Measure.PIXEL),
+                    margin_top=ValueJSON(0, Measure.PIXEL),
+                    margin_bottom=ValueJSON(0, Measure.PIXEL),
                     text=subtitle.text,
                     text_align="start",
                     label=subtitle.label,
@@ -1051,6 +1055,7 @@ def create_content_json(content, body_model, content_model):
                     card,
                     card_model,
                     cards_model,
+                    css={"align-items": "flex-start"}
                 )
                 icon = icon_text.icon
                 icon_json = IconButtonJSON(
@@ -1077,7 +1082,7 @@ def create_content_json(content, body_model, content_model):
                                             Measure.PIXEL),
                     font_size=ValueJSON(icon_text_model[icon.col_count].as_long() * icon_text.table.cell_width,
                                         Measure.PIXEL),
-                    label=icon.label,
+                    label=icon.label
                 )
                 text = icon_text.text
                 text_json = BaseElementJSON(
@@ -1510,9 +1515,7 @@ def create_header_json(header, body_model, header_model):
             height=ValueJSON(
                 search_div_model[search_div.children[0].row_count].as_long() * search_div.table.cell_height,
                 Measure.PIXEL),
-            font_size=ValueJSON(
-                search_div_model[search_div.children[0].row_count].as_long() * search_div.table.cell_height // 2,
-                Measure.PIXEL),
+            font_size=ValueJSON(20, Measure.PIXEL),
             margin_right=ValueJSON(0, Measure.PIXEL),
             margin_left=ValueJSON(
                 -search_div_model[search_div.children[0].row_count].as_long() * search_div.table.cell_height,
@@ -1657,7 +1660,7 @@ def group(parent, parent_model, parent_json):
 
                 if ((child_x + child_width + child_margin_right <= another_child_x - another_child_margin_left) and
                         (
-                                another_child_y - another_child_margin_top < child_y - child_margin_top <= another_child_y + another_child_height + another_child_margin_bottom or
+                                another_child_y - another_child_margin_top <= child_y - child_margin_top <= another_child_y + another_child_height + another_child_margin_bottom or
                                 child_y - child_margin_top < another_child_y - another_child_margin_top <= child_y + child_height + child_margin_bottom)
                 ):
                     child.right.append(another_child)
@@ -1713,24 +1716,24 @@ def group(parent, parent_model, parent_json):
                 elif s == min_d:
                     arr.append(another_child)
             child.min_top = arr
-        #print("\n\nneighbours")
-        #print(child.name)
-        #if child.name == 'card_icon_text':
-        #    print()
-        #print("Right:" + ",".join(ch.name for ch in child.right))
-        #print("Left:" + ",".join(ch.name for ch in child.left))
-        #print("Bottom:" + ",".join(ch.name for ch in child.bottom))
-        #print("Top:" + ",".join(ch.name for ch in child.top))
+        print("\n\nneighbours")
+        print(child.name)
+        print("Right:" + ",".join(ch.name for ch in child.right))
+        print("Left:" + ",".join(ch.name for ch in child.left))
+        print("Bottom:" + ",".join(ch.name for ch in child.bottom))
+        print("Top:" + ",".join(ch.name for ch in child.top))
     for child in parent.children:
         div = []
         if len(child.left) + len(child.right) > 0:
             div = [child]
-            #print("----------")
-            #print("child name: " + child.name)
+            print("----------")
+            print("child name: " + child.name)
             for another_child in child.min_bottom + child.min_top:
                 if len(another_child.right) + len(another_child.left) > 0:
-                    #print("Min top bottom children")
-                    #print(another_child.name)
+                    print("Min top bottom children")
+                    print(another_child.name)
+                    if child.name == 'titles_subtitles_div':
+                        print()
                     t = (
                             parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
                         another_child.x].as_long() - parent_model[another_child.margin_left].as_long() <= parent_model[
@@ -1745,14 +1748,14 @@ def group(parent, parent_model, parent_json):
                     d = (
                             parent_model[another_child.x].as_long() - parent_model[
                         another_child.margin_left].as_long() <= parent_model[
-                                another_child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
+                                child.x].as_long() - parent_model[child.margin_left].as_long() <= parent_model[
                                 another_child.x].as_long() + parent_model[another_child.col_count].as_long() +
                             parent_model[
                                 another_child.margin_right].as_long() and
                             parent_model[another_child.x].as_long() - parent_model[
                                 another_child.margin_left].as_long() <= parent_model[
-                                child.x].as_long() + parent_model[another_child.col_count].as_long() +
-                            parent_model[another_child.margin_right].as_long() <= parent_model[
+                                child.x].as_long() + parent_model[child.col_count].as_long() +
+                            parent_model[child.margin_right].as_long() <= parent_model[
                                 another_child.x].as_long() +
                             parent_model[another_child.col_count].as_long() + parent_model[
                                 another_child.margin_right].as_long()
@@ -1808,15 +1811,15 @@ def group(parent, parent_model, parent_json):
                             nd = (
                                     parent_model[neighbour.x].as_long() - parent_model[
                                 neighbour.margin_left].as_long() <= parent_model[
-                                        neighbour.x].as_long() - parent_model[child.margin_left].as_long() <=
+                                        child.x].as_long() - parent_model[child.margin_left].as_long() <=
                                     parent_model[
                                         neighbour.x].as_long() + parent_model[neighbour.col_count].as_long() +
                                     parent_model[
                                         neighbour.margin_right].as_long() and
                                     parent_model[neighbour.x].as_long() - parent_model[
                                         neighbour.margin_left].as_long() <= parent_model[
-                                        child.x].as_long() + parent_model[neighbour.col_count].as_long() +
-                                    parent_model[neighbour.margin_right].as_long() <= parent_model[
+                                        child.x].as_long() + parent_model[child.col_count].as_long() +
+                                    parent_model[child.margin_right].as_long() <= parent_model[
                                         neighbour.x].as_long() +
                                     parent_model[neighbour.col_count].as_long() + parent_model[
                                         neighbour.margin_right].as_long()
@@ -1824,12 +1827,46 @@ def group(parent, parent_model, parent_json):
                             if nt or nd:
                                 div.append(neighbour)
                             elif nw and nu:
+                                print(f"""
+                                nw and nu happened
+                                child name   : {child.label}
+                                x1           : {parent_model[child.x].as_long() - parent_model[child.margin_left].as_long()}
+                                x2           : {parent_model[child.x].as_long() + parent_model[child.col_count].as_long() + parent_model[child.margin_right].as_long()}
+                                neighbor name: {neighbour.label}
+                                x1           : {parent_model[neighbour.x].as_long() - parent_model[neighbour.margin_left].as_long()}
+                                x2           : {parent_model[neighbour.x].as_long() + parent_model[neighbour.col_count].as_long() + parent_model[neighbour.margin_right].as_long()}
+                                {(parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() >=
+                                     parent_model[neighbour.x].as_long() - parent_model[
+                                         neighbour.margin_left].as_long() and
+                                     parent_model[neighbour.x].as_long() + parent_model[neighbour.col_count].as_long() +
+                                     parent_model[neighbour.margin_right].as_long() <= parent_model[child.x].as_long() +
+                                     parent_model[child.col_count].as_long() + parent_model[
+                                         child.margin_right].as_long())}
+                                {(parent_model[neighbour.x].as_long() + parent_model[neighbour.col_count].as_long() +
+                                     parent_model[neighbour.margin_right].as_long() >= parent_model[child.x].as_long() +
+                                     parent_model[child.col_count].as_long() + parent_model[
+                                         child.margin_right].as_long() and
+                                     parent_model[child.x].as_long() - parent_model[child.margin_left].as_long() >=
+                                     parent_model[neighbour.x].as_long() - parent_model[
+                                         neighbour.margin_left].as_long())}
+                                """)
                                 #print(f"nw neighbour:  {neighbour.label}")
-                                div = []
+                                if len(div) == 1:
+                                    div = []
+                    else:
+                        print(f"""
+                                                        no t and d happened
+                                                        child name   : {child.label}
+                                                        x1           : {parent_model[child.x].as_long() - parent_model[child.margin_left].as_long()}
+                                                        x2           : {parent_model[child.x].as_long() + parent_model[child.col_count].as_long() + parent_model[child.margin_right].as_long()}
+                                                        another child name: {another_child.label}
+                                                        x1           : {parent_model[another_child.x].as_long() - parent_model[another_child.margin_left].as_long()}
+                                                        x2           : {parent_model[another_child.x].as_long() + parent_model[another_child.col_count].as_long() + parent_model[another_child.margin_right].as_long()}
+                                                        """)
             div_json = None
             # То есть есть элементы, которые можно объединить в один див
             if len(div) > 1:
-                #print(", ".join(el.name for el in div))
+                print(", ".join(el.name for el in div))
                 arr = []
                 for el in div:
                     for el_json in parent_json.children:
@@ -1872,8 +1909,8 @@ def group(parent, parent_model, parent_json):
                     div_json.y = ValueJSON(min(el.y.val for el in div_json.children), Measure.PIXEL)
                     div_json.height = ValueJSON(max(el.height.val for el in div_json.children),
                                                 Measure.WORD)  # для сортировки, в хтмл не используется
-                    #print(f"div_json.x: {div_json.x}")
-                    #print(f"div_json.y: {div_json.y}")
+                    print(f"div_json.x: {div_json.x}")
+                    print(f"div_json.y: {div_json.y}")
     for i in range(len(parent_json.children) - 1, -1, -1):
         if hasattr(parent_json.children[i], "div"):
             if parent_json.children[i].div not in parent_json.children:
